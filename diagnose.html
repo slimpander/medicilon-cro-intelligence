@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>Diagnose</title></head>
+<body style="background:#0a1018;color:#ccc;font-family:monospace;padding:20px">
+<h2 style="color:#f5a623">Diagnostics</h2>
+<div id="out"></div>
+<script>
+function log(msg, ok) {
+  const d = document.createElement('div');
+  d.style.cssText = 'padding:4px 0;color:' + (ok === false ? '#e74c3c' : ok === true ? '#2ecc71' : '#ccc');
+  d.textContent = (ok === true ? '✓ ' : ok === false ? '✗ ' : '  ') + msg;
+  document.getElementById('out').appendChild(d);
+}
+
+async function run() {
+  // 1. Check data files
+  try {
+    const r1 = await fetch('data/cro_data.json');
+    const d1 = await r1.json();
+    log('cro_data.json loaded — ' + d1.cros.length + ' CROs', true);
+  } catch(e) { log('cro_data.json FAILED: ' + e.message, false); }
+
+  try {
+    const r2 = await fetch('data/news_data.json');
+    const d2 = await r2.json();
+    log('news_data.json loaded — ' + d2.articles.length + ' articles', true);
+  } catch(e) { log('news_data.json FAILED: ' + e.message, false); }
+
+  try {
+    const r3 = await fetch('data/states-10m.json');
+    const d3 = await r3.json();
+    log('states-10m.json loaded — type: ' + d3.type, true);
+  } catch(e) { log('states-10m.json FAILED: ' + e.message, false); }
+
+  // 2. Check tab pane elements
+  const tabs = ['tab-opportunities','tab-whitespace','tab-underserved','tab-strategy','tab-timeline','tab-clients'];
+  tabs.forEach(id => {
+    const el = document.getElementById(id);
+    log('Element #' + id + ': ' + (el ? 'EXISTS, children=' + el.children.length : 'MISSING'), !!el);
+  });
+
+  // 3. Check key functions exist (load index.html in iframe)
+  log('Open index.html and check console for JS errors', null);
+}
+run();
+</script>
+</body>
+</html>

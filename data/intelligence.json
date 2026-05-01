@@ -1,0 +1,2565 @@
+{
+  "metadata": {
+    "generated": "2026-05-01T13:51:06.903448",
+    "lookback_days": 180,
+    "total": 137,
+    "sources": {
+      "clinical_trials": 68,
+      "sec_funding": 69,
+      "nih_grants": 0
+    }
+  },
+  "leads": [
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000568",
+      "name": "Protego Biopharma, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Diego, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-03 — equity offering",
+      "date": "2025-12-03",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001796909&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002068848-25-000004",
+      "name": "X1 Biotech Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Needham, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-11 — equity offering",
+      "date": "2025-12-11",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002068848&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001880438-26-000001",
+      "name": "AN2 Therapeutics, Inc.  (ANTX)",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Menlo Park, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-25 — equity offering",
+      "date": "2026-03-25",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001880438&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002020048-26-000004",
+      "name": "Averna Therapeutics Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Watertown, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-20 — equity offering",
+      "date": "2026-03-20",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002020048&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001997038-26-000001",
+      "name": "Iambic Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Diego, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-08 — equity offering",
+      "date": "2026-04-08",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001997038&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "3w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001851943-26-000001",
+      "name": "Alloy Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Lexington, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-15 — equity offering",
+      "date": "2026-04-15",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001851943&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000517",
+      "name": "Dualitas Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — South San Francisco, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-18 — equity offering",
+      "date": "2025-11-18",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002091994&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-26-000259",
+      "name": "Strand Therapeutics Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Boston, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-17 — equity offering",
+      "date": "2026-03-17",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001778475&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000450",
+      "name": "Rani Therapeutics Holdings, Inc.  (RANI)",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Jose, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-10 — equity offering",
+      "date": "2025-11-10",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001856725&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000548",
+      "name": "Solve Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Belmont, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-25 — equity offering",
+      "date": "2025-11-25",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001905252&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002046762-25-000005",
+      "name": "Tasca Therapeutics Corp",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Cambridge, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-01 — equity offering",
+      "date": "2025-12-01",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002046762&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000592",
+      "name": "BlossomHill Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Diego, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-10 — equity offering",
+      "date": "2025-12-10",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001839970&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-26-000307",
+      "name": "Tempest Therapeutics, Inc.  (TPST)",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Brisbane, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-03 — equity offering",
+      "date": "2026-04-03",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001544227&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001880064-25-000004",
+      "name": "Kamal Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Hingham, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-24 — equity offering",
+      "date": "2025-11-24",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001880064&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002097084-25-000001",
+      "name": "Medici Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Boston, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-04 — equity offering",
+      "date": "2025-12-04",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002097084&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001376474-26-000247",
+      "name": "Porosome Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Boston, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-24 — equity offering",
+      "date": "2026-03-24",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001934919&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001493152-25-027270",
+      "name": "Oncotelic Therapeutics, Inc.  (OTLC)",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Aguora Hills, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-11 — equity offering",
+      "date": "2025-12-11",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000908259&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001758725-26-000001",
+      "name": "Nia Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Allston, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-06 — equity offering",
+      "date": "2026-03-06",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001758725&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002109643-26-000001",
+      "name": "Embold Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Redwood City, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-09 — equity offering",
+      "date": "2026-02-09",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002109643&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000557",
+      "name": "Somite Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Boston, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-26 — equity offering",
+      "date": "2025-11-26",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002075078&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001613926-25-000002",
+      "name": "Pinteon Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Newton Centre, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-12 — equity offering",
+      "date": "2025-11-12",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001613926&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002066303-26-000002",
+      "name": "Mivax Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Francisco, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-23 — equity offering",
+      "date": "2026-01-23",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002066303&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002109179-26-000001",
+      "name": "Exin Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Francisco, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-10 — equity offering",
+      "date": "2026-02-10",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002109179&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002107977-26-000001",
+      "name": "Navega Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — San Diego, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-30 — equity offering",
+      "date": "2026-01-30",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002107977&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002122106-26-000001",
+      "name": "DNP THERAPEUTICS INC",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Cambridge, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-23 — equity offering",
+      "date": "2026-03-23",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002122106&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001980518-26-000001",
+      "name": "HYKU BIOSCIENCES INC.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Burlington, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-02 — equity offering",
+      "date": "2026-01-02",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001980518&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002055053-25-000003",
+      "name": "BTB Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Escondido, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-01 — equity offering",
+      "date": "2025-12-01",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002055053&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002129660-26-000001",
+      "name": "SONIRE Therapeutics Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — Palo Alto, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-15 — equity offering",
+      "date": "2026-04-15",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002129660&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002102340-25-000001",
+      "name": "Addition Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Funding",
+      "focus": "Biopharma — South San Francisco, CA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-22 — equity offering",
+      "date": "2025-12-22",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002102340&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002069936-26-000001",
+      "name": "Caldera Therapeutics, Inc.",
+      "state": "MA",
+      "stage": "Funding",
+      "focus": "Biopharma — Cambridge, MA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-21 — equity offering",
+      "date": "2026-01-21",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002069936&type=D&dateb=&owner=include&count=10",
+      "score": 95,
+      "hub_weight": 10,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001493152-26-016735",
+      "name": "Canton Strategic Holdings, Inc.  (CNTN)",
+      "state": "NJ",
+      "stage": "Funding",
+      "focus": "Biopharma — Bridgewater, NJ",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-15 — equity offering",
+      "date": "2026-04-15",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001861657&type=D&dateb=&owner=include&count=10",
+      "score": 90,
+      "hub_weight": 9,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001752026-26-000005",
+      "name": "Linnaeus Therapeutics, Inc.",
+      "state": "NJ",
+      "stage": "Funding",
+      "focus": "Biopharma — Haddonfield, NJ",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-13 — equity offering",
+      "date": "2026-03-13",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001752026&type=D&dateb=&owner=include&count=10",
+      "score": 90,
+      "hub_weight": 9,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07140016",
+      "name": "Astellas Pharma Global Development, Inc.",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Non-small Cell Lung Cancer (NSCLC), Anaplastic Lymphoma Kinase (ALK) Positive",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-08-24",
+      "url": "https://clinicaltrials.gov/study/NCT07140016",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "8mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05059236",
+      "name": "Bayer",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Metastatic Hormone-sensitive Prostate Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2021-09-28",
+      "url": "https://clinicaltrials.gov/study/NCT05059236",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "4y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05128825",
+      "name": "K-Group, Beta, Inc., a wholly owned subsidiary of Zentalis Pharmaceuticals, Inc",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "High-Grade Serous Ovarian, Fallopian Tube or Primary Peritoneal Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2021-11-22",
+      "url": "https://clinicaltrials.gov/study/NCT05128825",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "4y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06308978",
+      "name": "Fate Therapeutics",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Antineutrophilic Cytoplasmic Antibody (ANCA)- Associated Vasculitis (AAV), Idiopathic Inflammatory Myositis (IIM), Systemic Sclerosis (SSc)",
+      "needs": [
+        "Bioanalysis",
+        "Protein Sciences / Biologics",
+        "Toxicology"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2024-03-13",
+      "url": "https://clinicaltrials.gov/study/NCT06308978",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07157033",
+      "name": "Xerient Pharma",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Locally Advanced Pancreatic Adenocarcinoma, Locally Advanced Pancreas Cancer, Locally Advanced Pancreatic Ductal Adenocarcinoma",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-09-05",
+      "url": "https://clinicaltrials.gov/study/NCT07157033",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "7mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05485961",
+      "name": "CSL Behring",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Atherosclerotic Cardiovascular Disease, End Stage Kidney Disease, Atherosclerotic Cardiovascular Disease in Patients With ESKD",
+      "needs": [
+        "ADME",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2022-08-03",
+      "url": "https://clinicaltrials.gov/study/NCT05485961",
+      "score": 85,
+      "hub_weight": 10,
+      "date_label": "3y ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-25-000432",
+      "name": "Osteal Therapeutics, Inc.",
+      "state": "TX",
+      "stage": "Funding",
+      "focus": "Biopharma — Dallas, TX",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-05 — equity offering",
+      "date": "2025-11-05",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001735936&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002100543-26-000001",
+      "name": "Faeth Therapeutics, Inc.",
+      "state": "TX",
+      "stage": "Funding",
+      "focus": "Biopharma — Austin, TX",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-27 — equity offering",
+      "date": "2026-01-27",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002100543&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001919246-25-000006",
+      "name": "Pelthos Therapeutics Inc.  (PTHS)",
+      "state": "NC",
+      "stage": "Funding",
+      "focus": "Biopharma — Durham, NC",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-19 — equity offering",
+      "date": "2025-11-19",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001919246&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002109829-26-000001",
+      "name": "Immunomet Therapeutics, Inc.",
+      "state": "TX",
+      "stage": "Funding",
+      "focus": "Biopharma — Houston, TX",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-05 — equity offering",
+      "date": "2026-02-05",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002109829&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001687466-25-000004",
+      "name": "PIPr Therapeutics, Inc.",
+      "state": "NC",
+      "stage": "Funding",
+      "focus": "Biopharma — Durham, NC",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-11-12 — equity offering",
+      "date": "2025-11-12",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001687466&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002128979-26-000001",
+      "name": "Parabolica Therapeutics, Inc.",
+      "state": "TX",
+      "stage": "Funding",
+      "focus": "Biopharma — Dallas, TX",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-30 — equity offering",
+      "date": "2026-04-30",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002128979&type=D&dateb=&owner=include&count=10",
+      "score": 85,
+      "hub_weight": 8,
+      "date_label": "1d ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001815708-25-000002",
+      "name": "Telos Biotech Inc.",
+      "state": "NY",
+      "stage": "Funding",
+      "focus": "Biopharma — Brooklyn, NY",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-12 — equity offering",
+      "date": "2025-12-12",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001815708&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001014108-26-000006",
+      "name": "Bond Biosciences, Inc.",
+      "state": "NY",
+      "stage": "Funding",
+      "focus": "Biopharma — New York, NY",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-29 — equity offering",
+      "date": "2026-01-29",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001824224&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002127553-26-000001",
+      "name": "NK-One Therapeutics, Inc.",
+      "state": "PA",
+      "stage": "Funding",
+      "focus": "Biopharma — Wayne, PA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-27 — equity offering",
+      "date": "2026-04-27",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002127553&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "4d ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002099941-25-000001",
+      "name": "Amani Therapeutics, Inc.",
+      "state": "NY",
+      "stage": "Funding",
+      "focus": "Biopharma — New York, NY",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-10 — equity offering",
+      "date": "2025-12-10",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002099941&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002044524-26-000003",
+      "name": "Esanik Therapeutics, Inc.",
+      "state": "PA",
+      "stage": "Funding",
+      "focus": "Biopharma — Malvern, PA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-30 — equity offering",
+      "date": "2026-04-30",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002044524&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "1d ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002115419-26-000001",
+      "name": "Persevere Therapeutics Inc.",
+      "state": "PA",
+      "stage": "Funding",
+      "focus": "Biopharma — Chesterbrook, PA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-04 — equity offering",
+      "date": "2026-03-04",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002115419&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002111997-26-000001",
+      "name": "Verra Therapeutics, Inc.",
+      "state": "NY",
+      "stage": "Funding",
+      "focus": "Biopharma — Lansing, NY",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-18 — equity offering",
+      "date": "2026-02-18",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002111997&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002032849-26-000001",
+      "name": "Ensho Therapeutics, Inc.",
+      "state": "NY",
+      "stage": "Funding",
+      "focus": "Biopharma — Morris Plains, NY",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-09 — equity offering",
+      "date": "2026-02-09",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002032849&type=D&dateb=&owner=include&count=10",
+      "score": 80,
+      "hub_weight": 7,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06659640",
+      "name": "Alnylam Pharmaceuticals",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Hereditary Hemorrhagic Telangiectasia",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2024-10-26",
+      "url": "https://clinicaltrials.gov/study/NCT06659640",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05948943",
+      "name": "Novartis Pharmaceuticals",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Lymphatic Malformations",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2023-07-17",
+      "url": "https://clinicaltrials.gov/study/NCT05948943",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT04521231",
+      "name": "Amgen",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "B Cell Precursor Acute Lymphoblastic Leukemia",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2020-08-20",
+      "url": "https://clinicaltrials.gov/study/NCT04521231",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "5y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06749457",
+      "name": "AstraZeneca",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Staphylococcus Aureus",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2024-12-27",
+      "url": "https://clinicaltrials.gov/study/NCT06749457",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07357519",
+      "name": "Lantheus Medical Imaging",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Relapsed / Refractory Osteosarcoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-01-22",
+      "url": "https://clinicaltrials.gov/study/NCT07357519",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07290244",
+      "name": "Life Biosciences Inc.",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Open Angle Glaucoma (OAG), NAION( Non-arteritic Anterior Ischemic Optic Neuropathy)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-12-18",
+      "url": "https://clinicaltrials.gov/study/NCT07290244",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06847321",
+      "name": "Lighthouse Pharmaceuticals, Inc.",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Alzheimer Disease, Alzheimer Disease Due to P. Gingivalis",
+      "needs": [
+        "Bioanalysis",
+        "DMPK"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-02-26",
+      "url": "https://clinicaltrials.gov/study/NCT06847321",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT04588922",
+      "name": "Sellas Life Sciences Group",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Hematologic Malignancies",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2020-10-19",
+      "url": "https://clinicaltrials.gov/study/NCT04588922",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "5y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06588686",
+      "name": "Vicore Pharma AB",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Idiopathic Pulmonary Fibrosis (IPF)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2024-09-19",
+      "url": "https://clinicaltrials.gov/study/NCT06588686",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06060613",
+      "name": "Obsidian Therapeutics, Inc.",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Tumor Skin, Metastatic Melanoma, Melanoma",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2023-09-29",
+      "url": "https://clinicaltrials.gov/study/NCT06060613",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06496607",
+      "name": "Uniquity One (UNI)",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Asthma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2024-07-11",
+      "url": "https://clinicaltrials.gov/study/NCT06496607",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07300943",
+      "name": "Callio Therapeutics",
+      "state": "MA",
+      "stage": "Phase 1",
+      "focus": "Advanced Solid Tumor",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-12-24",
+      "url": "https://clinicaltrials.gov/study/NCT07300943",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05320198",
+      "name": "Disc Medicine, Inc",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Myelofibrosis; Anemia, Anemia, Myelofibrosis",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2022-04-11",
+      "url": "https://clinicaltrials.gov/study/NCT05320198",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "4y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07047144",
+      "name": "Scholar Rock, Inc.",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Spinal Muscular Atrophy, SMA, Spinal Muscular Atrophy Type 2",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-07-02",
+      "url": "https://clinicaltrials.gov/study/NCT07047144",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "10mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06132893",
+      "name": "Biohaven Therapeutics Ltd.",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Focal Epilepsy",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2023-11-15",
+      "url": "https://clinicaltrials.gov/study/NCT06132893",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07046494",
+      "name": "Rapport Therapeutics Inc.",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Bipolar 1 Disorder",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-07-01",
+      "url": "https://clinicaltrials.gov/study/NCT07046494",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "10mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06888193",
+      "name": "UCB Biopharma SRL",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Moderate to Severe Plaque Psoriasis, Psoriatic Arthritis, Axial Spondyloarthritis",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-03-21",
+      "url": "https://clinicaltrials.gov/study/NCT06888193",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07300969",
+      "name": "Draig Therapeutics Ltd",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Major Depressive Disorder (MDD)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-12-24",
+      "url": "https://clinicaltrials.gov/study/NCT07300969",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06963710",
+      "name": "Aligos Therapeutics",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Chronic Hepatitis B Infection",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-05-09",
+      "url": "https://clinicaltrials.gov/study/NCT06963710",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "11mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05416307",
+      "name": "Electra Therapeutics Inc.",
+      "state": "CA",
+      "stage": "Phase 2",
+      "focus": "Secondary Hemophagocytic Lymphohistiocytosis (sHLH)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2022-06-13",
+      "url": "https://clinicaltrials.gov/study/NCT05416307",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "3y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT04176198",
+      "name": "Sumitomo Pharma America, Inc.",
+      "state": "CA",
+      "stage": "Phase 1",
+      "focus": "Myelofibrosis",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2019-11-25",
+      "url": "https://clinicaltrials.gov/study/NCT04176198",
+      "score": 75,
+      "hub_weight": 10,
+      "date_label": "6y ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002127189-26-000001",
+      "name": "CIVIK Biotech Inc",
+      "state": "WA",
+      "stage": "Funding",
+      "focus": "Biopharma — Kirkland, WA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-07 — equity offering",
+      "date": "2026-04-07",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002127189&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "3w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001898714-26-000001",
+      "name": "Bonum Therapeutics, Inc.",
+      "state": "WA",
+      "stage": "Funding",
+      "focus": "Biopharma — Seattle, WA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-17 — equity offering",
+      "date": "2026-04-17",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001898714&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001470831-25-000383",
+      "name": "Aminex Therapeutics, Inc.",
+      "state": "WA",
+      "stage": "Funding",
+      "focus": "Biopharma — Kirkland, WA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-05 — equity offering",
+      "date": "2025-12-05",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001613386&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001966649-26-000001",
+      "name": "Akava Therapeutics Inc.",
+      "state": "IL",
+      "stage": "Funding",
+      "focus": "Biopharma — Winnetka, IL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-19 — equity offering",
+      "date": "2026-02-19",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001966649&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0000905148-26-001559",
+      "name": "Iyuda Therapeutics, Inc.",
+      "state": "MD",
+      "stage": "Funding",
+      "focus": "Biopharma — Owings Mills, MD",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-06 — equity offering",
+      "date": "2026-04-06",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001993594&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "3w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002109293-26-000001",
+      "name": "Accretion Therapeutics, Inc.",
+      "state": "IL",
+      "stage": "Funding",
+      "focus": "Biopharma — Lincolnshire, IL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-02-17 — equity offering",
+      "date": "2026-02-17",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002109293&type=D&dateb=&owner=include&count=10",
+      "score": 75,
+      "hub_weight": 6,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT03067051",
+      "name": "SpectraCure AB",
+      "state": "NY",
+      "stage": "Phase 1",
+      "focus": "Recurrent Prostate Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2017-03-01",
+      "url": "https://clinicaltrials.gov/study/NCT03067051",
+      "score": 70,
+      "hub_weight": 7,
+      "date_label": "9y ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002002665-26-000003",
+      "name": "GelSana Therapeutics, Inc.",
+      "state": "CO",
+      "stage": "Funding",
+      "focus": "Biopharma — Aurora, CO",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-06 — equity offering",
+      "date": "2026-03-06",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002002665&type=D&dateb=&owner=include&count=10",
+      "score": 70,
+      "hub_weight": 5,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001955319-26-000001",
+      "name": "Nexo Therapeutics, Inc.",
+      "state": "CO",
+      "stage": "Funding",
+      "focus": "Biopharma — Littleton, CO",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-27 — equity offering",
+      "date": "2026-03-27",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001955319&type=D&dateb=&owner=include&count=10",
+      "score": 70,
+      "hub_weight": 5,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001493152-26-003028",
+      "name": "Kaida BioPharma Inc.",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — Ft. Lauderdale, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-21 — equity offering",
+      "date": "2026-01-21",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001973954&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001231919-26-000232",
+      "name": "Aegle Therapeutics Corp",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — Miami, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-03 — equity offering",
+      "date": "2026-03-03",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001797825&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001829126-25-009746",
+      "name": "Zeo ScientifiX, Inc.  (ZEOX)",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — Davie, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-05 — equity offering",
+      "date": "2025-12-05",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001557376&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001999371-26-007308",
+      "name": "NOXX Therapeutics, Inc.",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — Boca Raton, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-31 — equity offering",
+      "date": "2026-03-31",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001996801&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002102680-26-000001",
+      "name": "Fitness Fingerprint Therapeutics, Inc.",
+      "state": "VA",
+      "stage": "Funding",
+      "focus": "Biopharma — Richmond, VA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-07 — equity offering",
+      "date": "2026-01-07",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002102680&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002121301-26-000001",
+      "name": "Nula Therapeutics, Inc.",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — St. Petersburg, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-18 — equity offering",
+      "date": "2026-03-18",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002121301&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002104142-26-000001",
+      "name": "ABLi Therapeutics, Inc.",
+      "state": "GA",
+      "stage": "Funding",
+      "focus": "Biopharma — Atlanta, GA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-13 — equity offering",
+      "date": "2026-01-13",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002104142&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001823161-26-000001",
+      "name": "Prometheus Therapeutics Inc.",
+      "state": "FL",
+      "stage": "Funding",
+      "focus": "Biopharma — Miramar, FL",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-15 — equity offering",
+      "date": "2026-04-15",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001823161&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002104347-26-000001",
+      "name": "Gasami Therapeutics, Inc.",
+      "state": "VA",
+      "stage": "Funding",
+      "focus": "Biopharma — Richmond, VA",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-12 — equity offering",
+      "date": "2026-01-12",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002104347&type=D&dateb=&owner=include&count=10",
+      "score": 65,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT03845712",
+      "name": "UCB BIOSCIENCES, Inc.",
+      "state": "NY",
+      "stage": "Phase 2",
+      "focus": "Thymidine Kinase 2 Deficiency",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2019-02-19",
+      "url": "https://clinicaltrials.gov/study/NCT03845712",
+      "score": 60,
+      "hub_weight": 7,
+      "date_label": "7y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06441331",
+      "name": "ITM Solucin GmbH",
+      "state": "PA",
+      "stage": "Phase 1",
+      "focus": "Somatostatin Receptor Positive, NETs, Lymphoma",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2024-06-04",
+      "url": "https://clinicaltrials.gov/study/NCT06441331",
+      "score": 60,
+      "hub_weight": 7,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002113399-26-000001",
+      "name": "Allinaire Therapeutics Inc.",
+      "state": "OH",
+      "stage": "Funding",
+      "focus": "Biopharma — Cleveland, OH",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-14 — equity offering",
+      "date": "2026-04-14",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002113399&type=D&dateb=&owner=include&count=10",
+      "score": 60,
+      "hub_weight": 3,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002115406-26-000003",
+      "name": "ADVAC Therapeutics Inc",
+      "state": "OH",
+      "stage": "Funding",
+      "focus": "Biopharma — Wilmington, OH",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-03-10 — equity offering",
+      "date": "2026-03-10",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002115406&type=D&dateb=&owner=include&count=10",
+      "score": 60,
+      "hub_weight": 3,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0000905729-26-000020",
+      "name": "Iaso Therapeutics, Inc.",
+      "state": "MI",
+      "stage": "Funding",
+      "focus": "Biopharma — East Lansing, MI",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-01-14 — equity offering",
+      "date": "2026-01-14",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001961165&type=D&dateb=&owner=include&count=10",
+      "score": 60,
+      "hub_weight": 3,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT04736173",
+      "name": "Arcus Biosciences, Inc.",
+      "state": "GA",
+      "stage": "Phase 2",
+      "focus": "Non Small Cell Lung Cancer, Nonsquamous Non Small Cell Lung Cancer, Squamous Non Small Cell Lung Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2021-02-03",
+      "url": "https://clinicaltrials.gov/study/NCT04736173",
+      "score": 55,
+      "hub_weight": 4,
+      "date_label": "5y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07562087",
+      "name": "Tarsus Pharmaceuticals, Inc.",
+      "state": "MD",
+      "stage": "Phase 2",
+      "focus": "Lyme Disease",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-05-01",
+      "url": "https://clinicaltrials.gov/study/NCT07562087",
+      "score": 55,
+      "hub_weight": 6,
+      "date_label": "today"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT04429087",
+      "name": "Boehringer Ingelheim",
+      "state": "GA",
+      "stage": "Phase 1",
+      "focus": "Small Cell Lung Carcinoma and Other Neuroendocrine Neoplasms Expressing DLL3",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2020-06-12",
+      "url": "https://clinicaltrials.gov/study/NCT04429087",
+      "score": 55,
+      "hub_weight": 4,
+      "date_label": "5y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07549321",
+      "name": "Renaissance Pharma Ltd.",
+      "state": "CO",
+      "stage": "Phase 2",
+      "focus": "High-Risk Neuroblastoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-04-24",
+      "url": "https://clinicaltrials.gov/study/NCT07549321",
+      "score": 50,
+      "hub_weight": 5,
+      "date_label": "1w ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07481383",
+      "name": "Continuity Biosciences, LLC",
+      "state": "MI",
+      "stage": "Phase 1",
+      "focus": "Pancreatic Adenocarcinoma Non-resectable",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-03-18",
+      "url": "https://clinicaltrials.gov/study/NCT07481383",
+      "score": 50,
+      "hub_weight": 3,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07359820",
+      "name": "Elevar Therapeutics",
+      "state": "FL",
+      "stage": "Phase 2",
+      "focus": "FGFR2 Gene Fusion/Rearrangement, Other Solid Tumors, Adult",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-01-22",
+      "url": "https://clinicaltrials.gov/study/NCT07359820",
+      "score": 45,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07464925",
+      "name": "Tetragon Biosciences Ltd",
+      "state": "FL",
+      "stage": "Phase 1",
+      "focus": "Glioblastoma Multiforme of Brain, Glioma, Glioblastoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-03-11",
+      "url": "https://clinicaltrials.gov/study/NCT07464925",
+      "score": 45,
+      "hub_weight": 4,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05636618",
+      "name": "Perspective Therapeutics",
+      "state": "FL",
+      "stage": "Phase 1",
+      "focus": "Neuroendocrine Tumors Unresectable, Neuroendocrine Tumor Metastatic, Gastroenteropancreatic Neuroendocrine Tumor",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2022-12-05",
+      "url": "https://clinicaltrials.gov/study/NCT05636618",
+      "score": 45,
+      "hub_weight": 4,
+      "date_label": "3y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07350577",
+      "name": "AltruBio Inc.",
+      "state": "FL",
+      "stage": "Phase 1",
+      "focus": "Ulcerative Colitis (UC)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Active Not Recruiting",
+      "date": "2026-01-20",
+      "url": "https://clinicaltrials.gov/study/NCT07350577",
+      "score": 45,
+      "hub_weight": 4,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002042505-26-000003",
+      "name": "Corami Biotech Inc.",
+      "state": "US",
+      "stage": "Funding",
+      "focus": "Biopharma — Memphis, TN",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-22 — equity offering",
+      "date": "2026-04-22",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002042505&type=D&dateb=&owner=include&count=10",
+      "score": 45,
+      "hub_weight": 0,
+      "date_label": "1w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0002088485-26-000001",
+      "name": "Tinos Therapeutics, Inc.",
+      "state": "US",
+      "stage": "Funding",
+      "focus": "Biopharma — Barrington, RI",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2026-04-17 — equity offering",
+      "date": "2026-04-17",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002088485&type=D&dateb=&owner=include&count=10",
+      "score": 45,
+      "hub_weight": 0,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "SEC EDGAR",
+      "source_id": "0001792522-25-000002",
+      "name": "MindImmune Therapeutics, Inc.",
+      "state": "US",
+      "stage": "Funding",
+      "focus": "Biopharma — Kingston, RI",
+      "needs": [
+        "DMPK",
+        "Toxicology",
+        "Bioanalysis"
+      ],
+      "signal": "Form D filed 2025-12-05 — equity offering",
+      "date": "2025-12-05",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001792522&type=D&dateb=&owner=include&count=10",
+      "score": 45,
+      "hub_weight": 0,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05904691",
+      "name": "Ocugenix Corporation",
+      "state": "IN",
+      "stage": "Phase 1",
+      "focus": "Neovascular Age-related Macular Degeneration (nAMD)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Active Not Recruiting",
+      "date": "2023-06-15",
+      "url": "https://clinicaltrials.gov/study/NCT05904691",
+      "score": 40,
+      "hub_weight": 3,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05898399",
+      "name": "Artios Pharma Ltd",
+      "state": "MI",
+      "stage": "Phase 1",
+      "focus": "Advanced Solid Tumor, Metastatic Solid Tumor",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2023-06-12",
+      "url": "https://clinicaltrials.gov/study/NCT05898399",
+      "score": 40,
+      "hub_weight": 3,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07329322",
+      "name": "Sichuan Kelun-Biotech Biopharmaceutical Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Non-Small Cell Lung Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-01-09",
+      "url": "https://clinicaltrials.gov/study/NCT07329322",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07283367",
+      "name": "Hansoh BioMedical R&D Company",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "CRC",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-12-15",
+      "url": "https://clinicaltrials.gov/study/NCT07283367",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "4mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05195632",
+      "name": "Pierre Fabre Medicament",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Non-Small Cell Lung Cancer",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2022-01-19",
+      "url": "https://clinicaltrials.gov/study/NCT05195632",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "4y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05081180",
+      "name": "EMD Serono Research & Development Institute, Inc.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Central Nervous System Tumors",
+      "needs": [
+        "Bioanalysis",
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Active Not Recruiting",
+      "date": "2021-10-18",
+      "url": "https://clinicaltrials.gov/study/NCT05081180",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "4y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07093333",
+      "name": "Arialys Australia Pty Ltd",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Anti-N-methyl-D-aspartate Receptor (NMDAR) Encephalitis (ANRE), Anti-N-methyl-D-aspartate Receptor (NMDAR) Antibody-associated Psychiatric Disease, Autoimmune Encephalitis",
+      "needs": [
+        "Bioanalysis",
+        "Protein Sciences / Biologics",
+        "Toxicology"
+      ],
+      "signal": "Phase 2 trial — Not Yet Recruiting",
+      "date": "2025-07-30",
+      "url": "https://clinicaltrials.gov/study/NCT07093333",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "9mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07561294",
+      "name": "ModernaTX, Inc.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Lyme Disease",
+      "needs": [
+        "CMC",
+        "DMPK",
+        "Toxicology"
+      ],
+      "signal": "Phase 2 trial — Not Yet Recruiting",
+      "date": "2026-05-01",
+      "url": "https://clinicaltrials.gov/study/NCT07561294",
+      "score": 35,
+      "hub_weight": 0,
+      "date_label": "today"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07042945",
+      "name": "Merck Sharp & Dohme LLC",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "HIV Infection",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-06-29",
+      "url": "https://clinicaltrials.gov/study/NCT07042945",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "10mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07185815",
+      "name": "Mapi Pharma Ltd.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Schizophrenia, Bipolar I Disorder, Major Depressive Disorder",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-09-22",
+      "url": "https://clinicaltrials.gov/study/NCT07185815",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "7mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06593392",
+      "name": "Vifor Fresenius Medical Care Renal Pharma",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Pruritus, Chronic Kidney Diseases",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2024-09-19",
+      "url": "https://clinicaltrials.gov/study/NCT06593392",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07561554",
+      "name": "Haisco Pharmaceutical Group Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Solid Tumors (Phase 1)",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-05-01",
+      "url": "https://clinicaltrials.gov/study/NCT07561554",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "today"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07414290",
+      "name": "Shanghai Vitalgen BioPharma Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Parkinson Disease (PD)",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Not Yet Recruiting",
+      "date": "2026-02-17",
+      "url": "https://clinicaltrials.gov/study/NCT07414290",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "2mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07233655",
+      "name": "Guangdong Hengrui Pharmaceutical Co., Ltd",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Moderate to Severe Active Rheumatoid Arthritis",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2025-11-18",
+      "url": "https://clinicaltrials.gov/study/NCT07233655",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "5mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT03913949",
+      "name": "Ascentage Pharma Group Inc.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Chronic Lymphocytic Leukemia, Non Hodgkin Lymphoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Active Not Recruiting",
+      "date": "2019-04-12",
+      "url": "https://clinicaltrials.gov/study/NCT03913949",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "7y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07562581",
+      "name": "Shanghai Fosun Pharmaceutical Industrial Development Co. Ltd.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Non-small Cell Lung Caner, KRAS-mutated, Metastasis",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Not Yet Recruiting",
+      "date": "2026-05-01",
+      "url": "https://clinicaltrials.gov/study/NCT07562581",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "today"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT05361733",
+      "name": "Xfibra, Inc.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Focus of the Study: Safety of XFB19",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2022-05-05",
+      "url": "https://clinicaltrials.gov/study/NCT05361733",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "3y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07099547",
+      "name": "Suzhou Zelgen Biopharmaceuticals Co.,Ltd",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Biliary Tract Carcinoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2025-08-01",
+      "url": "https://clinicaltrials.gov/study/NCT07099547",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "9mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07522099",
+      "name": "ADARx Pharmaceuticals, Inc.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Immunoglobulin A Nephropathy (IgAN), Complement 3 Glomerulopathy (C3G), IC-MPGN",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-04-13",
+      "url": "https://clinicaltrials.gov/study/NCT07522099",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "2w ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07150013",
+      "name": "Unravel Biosciences, Inc.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Rett Syndrome",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2025-09-02",
+      "url": "https://clinicaltrials.gov/study/NCT07150013",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "8mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07560449",
+      "name": "Qilu Pharmaceutical Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Malignant Plasma Cell Neoplasms",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Not Yet Recruiting",
+      "date": "2026-05-01",
+      "url": "https://clinicaltrials.gov/study/NCT07560449",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "today"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06035497",
+      "name": "Bristol-Myers Squibb",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Relapsed or Refractory T-cell Lymphomas",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Active Not Recruiting",
+      "date": "2023-09-13",
+      "url": "https://clinicaltrials.gov/study/NCT06035497",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "2y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07478302",
+      "name": "Suzhou Suncadia Biopharmaceuticals Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Advanced Unresectable Hepatocellular Carcinoma",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-03-17",
+      "url": "https://clinicaltrials.gov/study/NCT07478302",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06490445",
+      "name": "Syqe Medical",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Diabetic Peripheral Neuropathic Pain",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2024-07-08",
+      "url": "https://clinicaltrials.gov/study/NCT06490445",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07454837",
+      "name": "Mirum Pharmaceuticals, Inc.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Chronic Hepatitis D",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-03-06",
+      "url": "https://clinicaltrials.gov/study/NCT07454837",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT06873334",
+      "name": "Skyhawk Therapeutics, Inc.",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Huntington Disease, Huntingtons Disease",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Active Not Recruiting",
+      "date": "2025-03-12",
+      "url": "https://clinicaltrials.gov/study/NCT06873334",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1y ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07334119",
+      "name": "Myeloid Therapeutics",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "HER2-Expressing Solid Tumors",
+      "needs": [
+        "DMPK",
+        "In Vivo / Mouse Services"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-01-12",
+      "url": "https://clinicaltrials.gov/study/NCT07334119",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "3mo ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07511816",
+      "name": "Eli Lilly and Company",
+      "state": "US",
+      "stage": "Phase 2",
+      "focus": "Acute Pain, Molar, Molar, Third",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 2 trial — Recruiting",
+      "date": "2026-04-06",
+      "url": "https://clinicaltrials.gov/study/NCT07511816",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "3w ago"
+    },
+    {
+      "source": "ClinicalTrials.gov",
+      "source_id": "NCT07476586",
+      "name": "Changchun GeneScience Pharmaceutical Co., Ltd.",
+      "state": "US",
+      "stage": "Phase 1",
+      "focus": "Healthy Volunteers",
+      "needs": [
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "signal": "Phase 1 trial — Recruiting",
+      "date": "2026-03-17",
+      "url": "https://clinicaltrials.gov/study/NCT07476586",
+      "score": 25,
+      "hub_weight": 0,
+      "date_label": "1mo ago"
+    }
+  ]
+}

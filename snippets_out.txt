@@ -1,0 +1,36 @@
+=== stateCount ===
+></div>';
+  html += '<div class="modal-kv-key">Website</div><div class="modal-kv-val"><a href="https://' + (cro.website || '#') + '" target="_blank">' + (cro.website || '—') + ' ↗</a></div>';
+  const stateCount = (cro.states || []).length;
+  html += '<div class="modal-kv-key">US Presence</div><div class="modal-kv-val">' + (stateCount > 0 ? stateCount + ' states' : cro.is_medicilon ? 'China-based, expanding to US' : 'Not confirmed') + '</div>';
+  if (cro.note) html += '<div class="modal-kv-key">Note</div><div class="modal-kv-val" style="color:var(--gold)">' + cro.note + '</div>';
+  html += '</d
+
+=== stateCount ===
+') + '" target="_blank">' + (cro.website || '—') + ' ↗</a></div>';
+  const stateCount = (cro.states || []).length;
+  html += '<div class="modal-kv-key">US Presence</div><div class="modal-kv-val">' + (stateCount > 0 ? stateCount + ' states' : cro.is_medicilon ? 'China-based, expanding to US' : 'Not confirmed') + '</div>';
+  if (cro.note) html += '<div class="modal-kv-key">Note</div><div class="modal-kv-val" style="color:var(--gold)">' + cro.note + '</div>';
+  html += '</div></div>';
+
+  // US Locations
+  if ((cro.states || []).length > 0) {
+    html += '<div class="modal-section">';
+    html += 
+
+=== stateCount ===
+blank">' + (cro.website || '—') + ' ↗</a></div>';
+  const stateCount = (cro.states || []).length;
+  html += '<div class="modal-kv-key">US Presence</div><div class="modal-kv-val">' + (stateCount > 0 ? stateCount + ' states' : cro.is_medicilon ? 'China-based, expanding to US' : 'Not confirmed') + '</div>';
+  if (cro.note) html += '<div class="modal-kv-key">Note</div><div class="modal-kv-val" style="color:var(--gold)">' + cro.note + '</div>';
+  html += '</div></div>';
+
+  // US Locations
+  if ((cro.states || []).length > 0) {
+    html += '<div class="modal-section">';
+    html += '<div class="moda
+
+=== news title ===
+;
+    }).join('');
+    div.innerHTML='<div class="news-item-title">'+item.title+'</div><div class="news-item-meta">'+item.source+' &middot; '+item.date+'</div><div class="news-item-tags">'+tags+'</div><div class="news-item-summary">'+item.summary+'</
