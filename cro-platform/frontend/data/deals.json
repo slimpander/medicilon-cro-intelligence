@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "generated": "2026-05-27T10:13:44.314470",
+    "total": 7,
+    "source": "live_rss_scrape"
+  },
+  "deals": [
+    {
+      "deal_type": "Funding",
+      "target": "Biopharma Sentiment Index | Q2 2026",
+      "amount": "",
+      "amount_usd": null,
+      "date": "2026-05-27",
+      "description": "The latest BPSI shows significant improvements in biopharma conditions but raises questions about what comes next.\r\n\r\n Biopharma's mood isn't just running on hopes anymore.\r\n\r\n The Biopharma Sentiment",
+      "url": "https://endpoints.news/biopharma-sentiment-index-q2-2026/",
+      "source": "Endpoints News"
+    },
+    {
+      "deal_type": "Funding",
+      "target": "Signos raises $20M as it eyes health plan, pharma relationships",
+      "amount": "$20M",
+      "amount_usd": 20000000.0,
+      "date": "2026-05-27",
+      "description": "Signos, a startup that aims to help people lose weight by understanding their blood sugar, raised $20 million as it looks beyond its direct-to-consumer roots to employers, health insurers and pharma c",
+      "url": "https://endpoints.news/signos-raises-20m-as-it-eyes-health-plan-pharma-relationships/",
+      "source": "Endpoints News"
+    },
+    {
+      "deal_type": "Series A",
+      "target": "Waypoint Bio raises $20M to run three CAR-T trials in China",
+      "amount": "$20M",
+      "amount_usd": 20000000.0,
+      "date": "2026-05-27",
+      "description": "New York City-based startup Waypoint Bio has raised $20 million in Series A financing to test multiple cell therapies in China, the company told Endpoints News.\r\n The move takes advantage of China's s",
+      "url": "https://endpoints.news/waypoint-bio-raises-20m-to-run-three-car-t-trials-in-china/",
+      "source": "Endpoints News"
+    },
+    {
+      "deal_type": "IPO",
+      "target": "Kardigan readies Nasdaq IPO to back three cardio drugs",
+      "amount": "",
+      "amount_usd": null,
+      "date": "2026-05-27",
+      "description": "Heart health biotech Kardigan filed for a Nasdaq IPO as investor appetite heats up for shares of clinical-stage drug developers.\r\n\r\n The Princeton, NJ-based biotech plans to launch under the ticker sy",
+      "url": "https://endpoints.news/kardigan-readies-nasdaq-ipo-to-back-three-cardio-drugs/",
+      "source": "Endpoints News"
+    },
+    {
+      "deal_type": "Funding",
+      "target": "Cartesian secures funding to 'accelerate' launch; Editas sells $125M in stock",
+      "amount": "$125M",
+      "amount_usd": 125000000.0,
+      "date": "2026-05-26",
+      "description": "💰 Cartesian Therapeutic’s $150M financing: The Maryland biotech secured $50 million in an initial tranche from K2 HealthVentures. The credit facility will help the company “accelerate” its commercial ",
+      "url": "https://endpoints.news/cartesian-secures-funding-to-accelerate-launch-editas-sells-125m-in-stock/",
+      "source": "Endpoints News"
+    },
+    {
+      "deal_type": "M&A",
+      "target": "Lilly dives into vaccine research with 3 biotech buyouts",
+      "amount": "$4.0B",
+      "amount_usd": 4000000000.0,
+      "date": "2026-05-26",
+      "description": "Worth close to $4 billion combined, the acquisitions of Curevo, LimmaTech and Vaccine Co. signal plans by Lilly to build an infectious disease portfolio.",
+      "url": "https://www.biopharmadive.com/news/lilly-deal-acquire-curevo-limmatech-vaccine/821064/",
+      "source": "BioPharma Dive"
+    },
+    {
+      "deal_type": "IPO",
+      "target": "RA Capital banks $75M for a biotech SPAC",
+      "amount": "$75M",
+      "amount_usd": 75000000.0,
+      "date": "2026-05-21",
+      "description": "Research Alliance III follows a few months after Cormorant Asset Management priced a $150 million IPO for its own blank-check entity.",
+      "url": "https://www.biopharmadive.com/news/ra-capital-spac-biotech-china-merger-pricing/820878/",
+      "source": "BioPharma Dive"
+    }
+  ]
+}

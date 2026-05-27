@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicilon CRO Intelligence Platform</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=7">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <div class="loader-spinner"></div>
+  <p>Loading Platform...</p>
+</div>
+
+<!-- App Shell -->
+<div id="app" style="display:none">
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <div class="brand-icon">M</div>
+      <div class="brand-text">
+        <span class="brand-name">Medicilon Intelligence</span>
+        <span class="brand-sub">CRO Market Platform</span>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <span id="last-refresh" class="refresh-indicator">Data updated: --</span>
+    </div>
+    <div class="topbar-right">
+      <button id="notif-bell" class="icon-btn" title="Notifications">
+        🔔 <span id="notif-badge" class="badge-count hidden">0</span>
+      </button>
+      <div id="notif-dropdown" class="dropdown-panel hidden">
+        <div class="dropdown-header">Notifications</div>
+        <div id="notif-list"><p class="empty-msg">No new notifications</p></div>
+      </div>
+      <button id="user-btn" class="icon-btn" title="User">👤</button>
+      <div id="user-dropdown" class="dropdown-panel hidden">
+        <div class="dropdown-header" id="user-name">User</div>
+        <a href="#" data-nav="settings">⚙️ Settings</a>
+        <a href="#" id="logout-btn">🚪 Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div id="layout">
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar">
+      <div class="nav-section">
+        <a href="#" class="nav-item active" data-nav="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="linkedin">
+          <span class="nav-icon">🔗</span>
+          <span class="nav-label">BD Intel Feed</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="pitchbook">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Deals & M&A</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="crunchbase">
+          <span class="nav-icon">💰</span>
+          <span class="nav-label">Funding Intel</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="news">
+          <span class="nav-icon">📰</span>
+          <span class="nav-label">News Feed</span>
+        </a>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-section">
+        <a href="#" class="nav-item" data-nav="map">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-label">Market Map</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="leads">
+          <span class="nav-icon">🚀</span>
+          <span class="nav-label">Lead Intelligence</span>
+          <span id="leads-badge" class="nav-badge hidden">0</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="cros">
+          <span class="nav-icon">🏢</span>
+          <span class="nav-label">CRO Profiles</span>
+        </a>
+      </div>
+      <div class="nav-spacer"></div>
+      <div class="nav-section">
+        <a href="#" class="nav-item" data-nav="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+      <!-- Content loaded dynamically by router -->
+    </main>
+
+  </div>
+</div>
+
+<!-- Pages are loaded via separate JS files in js/pages/ directory -->
+
+<!-- Modals Container -->
+<div id="modal-overlay" class="hidden"></div>
+<div id="modal-container" class="hidden"></div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="js/app.js?v=4"></script>
+<script src="js/pages/dashboard.js?v=3"></script>
+<script src="js/pages/map.js?v=3"></script>
+<script src="js/pages/leads.js?v=3"></script>
+<script src="js/pages/linkedin.js?v=3"></script>
+<script src="js/pages/cros.js?v=4"></script>
+<script src="js/pages/pitchbook.js?v=1"></script>
+<script src="js/pages/crunchbase.js?v=4"></script>
+<script src="js/pages/news.js?v=3"></script>
+<script src="js/pages/settings.js?v=5"></script>
+
+<!-- Login Modal -->
+<div id="login-modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
+  <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;width:380px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,0.6)">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div style="width:40px;height:40px;background:linear-gradient(135deg,var(--gold),#e8860e);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;color:#0f1923">M</div>
+      <div>
+        <div style="font-size:16px;font-weight:700">Sign In</div>
+        <div style="font-size:11px;color:var(--text-soft)">Medicilon Intelligence Platform</div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px">
+      <label style="font-size:11px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px">Username</label>
+      <input type="text" id="login-username" class="form-input" placeholder="admin" style="width:100%" autocomplete="username">
+    </div>
+    <div style="margin-bottom:20px">
+      <label style="font-size:11px;font-weight:600;color:var(--text-soft);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px">Password</label>
+      <input type="password" id="login-password" class="form-input" placeholder="\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7" style="width:100%" autocomplete="current-password">
+    </div>
+    <div id="login-error" style="font-size:12px;color:var(--red);margin-bottom:12px;display:none"></div>
+    <button id="login-submit-btn" class="btn btn-primary" style="width:100%;padding:11px;font-size:14px">Sign In</button>
+    <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-dim)">Default: admin / admin123</div>
+  </div>
+</div>
+</body>
+</html>

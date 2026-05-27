@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 380px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 13px;
+      color: #333;
+      background: #f8f9fa;
+    }
+    .header {
+      display: flex; align-items: center; gap: 8px;
+      padding-bottom: 12px; border-bottom: 1px solid #e0e0e0; margin-bottom: 12px;
+    }
+    .header h2 { font-size: 15px; color: #1F3864; }
+    .status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+    .status.online { background: #D5F5E3; color: #27AE60; }
+    .status.offline { background: #FADBD8; color: #C0392B; }
+    .status.scanning { background: #D4E6F1; color: #2E75B6; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+    .section { margin-bottom: 12px; }
+    .section-title { font-size: 12px; font-weight: 600; color: #555; margin-bottom: 6px; }
+    .btn {
+      display: block; width: 100%; padding: 10px; border: none; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer; text-align: center;
+    }
+    .btn-primary { background: #2E75B6; color: white; }
+    .btn-primary:hover { background: #1F3864; }
+    .btn-primary:disabled { background: #aaa; cursor: not-allowed; }
+    .btn-green { background: #27AE60; color: white; }
+    .btn-green:hover { background: #1E8449; }
+
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat-card {
+      padding: 10px; border-radius: 6px; text-align: center;
+      background: white; border: 1px solid #e0e0e0;
+    }
+    .stat-value { font-size: 22px; font-weight: 700; color: #1F3864; }
+    .stat-label { font-size: 10px; color: #888; margin-top: 2px; }
+
+    .keyword-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .keyword-tag {
+      font-size: 10px; background: #EBF5FB; color: #2E75B6;
+      padding: 2px 8px; border-radius: 12px; cursor: pointer;
+    }
+    .post-item {
+      padding: 8px; border-radius: 6px; background: white;
+      border: 1px solid #e8e8e8; margin-bottom: 6px; font-size: 11px;
+    }
+    .post-item .author { font-weight: 600; color: #1F3864; }
+    .post-item .text { color: #555; margin: 4px 0; line-height: 1.4; }
+    .post-item .meta { color: #999; font-size: 10px; }
+    .post-item .score { float: right; font-weight: 700; font-size: 11px; }
+
+    .empty { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+    .log { max-height: 200px; overflow-y: auto; font-size: 11px; color: #666; }
+    .log-item { padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+    .log-item .time { color: #999; font-size: 10px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span style="font-size:20px">🔗</span>
+    <div style="flex:1">
+      <h2>LinkedIn Monitor</h2>
+      <div style="font-size:10px;color:#888">Medicilon CRO Intelligence</div>
+    </div>
+    <span class="status online" id="connection-status">Ready</span>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Dashboard</div>
+    <div class="stats" id="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-posts">0</div>
+        <div class="stat-label">Posts Scanned</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-contacts">0</div>
+        <div class="stat-label">Contacts Found</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-matches">0</div>
+        <div class="stat-label">Keyword Matches</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-score">-</div>
+        <div class="stat-label">Avg Relevance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto-Scan Toggle -->
+  <div class="section">
+    <div style="display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid #e0e0e0;border-radius:6px;padding:10px 12px;margin-bottom:8px">
+      <div>
+        <div style="font-weight:600;font-size:12px;color:#1F3864">🤖 Auto-Scan Mode</div>
+        <div style="font-size:10px;color:#888">Detect posts as you scroll</div>
+      </div>
+      <label style="position:relative;display:inline-block;width:44px;height:24px">
+        <input type="checkbox" id="autoscan-toggle" checked style="opacity:0;width:0;height:0">
+        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#ccc;border-radius:24px;transition:.3s" id="toggle-bg">
+          <span style="position:absolute;content:'';height:18px;width:18px;left:3px;bottom:3px;background-color:white;border-radius:50%;transition:.3s" id="toggle-dot"></span>
+        </span>
+      </label>
+    </div>
+    <div style="font-size:11px;color:#666;margin-bottom:8px" id="observer-status">⚪ Auto-Scan: checking...</div>
+    <button class="btn btn-primary" id="scan-btn">🔍 Manual Scan</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tracking Keywords</div>
+    <div class="keyword-tags" id="keyword-tags"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Recent Matches</div>
+    <div id="recent-posts" class="empty">No matches yet. Visit LinkedIn and click Scan.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Activity Log</div>
+    <div class="log" id="activity-log">
+      <div class="log-item"><span class="time">--:--</span> Ready. Navigate to LinkedIn feed to start.</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

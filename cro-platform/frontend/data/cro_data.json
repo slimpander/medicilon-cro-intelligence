@@ -1,0 +1,670 @@
+{
+  "metadata": {
+    "generated": "2026-04-30",
+    "source": "curated",
+    "version": "1.0"
+  },
+  "service_categories": [
+    "In Vivo / Mouse Services",
+    "DMPK",
+    "ADME",
+    "Toxicology",
+    "Bioanalysis",
+    "CMC",
+    "Clinical Trials",
+    "Regulatory Affairs",
+    "Biomarker / Genomics",
+    "Protein Sciences / Biologics"
+  ],
+  "cros": [
+    {
+      "id": "charles_river",
+      "name": "Charles River Laboratories",
+      "short_name": "Charles River",
+      "website": "charlesriver.com",
+      "is_medicilon": false,
+      "states": [
+        "MA",
+        "NJ",
+        "NC",
+        "PA",
+        "TX",
+        "CA",
+        "WA",
+        "MI",
+        "OH",
+        "NY"
+      ],
+      "cities": [
+        {
+          "city": "Wilmington",
+          "state": "MA"
+        },
+        {
+          "city": "Skokie",
+          "state": "IL"
+        },
+        {
+          "city": "Raleigh",
+          "state": "NC"
+        },
+        {
+          "city": "Horsham",
+          "state": "PA"
+        },
+        {
+          "city": "Houston",
+          "state": "TX"
+        },
+        {
+          "city": "Hollister",
+          "state": "CA"
+        },
+        {
+          "city": "Redmond",
+          "state": "WA"
+        },
+        {
+          "city": "Ann Arbor",
+          "state": "MI"
+        },
+        {
+          "city": "Cincinnati",
+          "state": "OH"
+        },
+        {
+          "city": "Saugerties",
+          "state": "NY"
+        }
+      ],
+      "services": [
+        "In Vivo / Mouse Services",
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC",
+        "Regulatory Affairs"
+      ],
+      "description": "Leading global CRO offering comprehensive early and late-stage drug development services.",
+      "tier": 1,
+      "summary": "Charles River Laboratories is one of the world's largest CROs, founded in 1947 and headquartered in Wilmington, MA. It offers end-to-end drug development services from discovery through IND-enabling studies, with particular strength in toxicology, safety assessment, and in vivo biology. With 100+ facilities across 20+ countries and ~20,000 employees, it serves 80%+ of global top 20 pharma companies.",
+      "website_url": "https://www.charlesriver.com"
+    },
+    {
+      "id": "covance",
+      "name": "Covance / Labcorp Drug Development",
+      "short_name": "Covance / Labcorp",
+      "website": "labcorp.com/drug-development",
+      "is_medicilon": false,
+      "states": [
+        "WI",
+        "NJ",
+        "IN",
+        "TX",
+        "VA",
+        "NC",
+        "CA",
+        "CO"
+      ],
+      "cities": [
+        {
+          "city": "Madison",
+          "state": "WI"
+        },
+        {
+          "city": "Princeton",
+          "state": "NJ"
+        },
+        {
+          "city": "Indianapolis",
+          "state": "IN"
+        },
+        {
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "city": "Vienna",
+          "state": "VA"
+        },
+        {
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "city": "Denver",
+          "state": "CO"
+        }
+      ],
+      "services": [
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC",
+        "Clinical Trials",
+        "Regulatory Affairs",
+        "Biomarker / Genomics"
+      ],
+      "description": "Full-service CRO with global reach from early discovery to post-market surveillance.",
+      "tier": 1,
+      "summary": "Covance, now operating as Labcorp Drug Development after Labcorp's 2015 acquisition, is a full-service CRO with one of the broadest global footprints in the industry. It handles everything from early discovery and toxicology to Phase I–IV clinical trials and post-market surveillance. A key differentiator is its central lab network, which supports clinical biomarker and diagnostics work at massive scale.",
+      "website_url": "https://www.labcorp.com/drug-development"
+    },
+    {
+      "id": "wuxi",
+      "name": "WuXi AppTec",
+      "short_name": "WuXi AppTec",
+      "website": "wuxiapptec.com",
+      "is_medicilon": false,
+      "states": [
+        "NJ",
+        "PA",
+        "GA",
+        "MN",
+        "CA",
+        "TX"
+      ],
+      "cities": [
+        {
+          "city": "Plainsboro",
+          "state": "NJ"
+        },
+        {
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "city": "Atlanta",
+          "state": "GA"
+        },
+        {
+          "city": "St. Paul",
+          "state": "MN"
+        },
+        {
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "city": "Houston",
+          "state": "TX"
+        }
+      ],
+      "services": [
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC",
+        "Protein Sciences / Biologics"
+      ],
+      "description": "Global open-access platform offering integrated drug R&D and manufacturing.",
+      "tier": 1,
+      "summary": "WuXi AppTec is a China-founded open-access CRO/CDMO platform operating globally, with major US hubs in New Jersey, Pennsylvania, and California. It offers an integrated 'WuXi way' model spanning drug discovery, development, and manufacturing under one umbrella. Known for competitive pricing and rapid turnaround, it serves biotech startups to Big Pharma across small molecules and biologics.",
+      "website_url": "https://www.wuxiapptec.com"
+    },
+    {
+      "id": "eurofins",
+      "name": "Eurofins Scientific",
+      "short_name": "Eurofins",
+      "website": "eurofins.com",
+      "is_medicilon": false,
+      "states": [
+        "CA",
+        "PA",
+        "TX",
+        "NJ",
+        "NC",
+        "MO",
+        "WI",
+        "IL"
+      ],
+      "cities": [
+        {
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "city": "Lancaster",
+          "state": "PA"
+        },
+        {
+          "city": "Austin",
+          "state": "TX"
+        },
+        {
+          "city": "Piscataway",
+          "state": "NJ"
+        },
+        {
+          "city": "Research Triangle Park",
+          "state": "NC"
+        },
+        {
+          "city": "St. Louis",
+          "state": "MO"
+        },
+        {
+          "city": "Milwaukee",
+          "state": "WI"
+        },
+        {
+          "city": "Chicago",
+          "state": "IL"
+        }
+      ],
+      "services": [
+        "Bioanalysis",
+        "Toxicology",
+        "ADME",
+        "DMPK",
+        "CMC",
+        "Biomarker / Genomics"
+      ],
+      "description": "Multinational testing lab network with broad analytical and bioanalytical capabilities.",
+      "tier": 1,
+      "summary": "Eurofins Scientific is a Luxembourg-based multinational with over 900 laboratories in 50+ countries, offering one of the world's broadest testing portfolios across food, environment, and pharma. Its BioPharma Product Testing division provides GLP/GMP-compliant bioanalytical, ADME, and genomic services. Particularly strong in analytical chemistry, method development, and regulatory-grade testing for both small molecules and biologics.",
+      "website_url": "https://www.eurofins.com/pharma-services"
+    },
+    {
+      "id": "pharmaron",
+      "name": "Pharmaron",
+      "short_name": "Pharmaron",
+      "website": "pharmaron.com",
+      "is_medicilon": false,
+      "states": [
+        "KY",
+        "CA",
+        "MD"
+      ],
+      "cities": [
+        {
+          "city": "Lexington",
+          "state": "KY"
+        },
+        {
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "city": "Baltimore",
+          "state": "MD"
+        }
+      ],
+      "services": [
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC"
+      ],
+      "description": "Integrated pharmaceutical R&D services with strong China-US footprint.",
+      "tier": 2,
+      "summary": "Pharmaron is a China-US integrated CRO specializing in drug discovery and development chemistry, with US operations in Lexington KY, San Diego CA, and Baltimore MD. It excels in medicinal chemistry, DMPK, safety pharmacology, and IND-enabling toxicology. Founded in 2004, it has grown to 8,000+ employees and is listed on the Hong Kong Stock Exchange; strong in building long-term pharma partnerships.",
+      "website_url": "https://www.pharmaron.com"
+    },
+    {
+      "id": "crown_bio",
+      "name": "Crown Bioscience",
+      "short_name": "Crown Bioscience",
+      "website": "crownbio.com",
+      "is_medicilon": false,
+      "states": [
+        "CA",
+        "NJ",
+        "TX"
+      ],
+      "cities": [
+        {
+          "city": "San Diego",
+          "state": "CA"
+        },
+        {
+          "city": "Cranbury",
+          "state": "NJ"
+        },
+        {
+          "city": "Houston",
+          "state": "TX"
+        }
+      ],
+      "services": [
+        "In Vivo / Mouse Services",
+        "Biomarker / Genomics",
+        "Protein Sciences / Biologics"
+      ],
+      "description": "Oncology and metabolic disease-focused CRO specializing in translational models.",
+      "tier": 2,
+      "summary": "Crown Bioscience, a JSR Corporation company, is a global CRO dedicated to translational oncology and metabolic disease research. It maintains one of the world's largest banks of patient-derived xenograft (PDX) and tumor organoid models — over 300 PDX models — making it a go-to for immuno-oncology and precision oncology studies. US labs are in San Diego CA and Houston TX.",
+      "website_url": "https://www.crownbio.com"
+    },
+    {
+      "id": "syneos",
+      "name": "Syneos Health",
+      "short_name": "Syneos Health",
+      "website": "syneoshealth.com",
+      "is_medicilon": false,
+      "states": [
+        "NC",
+        "NJ",
+        "CA",
+        "TX",
+        "PA",
+        "FL",
+        "NY"
+      ],
+      "cities": [
+        {
+          "city": "Morrisville",
+          "state": "NC"
+        },
+        {
+          "city": "Bridgewater",
+          "state": "NJ"
+        },
+        {
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "city": "Dallas",
+          "state": "TX"
+        },
+        {
+          "city": "Philadelphia",
+          "state": "PA"
+        },
+        {
+          "city": "Miami",
+          "state": "FL"
+        },
+        {
+          "city": "New York",
+          "state": "NY"
+        }
+      ],
+      "services": [
+        "Clinical Trials",
+        "Regulatory Affairs",
+        "Biomarker / Genomics"
+      ],
+      "description": "Biopharmaceutical solutions company specializing in clinical development and commercialization.",
+      "tier": 1,
+      "summary": "Syneos Health is a unique biopharmaceutical solutions company combining clinical development (CRO) and commercialization (CSO) under one roof, formed from the merger of inVentiv Health and INC Research in 2017. Its 'Synchronized' model connects Phase I–IV trials with real-world evidence and launch execution. Particularly strong in CNS, oncology, rare disease, and cardiovascular therapeutic areas.",
+      "website_url": "https://www.syneoshealth.com"
+    },
+    {
+      "id": "icon",
+      "name": "ICON plc",
+      "short_name": "ICON plc",
+      "website": "iconplc.com",
+      "is_medicilon": false,
+      "states": [
+        "CA",
+        "TX",
+        "NJ",
+        "NC",
+        "PA",
+        "MN",
+        "FL",
+        "NY"
+      ],
+      "cities": [
+        {
+          "city": "San Francisco",
+          "state": "CA"
+        },
+        {
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "city": "Blue Bell",
+          "state": "PA"
+        },
+        {
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "city": "Lenexa",
+          "state": "KS"
+        },
+        {
+          "city": "Minneapolis",
+          "state": "MN"
+        },
+        {
+          "city": "Tampa",
+          "state": "FL"
+        },
+        {
+          "city": "New York",
+          "state": "NY"
+        }
+      ],
+      "services": [
+        "Clinical Trials",
+        "Regulatory Affairs",
+        "Bioanalysis",
+        "DMPK"
+      ],
+      "description": "Global CRO supporting clinical development including PRA Health Sciences capabilities.",
+      "tier": 1,
+      "summary": "ICON plc is a Dublin-headquartered global CRO and one of the largest in the world by revenue (~\\), with deep clinical trial expertise following its 2021 acquisition of PRA Health Sciences. It covers Phase I–IV development, regulatory affairs, pharmacovigilance, and lab services across 50+ countries. Especially strong in adaptive trial design, decentralized clinical trials (DCTs), and oncology.",
+      "website_url": "https://www.iconplc.com"
+    },
+    {
+      "id": "bioagilytix",
+      "name": "BioAgilytix",
+      "short_name": "BioAgilytix",
+      "website": "bioagilytix.com",
+      "is_medicilon": false,
+      "states": [
+        "NC",
+        "TX",
+        "MA"
+      ],
+      "cities": [
+        {
+          "city": "Durham",
+          "state": "NC"
+        },
+        {
+          "city": "San Antonio",
+          "state": "TX"
+        },
+        {
+          "city": "Boston",
+          "state": "MA"
+        }
+      ],
+      "services": [
+        "Bioanalysis",
+        "Biomarker / Genomics",
+        "Protein Sciences / Biologics"
+      ],
+      "description": "Large molecule bioanalysis specialist with immunoassay and cell-based assay expertise.",
+      "tier": 2,
+      "summary": "BioAgilytix is a specialist large molecule bioanalysis CRO focused exclusively on immunogenicity, PK/PD, and cell-based assay services for biologics, cell therapies, and gene therapies. With labs in Durham NC, San Antonio TX, and Boston MA (plus Hamburg), it is trusted by 18 of the top 20 biopharma companies for regulated GLP/GCP bioanalytical support. Founded in 2008, now part of Astrix.",
+      "website_url": "https://www.bioagilytix.com"
+    },
+    {
+      "id": "altasciences",
+      "name": "Altasciences",
+      "short_name": "Altasciences",
+      "website": "altasciences.com",
+      "is_medicilon": false,
+      "states": [
+        "WA",
+        "CA",
+        "KS",
+        "MO"
+      ],
+      "cities": [
+        {
+          "city": "Everett",
+          "state": "WA"
+        },
+        {
+          "city": "Laval",
+          "state": "CA"
+        },
+        {
+          "city": "Lenexa",
+          "state": "KS"
+        },
+        {
+          "city": "Kansas City",
+          "state": "MO"
+        }
+      ],
+      "services": [
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "Clinical Trials"
+      ],
+      "description": "Integrated early phase CRO offering preclinical and Phase I services.",
+      "tier": 2,
+      "summary": "Altasciences is a Canadian-American integrated early-phase CRO offering seamless preclinical-to-Phase I development, with US operations in Everett WA, Lenexa KS, and Kansas City MO. Its differentiator is bridging preclinical DMPK/tox studies directly into first-in-human (FIH) trials within the same organization, reducing handoff delays. Particularly strong in small molecules, respiratory, and dermatology programs.",
+      "website_url": "https://www.altasciences.com"
+    },
+    {
+      "id": "celerion",
+      "name": "Celerion",
+      "short_name": "Celerion",
+      "website": "celerion.com",
+      "is_medicilon": false,
+      "states": [
+        "NE",
+        "AZ",
+        "NV",
+        "OR"
+      ],
+      "cities": [
+        {
+          "city": "Lincoln",
+          "state": "NE"
+        },
+        {
+          "city": "Tempe",
+          "state": "AZ"
+        },
+        {
+          "city": "Las Vegas",
+          "state": "NV"
+        },
+        {
+          "city": "Portland",
+          "state": "OR"
+        }
+      ],
+      "services": [
+        "Clinical Trials",
+        "DMPK",
+        "ADME",
+        "Bioanalysis"
+      ],
+      "description": "Early clinical development CRO with Phase I units and bioanalytical services.",
+      "tier": 2,
+      "summary": "Celerion is a Phase I clinical pharmacology CRO with specialized units in Lincoln NE, Tempe AZ, Las Vegas NV, and Portland OR. It focuses on early clinical development including first-in-human studies, bioequivalence, food effect, drug interaction studies, and bioanalysis. Known for high-quality Phase I infrastructure, dedicated clinical pharmacology staff, and fast study execution timelines.",
+      "website_url": "https://www.celerion.com"
+    },
+    {
+      "id": "biotrial",
+      "name": "Biotrial",
+      "short_name": "Biotrial",
+      "website": "biotrial.com",
+      "is_medicilon": false,
+      "states": [
+        "NJ"
+      ],
+      "cities": [
+        {
+          "city": "Newark",
+          "state": "NJ"
+        }
+      ],
+      "services": [
+        "Clinical Trials",
+        "DMPK",
+        "Bioanalysis"
+      ],
+      "description": "European-origin CRO with Phase I clinical unit in the US.",
+      "tier": 3,
+      "summary": "Biotrial is a European Phase I CRO (founded 1989, HQ in Rennes, France) with a US clinical unit in Newark NJ. It specializes in first-in-human and early phase studies, particularly in CNS, providing pharmacokinetics, pharmacodynamics, and bioanalytical support. Boutique size with highly experienced medical staff — well-suited for small biotech sponsors seeking personalized Phase I partnership.",
+      "website_url": "https://www.biotrial.com"
+    },
+    {
+      "id": "medicilon",
+      "name": "Medicilon",
+      "short_name": "Medicilon",
+      "website": "medicilon.com",
+      "is_medicilon": true,
+      "states": [],
+      "cities": [],
+      "services": [
+        "In Vivo / Mouse Services",
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC",
+        "Protein Sciences / Biologics"
+      ],
+      "description": "China-based integrated CRO with full preclinical capabilities, expanding to US market.",
+      "note": "China-based CRO expanding to US market. No current US office presence.",
+      "tier": 2,
+      "core_services": [
+        "In Vivo / Mouse Services",
+        "DMPK",
+        "ADME",
+        "Toxicology",
+        "Bioanalysis",
+        "CMC"
+      ],
+      "summary": "Medicilon is a Shanghai-based integrated CRO offering comprehensive preclinical drug development services, including in vivo pharmacology, DMPK, safety toxicology, bioanalysis, and CMC. Listed on the Shanghai Stock Exchange (STAR Market), it serves 1,000+ domestic and international clients. Currently expanding its US market presence to offer Chinese CRO pricing with IND-ready compliance — a key competitive angle for cost-sensitive biotech sponsors.",
+      "website_url": "https://www.medicilon.com"
+    }
+  ],
+  "biotech_hub_weights": {
+    "MA": 10,
+    "CA": 10,
+    "NJ": 9,
+    "NC": 8,
+    "TX": 8,
+    "PA": 7,
+    "NY": 7,
+    "MD": 6,
+    "IL": 6,
+    "WA": 6,
+    "CO": 5,
+    "MN": 5,
+    "GA": 4,
+    "VA": 4,
+    "FL": 4,
+    "OH": 3,
+    "MI": 3,
+    "IN": 3,
+    "WI": 3,
+    "MO": 3,
+    "KY": 2,
+    "KS": 2,
+    "NE": 2,
+    "AZ": 2,
+    "NV": 2,
+    "OR": 2,
+    "WV": 1,
+    "ID": 1,
+    "UT": 1,
+    "NM": 1
+  }
+}
