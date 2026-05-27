@@ -487,13 +487,21 @@ def fetch_sec_funding_signals(lookback_days: int = 90, max_results: int = 20) ->
             if not names:
                 continue
 
-            company_name = re.sub(r'\s*\(CIK.*?\)', '', names[0]).strip()
+            raw_name = names[0]
+            company_name = re.sub(r'\s*\(CIK.*?\)', '', raw_name).strip()
             skip_words = ['fund', 'lp', 'llc', 'partners', 'capital', 'ventures', 'management']
             if any(w in company_name.lower() for w in skip_words):
                 continue
             if company_name in seen:
                 continue
             seen.add(company_name)
+
+            # Extract CIK: try ciks[] array first, then parse from display_names string
+            ciks_list = src.get('ciks', [])
+            cik = str(ciks_list[0]) if ciks_list else ''
+            if not cik:
+                m = re.search(r'CIK\s+(\d+)', raw_name)
+                cik = m.group(1) if m else ''
 
             file_date = src.get("file_date", "")
             biz_loc = src.get("biz_locations", [""])[0]
@@ -518,7 +526,11 @@ def fetch_sec_funding_signals(lookback_days: int = 90, max_results: int = 20) ->
                 "source": "SEC EDGAR",
                 "title": f"{company_name} Raises Capital — Form D Filing",
                 "content": content[:800],
-                "url": f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={src.get('cik','')}&type=D",
+                "url": (
+                    f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={cik}&type=D&dateb=&owner=include&count=10"
+                    if cik else
+                    f"https://www.sec.gov/cgi-bin/browse-edgar?company={company_name.replace(' ', '+')}&CIK=&type=D&dateb=&owner=include&count=10&search_text=&action=getcompany"
+                ),
                 "date": file_date or datetime.now().isoformat(),
                 "relevance_score": 55.0,
                 "matched_keywords": "funding, investment, biotech, preclinical",
