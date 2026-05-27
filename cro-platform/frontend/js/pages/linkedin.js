@@ -363,26 +363,82 @@ const PageLinkedIn = {
     const countEl = document.getElementById('linkedin-contact-count');
     if (!el) return;
 
-    if (countEl) countEl.textContent = this.contacts.length;
+    if (countEl) countEl.textContent = this.contacts.length || '—';
 
-    if (!this.contacts.length) {
-      el.innerHTML = `<div class="empty-state" style="padding:16px">
-        <div class="empty-state-desc">Decision-makers detected from company announcements and post content</div>
-      </div>`;
+    // ── Real contacts from Chrome extension ──────────────────────────────────
+    if (this.contacts.length) {
+      el.innerHTML = this.contacts.slice(0, 12).map(c => `
+        <div style="padding:10px;border-bottom:1px solid var(--border-soft);transition:background var(--transition)" class="dash-news-item">
+          <div class="flex-between mb-4">
+            <strong style="font-size:12px">${c.name || 'Unknown'}</strong>
+            <span class="tag tag-gold" style="font-size:9px">${c.relevance_score || '—'}</span>
+          </div>
+          <div style="font-size:10px;color:var(--moss);margin-bottom:2px">${c.title || ''}</div>
+          <div style="font-size:10px;color:var(--text-soft)">${c.company || ''}</div>
+          ${c.company_state ? `<div style="font-size:9px;color:var(--text-dim);margin-top:2px">📍 ${c.company_state}</div>` : ''}
+          ${c.linkedin_url ? `<a href="${c.linkedin_url}" target="_blank"
+            style="display:inline-flex;align-items:center;gap:4px;margin-top:5px;font-size:10px;color:var(--accent);text-decoration:none">
+            🔗 View on LinkedIn
+          </a>` : ''}
+        </div>
+      `).join('');
       return;
     }
 
-    el.innerHTML = this.contacts.slice(0, 12).map(c => `
-      <div style="padding:10px;border-bottom:1px solid var(--border-soft);transition:background var(--transition)" class="dash-news-item">
-        <div class="flex-between mb-4">
-          <strong style="font-size:12px">${c.name || 'Unknown'}</strong>
-          <span class="tag tag-gold" style="font-size:9px">${c.relevance_score || '—'}</span>
-        </div>
-        <div style="font-size:10px;color:var(--moss);margin-bottom:2px">${c.title || ''}</div>
-        <div style="font-size:10px;color:var(--text-soft)">${c.company || ''}</div>
-        ${c.company_state ? `<div style="font-size:9px;color:var(--text-dim);margin-top:2px">📍 ${c.company_state}</div>` : ''}
+    // ── No contacts yet: generate LinkedIn search links from BD signals ───────
+    // Extract unique companies from current BD signals
+    const bdCompanies = [];
+    const seen = new Set();
+    for (const p of [...this.aggregated, ...this.posts]) {
+      const company = p.author_company || p._company ||
+        (p.content || '').replace(/^\[.*?\]\s*/, '').split(/\s+(raises|acquired|announces|names|launches)/i)[0].trim().slice(0, 50);
+      if (company && company.length > 4 && !seen.has(company)) {
+        seen.add(company);
+        bdCompanies.push({ company, state: p.company_state || '', score: p.relevance_score || 0 });
+      }
+    }
+    const topCompanies = bdCompanies.sort((a, b) => b.score - a.score).slice(0, 8);
+
+    if (!topCompanies.length) {
+      el.innerHTML = `
+        <div style="padding:14px;font-size:11px;color:var(--text-dim);text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">🔍</div>
+          <div>Run <strong style="color:var(--text)">Aggregate Now</strong> to populate BD signals,<br>then decision-maker targets appear here.</div>
+        </div>`;
+      return;
+    }
+
+    el.innerHTML = `
+      <div style="padding:8px 10px;font-size:10px;color:var(--text-dim);border-bottom:1px solid var(--border-soft)">
+        🔗 Search LinkedIn for decision-makers at these companies
       </div>
-    `).join('');
+      ${topCompanies.map(c => {
+        const liSearchUrl = `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent('VP R&D OR CSO OR Head of Preclinical OR Director')}&company=${encodeURIComponent(c.company)}`;
+        const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(c.company + ' VP R&D CSO Head Preclinical site:linkedin.com')}` ;
+        return `
+        <div style="padding:9px 10px;border-bottom:1px solid var(--border-soft)" class="dash-news-item">
+          <div class="flex-between mb-4">
+            <strong style="font-size:11px;flex:1">${c.company}</strong>
+            ${c.state ? `<span style="font-size:9px;color:var(--text-dim);background:var(--surface2);padding:1px 5px;border-radius:3px">${c.state}</span>` : ''}
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <a href="${liSearchUrl}" target="_blank"
+              style="font-size:9px;color:var(--accent);text-decoration:none;padding:2px 7px;border-radius:3px;border:1px solid rgba(0,212,255,.25);background:rgba(0,212,255,.06)"
+              title="Search LinkedIn for R&D leaders at this company">
+              🔍 LinkedIn Search
+            </a>
+            <a href="${googleUrl}" target="_blank"
+              style="font-size:9px;color:var(--text-muted);text-decoration:none;padding:2px 7px;border-radius:3px;border:1px solid var(--border-soft)"
+              title="Google search for executives">
+              🌐 Google
+            </a>
+          </div>
+        </div>`;
+      }).join('')}
+      <div style="padding:8px 10px;font-size:9px;color:var(--text-dim);text-align:center;border-top:1px solid var(--border-soft)">
+        📌 Install the <strong style="color:var(--text)">Chrome extension</strong> for automatic decision-maker detection
+      </div>
+    `;
   },
 
   renderSources() {

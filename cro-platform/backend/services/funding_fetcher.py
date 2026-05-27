@@ -243,6 +243,13 @@ def fetch_sec_funding(lookback_days=180, state_filter=None) -> list:
             skip_words = ['fund', 'lp', 'llc', 'partners', 'capital', 'ventures', 'management']
             if any(w in company_name.lower() for w in skip_words): continue
 
+            # Extract CIK: try ciks[] array first, then parse from display_names string
+            ciks_list = src.get('ciks', [])
+            cik = str(ciks_list[0]) if ciks_list else ''
+            if not cik:
+                m = re.search(r'CIK\s+(\d+)', raw_name)
+                cik = m.group(1) if m else ''
+
             biz_states = src.get("biz_states", [])
             state = None
             for bs in biz_states:
@@ -267,7 +274,11 @@ def fetch_sec_funding(lookback_days=180, state_filter=None) -> list:
                 "needs": ["DMPK", "Toxicology", "Bioanalysis"],
                 "signal": f"Form D filed {file_date} — equity offering",
                 "date": file_date,
-                "url": f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={src.get('cik','')}&type=D",
+                "url": (
+                    f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={cik}&type=D&dateb=&owner=include&count=10"
+                    if cik else
+                    f"https://efts.sec.gov/LATEST/search-index?q=%22{company_name}%22&forms=D"
+                ),
             })
         except Exception:
             continue

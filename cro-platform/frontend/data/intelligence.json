@@ -365,15 +365,15 @@
       "state": "MA",
       "city": "Cambridge",
       "stage": "Funding",
-      "focus": "Biopharma — Cambridge, MA",
+      "focus": "Biopharma \u2014 Cambridge, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-05 — equity offering",
+      "signal": "Form D filed 2026-05-05 \u2014 equity offering",
       "date": "2026-05-05",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1587661&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "3w ago"
@@ -385,15 +385,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-14 — equity offering",
+      "signal": "Form D filed 2026-05-14 \u2014 equity offering",
       "date": "2026-05-14",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1645460&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1w ago"
@@ -405,15 +405,15 @@
       "state": "CA",
       "city": "Santa Ana",
       "stage": "Funding",
-      "focus": "Biopharma — Santa Ana, CA",
+      "focus": "Biopharma \u2014 Santa Ana, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-21 — equity offering",
+      "signal": "Form D filed 2026-05-21 \u2014 equity offering",
       "date": "2026-05-21",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1915801&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "6d ago"
@@ -425,15 +425,15 @@
       "state": "CA",
       "city": "Menlo Park",
       "stage": "Funding",
-      "focus": "Biopharma — Menlo Park, CA",
+      "focus": "Biopharma \u2014 Menlo Park, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-25 — equity offering",
+      "signal": "Form D filed 2026-03-25 \u2014 equity offering",
       "date": "2026-03-25",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880438&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -445,15 +445,15 @@
       "state": "MA",
       "city": "Watertown",
       "stage": "Funding",
-      "focus": "Biopharma — Watertown, MA",
+      "focus": "Biopharma \u2014 Watertown, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-20 — equity offering",
+      "signal": "Form D filed 2026-03-20 \u2014 equity offering",
       "date": "2026-03-20",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2020048&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -465,15 +465,15 @@
       "state": "CA",
       "city": "San Diego",
       "stage": "Funding",
-      "focus": "Biopharma — San Diego, CA",
+      "focus": "Biopharma \u2014 San Diego, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-08 — equity offering",
+      "signal": "Form D filed 2026-04-08 \u2014 equity offering",
       "date": "2026-04-08",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997038&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -485,15 +485,15 @@
       "state": "MA",
       "city": "Lexington",
       "stage": "Funding",
-      "focus": "Biopharma — Lexington, MA",
+      "focus": "Biopharma \u2014 Lexington, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-15 — equity offering",
+      "signal": "Form D filed 2026-04-15 \u2014 equity offering",
       "date": "2026-04-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1851943&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -505,15 +505,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-17 — equity offering",
+      "signal": "Form D filed 2026-03-17 \u2014 equity offering",
       "date": "2026-03-17",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -525,15 +525,15 @@
       "state": "CA",
       "city": "Brisbane",
       "stage": "Funding",
-      "focus": "Biopharma — Brisbane, CA",
+      "focus": "Biopharma \u2014 Brisbane, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-03 — equity offering",
+      "signal": "Form D filed 2026-04-03 \u2014 equity offering",
       "date": "2026-04-03",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -545,15 +545,15 @@
       "state": "CA",
       "city": "San Diego",
       "stage": "Funding",
-      "focus": "Biopharma — San Diego, CA",
+      "focus": "Biopharma \u2014 San Diego, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-14 — equity offering",
+      "signal": "Form D filed 2026-05-14 \u2014 equity offering",
       "date": "2026-05-14",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2132841&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1w ago"
@@ -565,15 +565,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-07 — equity offering",
+      "signal": "Form D filed 2026-05-07 \u2014 equity offering",
       "date": "2026-05-07",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2w ago"
@@ -585,15 +585,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-24 — equity offering",
+      "signal": "Form D filed 2026-03-24 \u2014 equity offering",
       "date": "2026-03-24",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1376474&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -605,15 +605,15 @@
       "state": "MA",
       "city": "Allston",
       "stage": "Funding",
-      "focus": "Biopharma — Allston, MA",
+      "focus": "Biopharma \u2014 Allston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-06 — equity offering",
+      "signal": "Form D filed 2026-03-06 \u2014 equity offering",
       "date": "2026-03-06",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1758725&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -625,15 +625,15 @@
       "state": "MA",
       "city": "Cambridge",
       "stage": "Funding",
-      "focus": "Biopharma — Cambridge, MA",
+      "focus": "Biopharma \u2014 Cambridge, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-23 — equity offering",
+      "signal": "Form D filed 2026-03-23 \u2014 equity offering",
       "date": "2026-03-23",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2122106&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -645,15 +645,15 @@
       "state": "CA",
       "city": "San Francisco",
       "stage": "Funding",
-      "focus": "Biopharma — San Francisco, CA",
+      "focus": "Biopharma \u2014 San Francisco, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-21 — equity offering",
+      "signal": "Form D filed 2026-05-21 \u2014 equity offering",
       "date": "2026-05-21",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2135564&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "6d ago"
@@ -665,15 +665,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-13 — equity offering",
+      "signal": "Form D filed 2026-05-13 \u2014 equity offering",
       "date": "2026-05-13",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133041&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2w ago"
@@ -685,15 +685,15 @@
       "state": "CA",
       "city": "Palo Alto",
       "stage": "Funding",
-      "focus": "Biopharma — Palo Alto, CA",
+      "focus": "Biopharma \u2014 Palo Alto, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-15 — equity offering",
+      "signal": "Form D filed 2026-04-15 \u2014 equity offering",
       "date": "2026-04-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2129660&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -705,15 +705,15 @@
       "state": "MA",
       "city": "Newton",
       "stage": "Funding",
-      "focus": "Biopharma — Newton, MA",
+      "focus": "Biopharma \u2014 Newton, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-04 — equity offering",
+      "signal": "Form D filed 2026-05-04 \u2014 equity offering",
       "date": "2026-05-04",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1989925&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "3w ago"
@@ -725,15 +725,15 @@
       "state": "CA",
       "city": "Torrance",
       "stage": "Funding",
-      "focus": "Biopharma — Torrance, CA",
+      "focus": "Biopharma \u2014 Torrance, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-15 — equity offering",
+      "signal": "Form D filed 2026-05-15 \u2014 equity offering",
       "date": "2026-05-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1885079&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1w ago"
@@ -745,15 +745,15 @@
       "state": "MA",
       "city": "Lunenburg",
       "stage": "Funding",
-      "focus": "Biopharma — Lunenburg, MA",
+      "focus": "Biopharma \u2014 Lunenburg, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-26 — equity offering",
+      "signal": "Form D filed 2026-05-26 \u2014 equity offering",
       "date": "2026-05-26",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2090797&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1d ago"
@@ -765,15 +765,15 @@
       "state": "CA",
       "city": "South San Francisco",
       "stage": "Funding",
-      "focus": "Biopharma — South San Francisco, CA",
+      "focus": "Biopharma \u2014 South San Francisco, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-16 — equity offering",
+      "signal": "Form D filed 2026-04-16 \u2014 equity offering",
       "date": "2026-04-16",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -785,15 +785,15 @@
       "state": "CA",
       "city": "Palo Alto",
       "stage": "Funding",
-      "focus": "Biopharma — Palo Alto, CA",
+      "focus": "Biopharma \u2014 Palo Alto, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-09 — equity offering",
+      "signal": "Form D filed 2026-03-09 \u2014 equity offering",
       "date": "2026-03-09",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2116194&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -805,15 +805,15 @@
       "state": "MA",
       "city": "Watertown",
       "stage": "Funding",
-      "focus": "Biopharma — Watertown, MA",
+      "focus": "Biopharma \u2014 Watertown, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-13 — equity offering",
+      "signal": "Form D filed 2026-03-13 \u2014 equity offering",
       "date": "2026-03-13",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1841279&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -825,15 +825,15 @@
       "state": "CA",
       "city": "San Jose",
       "stage": "Funding",
-      "focus": "Biopharma — San Jose, CA",
+      "focus": "Biopharma \u2014 San Jose, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-18 — equity offering",
+      "signal": "Form D filed 2026-05-18 \u2014 equity offering",
       "date": "2026-05-18",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1630786&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1w ago"
@@ -845,15 +845,15 @@
       "state": "MA",
       "city": "Boston",
       "stage": "Funding",
-      "focus": "Biopharma — Boston, MA",
+      "focus": "Biopharma \u2014 Boston, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-09 — equity offering",
+      "signal": "Form D filed 2026-03-09 \u2014 equity offering",
       "date": "2026-03-09",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2116600&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "2mo ago"
@@ -865,15 +865,15 @@
       "state": "CA",
       "city": "San Mateo",
       "stage": "Funding",
-      "focus": "Biopharma — San Mateo, CA",
+      "focus": "Biopharma \u2014 San Mateo, CA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-13 — equity offering",
+      "signal": "Form D filed 2026-04-13 \u2014 equity offering",
       "date": "2026-04-13",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1595215&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "1mo ago"
@@ -885,15 +885,15 @@
       "state": "MA",
       "city": "Wellesley Hills",
       "stage": "Funding",
-      "focus": "Biopharma — Wellesley Hills, MA",
+      "focus": "Biopharma \u2014 Wellesley Hills, MA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-04 — equity offering",
+      "signal": "Form D filed 2026-05-04 \u2014 equity offering",
       "date": "2026-05-04",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1768446&type=D&dateb=&owner=include&count=10",
       "score": 100,
       "hub_weight": 10,
       "date_label": "3w ago"
@@ -926,15 +926,15 @@
       "state": "NJ",
       "city": "Bridgewater",
       "stage": "Funding",
-      "focus": "Biopharma — Bridgewater, NJ",
+      "focus": "Biopharma \u2014 Bridgewater, NJ",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-15 — equity offering",
+      "signal": "Form D filed 2026-04-15 \u2014 equity offering",
       "date": "2026-04-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1493152&type=D&dateb=&owner=include&count=10",
       "score": 95,
       "hub_weight": 9,
       "date_label": "1mo ago"
@@ -946,15 +946,15 @@
       "state": "NJ",
       "city": "Iselin",
       "stage": "Funding",
-      "focus": "Biopharma — Iselin, NJ",
+      "focus": "Biopharma \u2014 Iselin, NJ",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-07 — equity offering",
+      "signal": "Form D filed 2026-05-07 \u2014 equity offering",
       "date": "2026-05-07",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 95,
       "hub_weight": 9,
       "date_label": "2w ago"
@@ -966,15 +966,15 @@
       "state": "NJ",
       "city": "Haddonfield",
       "stage": "Funding",
-      "focus": "Biopharma — Haddonfield, NJ",
+      "focus": "Biopharma \u2014 Haddonfield, NJ",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-13 — equity offering",
+      "signal": "Form D filed 2026-03-13 \u2014 equity offering",
       "date": "2026-03-13",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1752026&type=D&dateb=&owner=include&count=10",
       "score": 95,
       "hub_weight": 9,
       "date_label": "2mo ago"
@@ -986,15 +986,15 @@
       "state": "NJ",
       "city": "Mount Laurel",
       "stage": "Funding",
-      "focus": "Biopharma — Mount Laurel, NJ",
+      "focus": "Biopharma \u2014 Mount Laurel, NJ",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-20 — equity offering",
+      "signal": "Form D filed 2026-05-20 \u2014 equity offering",
       "date": "2026-05-20",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1855431&type=D&dateb=&owner=include&count=10",
       "score": 95,
       "hub_weight": 9,
       "date_label": "1w ago"
@@ -1139,15 +1139,15 @@
       "state": "TX",
       "city": "Dallas",
       "stage": "Funding",
-      "focus": "Biopharma — Dallas, TX",
+      "focus": "Biopharma \u2014 Dallas, TX",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-30 — equity offering",
+      "signal": "Form D filed 2026-04-30 \u2014 equity offering",
       "date": "2026-04-30",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2128979&type=D&dateb=&owner=include&count=10",
       "score": 90,
       "hub_weight": 8,
       "date_label": "3w ago"
@@ -1181,15 +1181,15 @@
       "state": "PA",
       "city": "Wayne",
       "stage": "Funding",
-      "focus": "Biopharma — Wayne, PA",
+      "focus": "Biopharma \u2014 Wayne, PA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-27 — equity offering",
+      "signal": "Form D filed 2026-04-27 \u2014 equity offering",
       "date": "2026-04-27",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2127553&type=D&dateb=&owner=include&count=10",
       "score": 85,
       "hub_weight": 7,
       "date_label": "1mo ago"
@@ -1201,15 +1201,15 @@
       "state": "PA",
       "city": "Chesterbrook",
       "stage": "Funding",
-      "focus": "Biopharma — Chesterbrook, PA",
+      "focus": "Biopharma \u2014 Chesterbrook, PA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-04 — equity offering",
+      "signal": "Form D filed 2026-03-04 \u2014 equity offering",
       "date": "2026-03-04",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2115419&type=D&dateb=&owner=include&count=10",
       "score": 85,
       "hub_weight": 7,
       "date_label": "2mo ago"
@@ -1221,15 +1221,15 @@
       "state": "PA",
       "city": "Malvern",
       "stage": "Funding",
-      "focus": "Biopharma — Malvern, PA",
+      "focus": "Biopharma \u2014 Malvern, PA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-30 — equity offering",
+      "signal": "Form D filed 2026-04-30 \u2014 equity offering",
       "date": "2026-04-30",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044524&type=D&dateb=&owner=include&count=10",
       "score": 85,
       "hub_weight": 7,
       "date_label": "3w ago"
@@ -1241,15 +1241,15 @@
       "state": "PA",
       "city": "Pittsburgh",
       "stage": "Funding",
-      "focus": "Biopharma — Pittsburgh, PA",
+      "focus": "Biopharma \u2014 Pittsburgh, PA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-30 — equity offering",
+      "signal": "Form D filed 2026-03-30 \u2014 equity offering",
       "date": "2026-03-30",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=898432&type=D&dateb=&owner=include&count=10",
       "score": 85,
       "hub_weight": 7,
       "date_label": "1mo ago"
@@ -1281,15 +1281,15 @@
       "state": "WA",
       "city": "Kirkland",
       "stage": "Funding",
-      "focus": "Biopharma — Kirkland, WA",
+      "focus": "Biopharma \u2014 Kirkland, WA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-07 — equity offering",
+      "signal": "Form D filed 2026-04-07 \u2014 equity offering",
       "date": "2026-04-07",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2127189&type=D&dateb=&owner=include&count=10",
       "score": 80,
       "hub_weight": 6,
       "date_label": "1mo ago"
@@ -1301,15 +1301,15 @@
       "state": "WA",
       "city": "Seattle",
       "stage": "Funding",
-      "focus": "Biopharma — Seattle, WA",
+      "focus": "Biopharma \u2014 Seattle, WA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-17 — equity offering",
+      "signal": "Form D filed 2026-04-17 \u2014 equity offering",
       "date": "2026-04-17",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1898714&type=D&dateb=&owner=include&count=10",
       "score": 80,
       "hub_weight": 6,
       "date_label": "1mo ago"
@@ -1321,15 +1321,15 @@
       "state": "MD",
       "city": "Owings Mills",
       "stage": "Funding",
-      "focus": "Biopharma — Owings Mills, MD",
+      "focus": "Biopharma \u2014 Owings Mills, MD",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-06 — equity offering",
+      "signal": "Form D filed 2026-04-06 \u2014 equity offering",
       "date": "2026-04-06",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=905148&type=D&dateb=&owner=include&count=10",
       "score": 80,
       "hub_weight": 6,
       "date_label": "1mo ago"
@@ -1513,15 +1513,15 @@
       "state": "CO",
       "city": "Aurora",
       "stage": "Funding",
-      "focus": "Biopharma — Aurora, CO",
+      "focus": "Biopharma \u2014 Aurora, CO",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-06 — equity offering",
+      "signal": "Form D filed 2026-03-06 \u2014 equity offering",
       "date": "2026-03-06",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002665&type=D&dateb=&owner=include&count=10",
       "score": 75,
       "hub_weight": 5,
       "date_label": "2mo ago"
@@ -1533,15 +1533,15 @@
       "state": "CO",
       "city": "Littleton",
       "stage": "Funding",
-      "focus": "Biopharma — Littleton, CO",
+      "focus": "Biopharma \u2014 Littleton, CO",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-27 — equity offering",
+      "signal": "Form D filed 2026-03-27 \u2014 equity offering",
       "date": "2026-03-27",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1955319&type=D&dateb=&owner=include&count=10",
       "score": 75,
       "hub_weight": 5,
       "date_label": "2mo ago"
@@ -1651,15 +1651,15 @@
       "state": "FL",
       "city": "Boca Raton",
       "stage": "Funding",
-      "focus": "Biopharma — Boca Raton, FL",
+      "focus": "Biopharma \u2014 Boca Raton, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-27 — equity offering",
+      "signal": "Form D filed 2026-05-27 \u2014 equity offering",
       "date": "2026-05-27",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1104659&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "today"
@@ -1671,15 +1671,15 @@
       "state": "FL",
       "city": "Delray Beach",
       "stage": "Funding",
-      "focus": "Biopharma — Delray Beach, FL",
+      "focus": "Biopharma \u2014 Delray Beach, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-11 — equity offering",
+      "signal": "Form D filed 2026-05-11 \u2014 equity offering",
       "date": "2026-05-11",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1213900&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "2w ago"
@@ -1691,15 +1691,15 @@
       "state": "FL",
       "city": "Miami",
       "stage": "Funding",
-      "focus": "Biopharma — Miami, FL",
+      "focus": "Biopharma \u2014 Miami, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-03 — equity offering",
+      "signal": "Form D filed 2026-03-03 \u2014 equity offering",
       "date": "2026-03-03",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1231919&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "2mo ago"
@@ -1711,15 +1711,15 @@
       "state": "VA",
       "city": "Richmond",
       "stage": "Funding",
-      "focus": "Biopharma — Richmond, VA",
+      "focus": "Biopharma \u2014 Richmond, VA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-08 — equity offering",
+      "signal": "Form D filed 2026-05-08 \u2014 equity offering",
       "date": "2026-05-08",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2132799&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "2w ago"
@@ -1731,15 +1731,15 @@
       "state": "FL",
       "city": "Boca Raton",
       "stage": "Funding",
-      "focus": "Biopharma — Boca Raton, FL",
+      "focus": "Biopharma \u2014 Boca Raton, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-31 — equity offering",
+      "signal": "Form D filed 2026-03-31 \u2014 equity offering",
       "date": "2026-03-31",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1999371&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1mo ago"
@@ -1751,15 +1751,15 @@
       "state": "FL",
       "city": "St. Petersburg",
       "stage": "Funding",
-      "focus": "Biopharma — St. Petersburg, FL",
+      "focus": "Biopharma \u2014 St. Petersburg, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-18 — equity offering",
+      "signal": "Form D filed 2026-03-18 \u2014 equity offering",
       "date": "2026-03-18",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2121301&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "2mo ago"
@@ -1771,15 +1771,15 @@
       "state": "FL",
       "city": "Miramar",
       "stage": "Funding",
-      "focus": "Biopharma — Miramar, FL",
+      "focus": "Biopharma \u2014 Miramar, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-15 — equity offering",
+      "signal": "Form D filed 2026-04-15 \u2014 equity offering",
       "date": "2026-04-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1823161&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1mo ago"
@@ -1791,15 +1791,15 @@
       "state": "FL",
       "city": "Ormond Beach",
       "stage": "Funding",
-      "focus": "Biopharma — Ormond Beach, FL",
+      "focus": "Biopharma \u2014 Ormond Beach, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-22 — equity offering",
+      "signal": "Form D filed 2026-04-22 \u2014 equity offering",
       "date": "2026-04-22",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1213900&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1mo ago"
@@ -1811,15 +1811,15 @@
       "state": "FL",
       "city": "Sea Ranch Lakes",
       "stage": "Funding",
-      "focus": "Biopharma — Sea Ranch Lakes, FL",
+      "focus": "Biopharma \u2014 Sea Ranch Lakes, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-15 — equity offering",
+      "signal": "Form D filed 2026-05-15 \u2014 equity offering",
       "date": "2026-05-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1493152&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1w ago"
@@ -1831,15 +1831,15 @@
       "state": "FL",
       "city": "Ponte Vedra",
       "stage": "Funding",
-      "focus": "Biopharma — Ponte Vedra, FL",
+      "focus": "Biopharma \u2014 Ponte Vedra, FL",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-06 — equity offering",
+      "signal": "Form D filed 2026-04-06 \u2014 equity offering",
       "date": "2026-04-06",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1213900&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1mo ago"
@@ -1851,15 +1851,15 @@
       "state": "GA",
       "city": "Kennesaw",
       "stage": "Funding",
-      "focus": "Biopharma — Kennesaw, GA",
+      "focus": "Biopharma \u2014 Kennesaw, GA",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-23 — equity offering",
+      "signal": "Form D filed 2026-04-23 \u2014 equity offering",
       "date": "2026-04-23",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1835523&type=D&dateb=&owner=include&count=10",
       "score": 70,
       "hub_weight": 4,
       "date_label": "1mo ago"
@@ -2006,15 +2006,15 @@
       "state": "OH",
       "city": "Cleveland",
       "stage": "Funding",
-      "focus": "Biopharma — Cleveland, OH",
+      "focus": "Biopharma \u2014 Cleveland, OH",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-14 — equity offering",
+      "signal": "Form D filed 2026-04-14 \u2014 equity offering",
       "date": "2026-04-14",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113399&type=D&dateb=&owner=include&count=10",
       "score": 65,
       "hub_weight": 3,
       "date_label": "1mo ago"
@@ -2026,15 +2026,15 @@
       "state": "OH",
       "city": "Wilmington",
       "stage": "Funding",
-      "focus": "Biopharma — Wilmington, OH",
+      "focus": "Biopharma \u2014 Wilmington, OH",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-10 — equity offering",
+      "signal": "Form D filed 2026-03-10 \u2014 equity offering",
       "date": "2026-03-10",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2115406&type=D&dateb=&owner=include&count=10",
       "score": 65,
       "hub_weight": 3,
       "date_label": "2mo ago"
@@ -2046,15 +2046,15 @@
       "state": "WI",
       "city": "Mequon",
       "stage": "Funding",
-      "focus": "Biopharma — Mequon, WI",
+      "focus": "Biopharma \u2014 Mequon, WI",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-15 — equity offering",
+      "signal": "Form D filed 2026-05-15 \u2014 equity offering",
       "date": "2026-05-15",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2135476&type=D&dateb=&owner=include&count=10",
       "score": 65,
       "hub_weight": 3,
       "date_label": "1w ago"
@@ -2490,15 +2490,15 @@
       "state": "US",
       "city": "Memphis",
       "stage": "Funding",
-      "focus": "Biopharma — Memphis, TN",
+      "focus": "Biopharma \u2014 Memphis, TN",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-22 — equity offering",
+      "signal": "Form D filed 2026-04-22 \u2014 equity offering",
       "date": "2026-04-22",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2042505&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "1mo ago"
@@ -2510,15 +2510,15 @@
       "state": "US",
       "city": "Barrington",
       "stage": "Funding",
-      "focus": "Biopharma — Barrington, RI",
+      "focus": "Biopharma \u2014 Barrington, RI",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-17 — equity offering",
+      "signal": "Form D filed 2026-04-17 \u2014 equity offering",
       "date": "2026-04-17",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2088485&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "1mo ago"
@@ -2530,15 +2530,15 @@
       "state": "US",
       "city": "Greenwich",
       "stage": "Funding",
-      "focus": "Biopharma — Greenwich, CT",
+      "focus": "Biopharma \u2014 Greenwich, CT",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-04-02 — equity offering",
+      "signal": "Form D filed 2026-04-02 \u2014 equity offering",
       "date": "2026-04-02",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1213900&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "1mo ago"
@@ -2550,15 +2550,15 @@
       "state": "US",
       "city": "Kingston",
       "stage": "Funding",
-      "focus": "Biopharma — Kingston, RI",
+      "focus": "Biopharma \u2014 Kingston, RI",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-05 — equity offering",
+      "signal": "Form D filed 2026-03-05 \u2014 equity offering",
       "date": "2026-03-05",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1792522&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "2mo ago"
@@ -2570,15 +2570,15 @@
       "state": "US",
       "city": "New Haven",
       "stage": "Funding",
-      "focus": "Biopharma — New Haven, CT",
+      "focus": "Biopharma \u2014 New Haven, CT",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-03-03 — equity offering",
+      "signal": "Form D filed 2026-03-03 \u2014 equity offering",
       "date": "2026-03-03",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1865257&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "2mo ago"
@@ -2590,15 +2590,15 @@
       "state": "US",
       "city": "",
       "stage": "Funding",
-      "focus": "Biopharma — Suzhou",
+      "focus": "Biopharma \u2014 Suzhou",
       "needs": [
         "DMPK",
         "Toxicology",
         "Bioanalysis"
       ],
-      "signal": "Form D filed 2026-05-26 — equity offering",
+      "signal": "Form D filed 2026-05-26 \u2014 equity offering",
       "date": "2026-05-26",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=&type=D",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1104659&type=D&dateb=&owner=include&count=10",
       "score": 50,
       "hub_weight": 0,
       "date_label": "1d ago"
