@@ -242,10 +242,20 @@ const App = {
   },
 
   async logout() {
+    const token = this.user?.token || localStorage.getItem('auth_token');
+    // Notify backend to invalidate session
+    try {
+      await fetch(`${this.apiBase}/auth/logout`, {
+        method: 'POST',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+      });
+    } catch (e) { /* best effort */ }
+
     localStorage.removeItem('auth_token');
     this.user = null;
     this.settings = {};
     document.getElementById('user-name').textContent = 'Not logged in';
+    document.getElementById('user-dropdown').classList.add('hidden');
     this.showToast('Logged out', 'info');
     this.navigate('dashboard');
   },
@@ -359,6 +369,24 @@ const App = {
         ...(opts.headers || {}),
         ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
       },
+    }).then(r => {
+      // Auto-detect session expiry and prompt login
+      if (r.status === 401 && this.user) {
+        const detail = r.headers.get('x-error-detail') || '';
+        if (!this._showingLoginPrompt) {
+          this._showingLoginPrompt = true;
+          this.user = null;
+          this.settings = {};
+          localStorage.removeItem('auth_token');
+          this.showToast('Session expired — please log in again', 'error');
+          setTimeout(() => {
+            document.getElementById('user-name').textContent = 'Not logged in';
+            document.getElementById('login-modal-overlay').style.display = 'flex';
+            this._showingLoginPrompt = false;
+          }, 500);
+        }
+      }
+      return r;
     });
   },
 };

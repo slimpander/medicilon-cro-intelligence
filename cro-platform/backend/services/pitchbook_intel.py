@@ -2,9 +2,16 @@
 PitchBook Deal Intelligence — M&A, VC/PE funding, deal flow for biotech/CRO sector
 Provides curated deal data with option to connect PitchBook account.
 """
+import urllib.parse
 from datetime import datetime
 from typing import Optional
 from pathlib import Path
+
+
+def _search_url(target: str) -> str:
+    """Generate a Google News search URL for a deal target."""
+    q = urllib.parse.quote(f'"{target}" biotech deal funding')
+    return f"https://news.google.com/search?q={q}&hl=en-US"
 
 
 def get_recent_deals(limit: int = 8) -> dict:
@@ -22,6 +29,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-05-15",
             "description": "Leading China-US CRO acquired by PE consortium to expand preclinical services globally",
             "relevance": "CRO consolidation — competitor acquisition",
+            "url": _search_url("BioDuro-Sundia"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Series C",
@@ -32,6 +41,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-05-08",
             "description": "AI-driven drug discovery platform raises Series C to expand into preclinical CRO partnerships",
             "relevance": "Potential new CRO client — preclinical outsourcing planned",
+            "url": _search_url("Nexus Therapeutics"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "M&A",
@@ -42,6 +53,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-04-22",
             "description": "Pharmaron acquires Absorption Systems to expand ADME/DMPK capabilities in North America",
             "relevance": "Direct competitor move — DMPK service expansion",
+            "url": _search_url("Absorption Systems Pharmaron"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Series B",
@@ -52,6 +65,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-04-15",
             "description": "Protein analytics CRO raises Series B to build GMP-compliant characterization lab",
             "relevance": "Growing biologics CRO demand — Medicilon biologics services aligned",
+            "url": _search_url("ProtaGene"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Growth Equity",
@@ -62,6 +77,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-03-28",
             "description": "Full-service CRO receives growth equity to fund global lab expansion and M&A",
             "relevance": "CRO sector attracting major investment — market expansion",
+            "url": _search_url("Frontage Laboratories"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "IPO",
@@ -72,6 +89,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-03-10",
             "description": "Oncology-focused biotech with preclinical pipeline files for NASDAQ IPO",
             "relevance": "New public company — will scale preclinical spending",
+            "url": _search_url("Adlai Nortye Biopharma"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "M&A",
@@ -82,6 +101,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-02-20",
             "description": "Charles River acquires bioanalytical CRO to strengthen large-molecule capabilities",
             "relevance": "Tier-1 competitor expanding bioanalysis — market dynamics shift",
+            "url": _search_url("B2S Life Sciences Charles River"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Series A",
@@ -92,6 +113,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-02-05",
             "description": "Cell therapy startup raises Series A, planning IND-enabling studies with CRO partner",
             "relevance": "New client opportunity — IND-enabling tox + bioanalysis needed",
+            "url": _search_url("CellVantage Therapeutics"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Private Equity",
@@ -102,6 +125,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-01-18",
             "description": "PE firm Novacap acquires majority stake in clinical CRO Altasciences",
             "relevance": "Mid-tier CRO consolidation — competitive landscape shifting",
+            "url": _search_url("Altasciences Novacap"),
+            "source": "PitchBook (curated)",
         },
         {
             "deal_type": "Series D",
@@ -112,6 +137,8 @@ def get_recent_deals(limit: int = 8) -> dict:
             "date": "2026-01-08",
             "description": "Immunology platform company raises Series D to advance 3 programs to IND",
             "relevance": "3 IND filings ahead — significant preclinical CRO opportunity",
+            "url": _search_url("Repertoire Immune Medicines"),
+            "source": "PitchBook (curated)",
         },
     ]
 

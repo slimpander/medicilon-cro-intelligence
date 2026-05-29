@@ -83,7 +83,18 @@ const PageDashboard = {
         </div>
       </div>
 
-      <!-- ═══ SECTION 4: CRUNCHBASE FUNDING HEADLINES ═══ -->
+      <!-- ═══ SECTION 4a: SCILEADS RESEARCH ═══ -->
+      <div class="card mb-16">
+        <div class="card-header">
+          <div class="card-title">🔬 SciLeads — Top Researchers</div>
+          <span style="font-size:10px;color:var(--text-dim)" id="dash-scileads-badge"></span>
+        </div>
+        <div id="dash-scileads-list" style="max-height:300px;overflow-y:auto">
+          <div class="empty-state"><div class="empty-state-desc">Connect SciLeads token in Settings to see researcher data...</div></div>
+        </div>
+      </div>
+
+      <!-- ═══ SECTION 4b: CRUNCHBASE FUNDING HEADLINES ═══ -->
       <div class="card mb-16">
         <div class="card-header">
           <div class="card-title">💰 Crunchbase — Recent Funding Headlines</div>
@@ -111,6 +122,7 @@ const PageDashboard = {
     await this.renderNews();
     await this.renderLinkedIn();
     await this.renderRecommendations();
+    await this.renderSciLeads();
     await this.renderCrunchbase();
     await this.renderPitchBook();
     this.setupPatentSearch();
@@ -422,6 +434,153 @@ const PageDashboard = {
   },
 
   // ═══ MEDICILON MOVEMENTS ═════════════════════════════════════════
+  // ═══ SCILEADS RESEARCH ════════════════════════════════════════
+  async renderSciLeads() {
+    const el = document.getElementById('dash-scileads-list');
+    const badge = document.getElementById('dash-scileads-badge');
+    if (!el) return;
+
+    // Check if token is configured (App.settings, localStorage, or fresh fetch)
+    let hasToken = App.settings?.scilead_token || localStorage.getItem('scilead_token');
+    
+    // If no token yet, try refreshing from backend (user may have just saved it)
+    if (!hasToken && App.user) {
+      try {
+        const sr = await App.apiFetch(`${App.apiBase}/settings`);
+        if (sr.ok) {
+          App.settings = await sr.json();
+          hasToken = App.settings?.scilead_token;
+        }
+      } catch(e) {}
+    }
+
+    if (!hasToken) {
+      el.innerHTML = `<div class="empty-state" style="padding:20px">
+        <div class="empty-state-icon">🔬</div>
+        <div class="empty-state-title">SciLeads Not Connected</div>
+        <div class="empty-state-desc">Paste your Bearer token in Settings to see live researcher data</div>
+        <button class="btn btn-sm btn-primary mt-8" onclick="App.navigate('settings')">⚙️ Configure SciLeads →</button>
+      </div>`;
+      return;
+    }
+
+    if (badge) badge.innerHTML = '<span style="color:var(--leaf)">● Connected</span>';
+
+    try {
+      // Search for industry contacts + KOLs with a meaningful keyword
+      // Use a broad term that returns representative results across categories
+      const searchTerms = ['biotech', 'oncology', 'clinical trial', 'drug development', 'CRO'];
+      const kw = searchTerms[Math.floor(Math.random() * searchTerms.length)];
+      const r = await App.apiFetch(`${App.apiBase}/scilead/search?keyword=${encodeURIComponent(kw)}&count=20&categories=Publications,ClinicalTrials,Funding,Tradeshows`);
+      if (!r.ok) {
+        if (r.status === 401) {
+          el.innerHTML = `<div class="empty-state" style="padding:20px">
+            <div class="empty-state-icon">⚠️</div>
+            <div class="empty-state-title">Token Expired</div>
+            <div class="empty-state-desc">Your SciLeads token has expired. Get a new one from DevTools → Network.</div>
+            <button class="btn btn-sm btn-primary mt-8" onclick="App.navigate('settings')">⚙️ Update Token →</button>
+          </div>`;
+          if (badge) badge.innerHTML = '<span style="color:var(--red)">● Expired</span>';
+        }
+        throw new Error('API error');
+      }
+
+      const data = await r.json();
+      const researchers = data.researchers || [];
+
+      if (!researchers.length) throw new Error('No data');
+
+      // Find the most interesting ones: industry contacts + high h-index academics
+      const industry = researchers.filter(r =>
+        r.company_type?.includes('Industry') || r.company?.match(/bms|pfizer|novartis|roche|merck|astrazeneca|gsk|sanofi|jnj|abbvie|gilead|amgen|regeneron|lilly/i)
+      ).slice(0, 3);
+
+      const kols = researchers
+        .filter(r => r.h_index_3yr >= 30)
+        .sort((a, b) => b.h_index_3yr - a.h_index_3yr)
+        .slice(0, 5);
+
+      if (badge && data.total_results) badge.innerHTML = `<span style="color:var(--leaf)">● ${data.total_results?.toLocaleString() || '?'} results</span>`;
+
+      let html = '';
+
+      // Quick stats bar
+      if (data.total_results) {
+        html += `<div style="display:flex;gap:12px;padding:10px 16px;flex-wrap:wrap">
+          <div style="flex:1;min-width:100px;text-align:center;padding:8px;background:var(--surface2);border-radius:6px">
+            <div style="font-size:18px;font-weight:700;color:var(--accent)">${(data.total_results || 0).toLocaleString()}</div>
+            <div style="font-size:10px;color:var(--text-dim)">Total Records</div>
+          </div>
+          <div style="flex:1;min-width:100px;text-align:center;padding:8px;background:var(--surface2);border-radius:6px">
+            <div style="font-size:18px;font-weight:700;color:var(--green)">${(data.visualisations?.totalPublications || 0).toLocaleString()}</div>
+            <div style="font-size:10px;color:var(--text-dim)">Publications</div>
+          </div>
+          <div style="flex:1;min-width:100px;text-align:center;padding:8px;background:var(--surface2);border-radius:6px">
+            <div style="font-size:18px;font-weight:700;color:var(--gold)">${industry.length}</div>
+            <div style="font-size:10px;color:var(--text-dim)">Industry Contacts</div>
+          </div>
+          <div style="flex:1;min-width:100px;text-align:center;padding:8px;background:var(--surface2);border-radius:6px">
+            <div style="font-size:18px;font-weight:700;color:var(--purple)">${kols.length}</div>
+            <div style="font-size:10px;color:var(--text-dim)">Top KOLs</div>
+          </div>
+        </div>`;
+      }
+
+      // Industry contacts spotlight
+      if (industry.length) {
+        html += `<div style="padding:4px 16px 8px"><strong style="font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em">🏢 Industry Contacts</strong></div>`;
+        html += industry.map(r => `
+          <div class="dash-news-item" style="padding:8px 16px;border-top:1px solid var(--border-dim);cursor:pointer"
+               onclick="App.navigate('crunchbase')">
+            <div class="flex-between mb-4">
+              <strong style="font-size:12px;flex:1">${r.name}</strong>
+              <span style="font-size:10px;font-weight:600;padding:1px 6px;border-radius:3px;margin-left:8px;white-space:nowrap;color:${r.email_quality==='SafeToSend'?'var(--green)':'var(--gold)'};background:${r.email_quality==='SafeToSend'?'rgba(46,204,113,0.1)':'rgba(241,196,15,0.1)'}">
+                ${r.email_quality === 'SafeToSend' ? '✅' : '⚠️'} ${r.email_quality || 'Unknown'}
+              </span>
+            </div>
+            <div style="font-size:10px;color:var(--accent);margin-bottom:2px">${r.title || ''}${r.company ? ' · ' + r.company : ''}</div>
+            <div style="font-size:11px;color:var(--text-muted);line-height:1.4">${r.email || ''}${r.linkedin ? ' · 🔗 LinkedIn' : ''}${r.country ? ' · ' + r.country : ''}</div>
+          </div>
+        `).join('');
+      }
+
+      // KOL spotlight
+      if (kols.length) {
+        html += `<div style="padding:4px 16px 8px;margin-top:4px"><strong style="font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em">🎓 Top KOLs</strong></div>`;
+        html += kols.map(r => `
+          <div class="dash-news-item" style="padding:8px 16px;border-top:1px solid var(--border-dim);cursor:pointer"
+               onclick="App.navigate('crunchbase')">
+            <div class="flex-between mb-4">
+              <strong style="font-size:12px;flex:1">${r.name}</strong>
+              <span style="font-size:11px;font-weight:700;color:var(--purple);white-space:nowrap;margin-left:8px">H-index ${r.h_index_3yr || '?'}</span>
+            </div>
+            <div style="font-size:10px;color:var(--accent);margin-bottom:2px">${r.institution || r.company || ''}${r.country ? ' · ' + r.country : ''}</div>
+            <div style="font-size:10px;color:var(--text-dim);display:flex;gap:10px;flex-wrap:wrap">
+              <span>📄 ${r.total_publications || 0} pubs</span>
+              ${r.total_clinical_trials ? `<span>🧪 ${r.total_clinical_trials} trials</span>` : ''}
+              ${r.top_mesh?.length ? `<span>🔬 ${r.top_mesh.slice(0, 3).map(m => m.replace(/#\d+$/, '')).join(' · ')}</span>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      html += `<div style="padding:8px 16px;text-align:center">
+        <button class="btn btn-sm btn-primary" onclick="App.navigate('crunchbase')">🔍 Search SciLeads Researchers →</button>
+      </div>`;
+
+      el.innerHTML = html;
+    } catch (e) {
+      console.log('[Dashboard] SciLeads:', e.message);
+      el.innerHTML = `<div class="empty-state" style="padding:20px">
+        <div class="empty-state-icon">📡</div>
+        <div class="empty-state-title">SciLeads Offline</div>
+        <div class="empty-state-desc">Backend server may be offline or token may need refreshing</div>
+        ${hasToken ? `<span style="font-size:10px;color:var(--text-dim)">${e.message}</span>` : ''}
+      </div>`;
+      if (badge) badge.innerHTML = '<span style="color:var(--red)">● Offline</span>';
+    }
+  },
+
   // ═══ CRUNCHBASE HEADLINES ═══════════════════════════════════════════
   async renderCrunchbase() {
     const el = document.getElementById('dash-crunchbase-list');

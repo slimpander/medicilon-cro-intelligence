@@ -562,13 +562,17 @@ def aggregate_all(max_total: int = 100) -> list:
     all_results += fetch_pr_newswire(15)
     all_results += fetch_sec_funding_signals(90, 20)
 
-    # Final dedup
+    # Final dedup — aggressive title-based matching across sources
     seen = set()
     final = []
     for r in all_results:
-        key = (r.get("title", "")[:100] + r.get("content", "")[:50]).lower()
-        if key and key not in seen:
-            seen.add(key)
+        # Normalize title for dedup: remove special chars, lowercase, first 80 chars
+        raw_title = (r.get("title", "") or "").strip()
+        norm_title = re.sub(r'[^\w\s]', '', raw_title).lower().strip()
+        dedup_key = norm_title[:80]  # First 80 chars of normalized title
+        
+        if dedup_key and dedup_key not in seen:
+            seen.add(dedup_key)
             final.append(r)
 
     final.sort(key=lambda x: x["relevance_score"], reverse=True)
@@ -602,7 +606,9 @@ def save_to_db(leads: list):
     inserted = 0
     for lead in leads:
         try:
-            source_id = f"agg-{hash(lead.get('title','')[:80] + lead.get('source',''))}"
+            # Use title-only hash so same article from different sources deduplicates
+            norm_title = re.sub(r'[^\w\s]', '', lead.get('title', '')[:80]).lower().strip()
+            source_id = f"agg-{hash(norm_title)}"
             conn.execute("""
                 INSERT OR IGNORE INTO linkedin_posts
                     (source_id, post_url, author_name, author_title, author_company,

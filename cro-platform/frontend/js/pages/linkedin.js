@@ -242,10 +242,12 @@ const PageLinkedIn = {
     // Merge posts + aggregated leads
     const allSignals = [...this.posts];
     for (const lead of this.aggregated) {
-      // Avoid duplicates by title
-      const exists = allSignals.some(p =>
-        (p.content || '').includes((lead.title || '').slice(0, 60))
-      );
+      // Avoid duplicates by normalized title (strip special chars, lowercase)
+      const leadTitle = (lead.title || '').replace(/[^\w\s]/g, '').toLowerCase().trim();
+      const exists = allSignals.some(p => {
+        const existingTitle = ((p._title || '') + (p.content || '')).replace(/[^\w\s]/g, '').toLowerCase().trim();
+        return existingTitle.includes(leadTitle.slice(0, 60)) || leadTitle.slice(0, 60).includes(existingTitle.slice(0, 60));
+      });
       if (!exists) {
         allSignals.push({
           id: 'agg-' + lead.title?.slice(0, 30),

@@ -148,7 +148,10 @@ const PagePitchbook = {
         <div style="font-size:11px;color:var(--text-dim);line-height:1.5;margin-bottom:8px">${d.description || ''}</div>
         <div class="flex-between">
           <span class="tag tag-accent" style="font-size:9px">${d.relevance || d.source || ''}</span>
-          ${d.url ? `<a href="${d.url}" target="_blank" style="font-size:10px;color:var(--moss)">Read →</a>` : ''}
+          <div style="display:flex;gap:8px">
+            ${d.url ? `<a href="${d.url}" target="_blank" rel="noopener" style="font-size:10px;color:var(--moss);text-decoration:none" title="View source article">📄 Source →</a>` : ''}
+            <a href="https://www.google.com/search?q=${encodeURIComponent((d.target || '') + ' ' + (d.acquirer || '') + ' ' + (d.deal_type || '') + ' deal')}&tbm=nws" target="_blank" rel="noopener" style="font-size:10px;color:var(--sky);text-decoration:none" title="Search news for more details">🔍 Details</a>
+          </div>
         </div>
       </div>
     `;

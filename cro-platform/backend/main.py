@@ -66,6 +66,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS settings (
             user_id INTEGER PRIMARY KEY,
             crunchbase_key TEXT,
+            scilead_token TEXT,
             pitchbook_email TEXT,
             linkedin_email TEXT,
             linkedin_session TEXT,
@@ -120,8 +121,37 @@ def init_db():
             lead_source_id TEXT,
             created_at TEXT DEFAULT (datetime('now'))
         );
+
+        -- SciLeads local cache: stores search results to avoid repeated API calls
+        CREATE TABLE IF NOT EXISTS scileads_cache (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            search_keyword TEXT NOT NULL,          -- original search term
+            researcher_id INTEGER,                 -- SciLeads researcher ID
+            data_json TEXT NOT NULL,               -- full JSON blob of researcher
+            fetched_at TEXT DEFAULT (datetime('now')),
+            UNIQUE(search_keyword, researcher_id)
+        );
+        CREATE INDEX IF NOT EXISTS idx_scileads_cache_keyword ON scileads_cache(search_keyword);
+        CREATE INDEX IF NOT EXISTS idx_scileads_cache_rid ON scileads_cache(researcher_id);
     """)
     conn.commit()
+
+    # Migration: add scilead_token column if missing
+    try:
+        conn.execute("ALTER TABLE settings ADD COLUMN scilead_token TEXT")
+        conn.commit()
+        print("[INIT] Added scilead_token column to settings")
+    except sqlite3.OperationalError:
+        pass  # Column already exists
+
+    # Migration: drop legacy email/password auth columns (replaced by token-based auth)
+    for col in ["scilead_email", "scilead_password"]:
+        try:
+            conn.execute(f"ALTER TABLE settings DROP COLUMN {col}")
+            conn.commit()
+            print(f"[INIT] Dropped legacy column: {col}")
+        except sqlite3.OperationalError:
+            pass  # Already dropped or not supported
 
     # Create default admin user if none exist
     cursor = conn.execute("SELECT COUNT(*) FROM users")
@@ -145,6 +175,7 @@ class LoginRequest(BaseModel):
 
 class SettingsUpdate(BaseModel):
     crunchbase_key: Optional[str] = None
+    scilead_token: Optional[str] = None
     pitchbook_email: Optional[str] = None
     linkedin_email: Optional[str] = None
     linkedin_session: Optional[str] = None
@@ -255,6 +286,7 @@ def get_settings(user=Depends(get_current_user)):
         # Return defaults
         return {
             "crunchbase_key": None,
+            "scilead_token": None,
             "newsapi_key": None,
             "notif_email": user.get("email", ""),
             "notif_morning": True,
@@ -274,22 +306,26 @@ def update_settings(body: SettingsUpdate, user=Depends(get_current_user)):
     conn = get_db()
 
     # Upsert settings
-    fields = []
-    values = []
-    for k, v in body.dict(exclude_none=True).items():
-        fields.append(f"{k} = ?")
-        values.append(v)
+    updates = body.model_dump(exclude_none=True)
+    if not updates:
+        conn.close()
+        return {"ok": True}
 
-    if fields:
-        values.append(user["id"])
-        sql = f"""
-            INSERT INTO settings (user_id, {', '.join(body.dict(exclude_none=True).keys())})
-            VALUES (?, {', '.join(['?'] * len(body.dict(exclude_none=True)))})
-            ON CONFLICT(user_id) DO UPDATE SET {' '.join(fields)}
-        """
-        conn.execute(sql, [user["id"]] + list(body.dict(exclude_none=True).values()))
-        conn.commit()
+    columns = list(updates.keys())
+    params = [user["id"]] + list(updates.values())  # user_id first for INSERT
 
+    set_clauses = ", ".join(f"{col} = ?" for col in columns)
+    insert_cols = ", ".join(["user_id"] + columns)
+    value_placeholders = ", ".join(["?"] * (len(columns) + 1))
+    set_params = list(updates.values())  # values for SET clause
+
+    sql = f"""
+        INSERT INTO settings ({insert_cols})
+        VALUES ({value_placeholders})
+        ON CONFLICT(user_id) DO UPDATE SET {set_clauses}
+    """
+    conn.execute(sql, params + set_params)
+    conn.commit()
     conn.close()
     return {"ok": True}
 
@@ -347,6 +383,469 @@ async def test_crunchbase(key: str, user=Depends(get_current_user)):
         return {"ok": False, "error": str(e)}
 
 
+@app.get("/api/scilead/test")
+async def test_scilead(token: str = ""):
+    """Test a SciLeads Bearer token.
+    Token is obtained from browser DevTools:
+      Application → Local Storage → portal.scileads.com
+    or: Network tab → any request → Request Headers → Authorization: Bearer <token>
+    """
+    if not token:
+        return {"ok": False, "error": "No token provided. Get it from DevTools → Network → any request → Authorization header."}
+    try:
+        from services.scilead_client import SciLeadClient
+        client = SciLeadClient(token=token)
+        ok = await client.test_auth()
+        if ok:
+            return {"ok": True, "message": "Token valid — SciLeads API accessible"}
+        else:
+            return {"ok": False, "error": "Token rejected by SciLeads API. It may have expired — refresh the page and grab a new one."}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
+# ── SciLeads Routes ────────────────────────────────────────────────────────────
+
+async def _get_scilead_client(user: dict):
+    """Helper: get an authenticated SciLeads client from user settings.
+    Automatically tries to refresh the token before each use.
+    If refresh succeeds, the new token is persisted to the DB."""
+    conn = get_db()
+    row = conn.execute("SELECT scilead_token FROM settings WHERE user_id = ?", (user["id"],)).fetchone()
+    conn.close()
+    if not row or not row["scilead_token"]:
+        raise HTTPException(
+            status_code=400,
+            detail="SciLeads token not configured. Go to Settings → paste your Bearer token from DevTools."
+        )
+    from services.scilead_client import SciLeadClient
+    client = SciLeadClient(token=row["scilead_token"])
+
+    # Try to refresh the token first (SciLeads tokens are short-lived)
+    refreshed = await client.refresh_token()
+    if refreshed and client.token_changed:
+        # Persist the new token to DB
+        conn2 = get_db()
+        conn2.execute("UPDATE settings SET scilead_token = ? WHERE user_id = ?",
+                      (client.token, user["id"]))
+        conn2.commit()
+        conn2.close()
+        logger.info(f"SciLeads token auto-refreshed and persisted for user {user['id']}")
+
+    # Verify token works (either fresh or refreshed)
+    if not await client.test_auth():
+        raise HTTPException(
+            status_code=401,
+            detail="SciLeads token expired. Refresh portal.scileads.com in your browser and grab a new token."
+        )
+    return client
+
+
+@app.get("/api/scilead/search")
+async def scilead_search(
+    keyword: str = "",
+    categories: str = "",
+    count: int = 50,
+    from_offset: int = 0,
+    min_relevance: float = 0,
+    refresh: bool = False,
+    user=Depends(get_current_user),
+):
+    """Search SciLeads for researchers — cache-first for safety.
+
+    Uses local SQLite cache to avoid repeated SciLeads API calls.
+    Cache TTL: 24h. Use ?refresh=true to force a fresh fetch.
+    Global cooldown: max 1 real API call per 30 seconds.
+    """
+    from services.scileads_cache import (
+        get_from_cache, save_to_cache, cache_is_fresh,
+        should_throttle, mark_api_call,
+    )
+    import asyncio
+
+    key = (keyword or "_all").lower().strip()
+
+    # ── Cache hit: fresh data ────────────────────────────────────────
+    if not refresh and cache_is_fresh(key):
+        cached = get_from_cache(key)
+        if cached:
+            return {
+                "ok": True,
+                "keyword": keyword,
+                "categories": categories or "all",
+                "total_results": len(cached),
+                "has_more": False,
+                "count": len(cached),
+                "researchers": cached,
+                "source": "cache",
+                "cache_hint": f"Served from local cache ({len(cached)} results, <24h old)",
+            }
+
+    # ── Cooldown check ────────────────────────────────────────────────
+    wait = should_throttle()
+    if wait > 0 and not refresh:
+        # Within cooldown: serve stale cache if available
+        cached = get_from_cache(key, max_age_seconds=86400 * 7)  # up to 7 days
+        if cached:
+            return {
+                "ok": True,
+                "keyword": keyword,
+                "categories": categories or "all",
+                "total_results": len(cached),
+                "has_more": False,
+                "count": len(cached),
+                "researchers": cached,
+                "source": "cache",
+                "cache_hint": f"Rate limit active — serving cached data ({len(cached)} results). Retry in {int(wait)}s.",
+            }
+        # No cache at all — we must wait
+        await asyncio.sleep(wait)
+
+    # ── Real API call ─────────────────────────────────────────────────
+    client = await _get_scilead_client(user)
+
+    cat_list = None
+    if categories:
+        cat_list = [c.strip() for c in categories.split(",") if c.strip()]
+
+    resp = await client.search_researchers(
+        keyword=keyword,
+        categories=cat_list,
+        count=count,
+        from_offset=from_offset,
+    )
+
+    mark_api_call()
+
+    # Filter by min_relevance if specified
+    results = resp.grouped_results
+    if min_relevance > 0:
+        results = [r for r in results if r.relevance_score >= min_relevance]
+
+    # Serialize to dicts for JSON response + caching
+    researcher_dicts = [
+        {
+            "id": r.researcher_id,
+            "name": f"{r.researcher_first_name} {r.researcher_last_name}",
+            "first_name": r.researcher_first_name,
+            "last_name": r.researcher_last_name,
+            "email": r.researcher_email,
+            "email_quality": r.email_status_category,
+            "email_alive": r.email_last_alive_check_date,
+            "phone": r.researcher_phone,
+            "linkedin": r.researcher_linkedin,
+            "title": r.job_title,
+            "previous_title": r.previous_job_title,
+            "company": r.organisation_name,
+            "company_city": r.organisation_city,
+            "company_state": r.organisation_state,
+            "company_country": r.organisation_country,
+            "company_type": ", ".join(r.organisation_category_group or []),
+            "company_start": r.organisation_start_date,
+            "job_start": r.job_start_date,
+            "relevance": round(r.relevance_score, 4),
+            "total_publications": r.researchers_total_publications,
+            "total_clinical_trials": r.researchers_total_clinical_trials,
+            "total_tradeshows": r.researchers_total_trade_show_sessions,
+            "total_funding_projects": r.researchers_total_funded_projects,
+            "h_index_3yr": round(r.three_year_h_index_average, 1),
+            "h_index_alltime": round(r.all_time_h_index_average, 1),
+            "sjr_3yr": round(r.three_year_sjr_average, 2),
+            "total_funding_alltime": r.all_time_total_funding,
+            "total_collaborators": r.total_collaborators_overall,
+            "first_author": r.total_first_named_author_count,
+            "last_author": r.total_last_named_author_count,
+            "top_mesh": (r.top_mesh_topics or [])[:5],
+            "journal_categories": (r.journal_top_categories or [])[:5],
+            "most_recent": r.most_recent_date,
+            "matches_this_query": r.total_matches,
+            "recent_publications": [
+                {
+                    "title": p.article_title,
+                    "journal": p.journal_title,
+                    "date": p.date,
+                    "cited": p.cited,
+                    "impact_factor": p.journal_impact_factor,
+                    "collaborators": p.total_collaborators,
+                }
+                for p in (r.publications or [])[:5]
+            ],
+            "recent_posters": [
+                {
+                    "title": p.title,
+                    "show": p.show,
+                    "date": p.date,
+                    "session": p.session_type,
+                    "city": p.city,
+                }
+                for p in (r.posters or [])[:3]
+            ],
+            "clinical_trials": [
+                {
+                    "nct_id": t.nct_id,
+                    "title": t.title,
+                    "phase": t.phase,
+                    "status": t.overall_status,
+                    "sponsor": t.lead_sponsor,
+                    "date": t.date,
+                }
+                for t in (r.clinical_trials or [])[:5]
+            ],
+        }
+        for r in results
+    ]
+
+    # Cache results for future queries
+    save_to_cache(key, researcher_dicts)
+
+    return {
+        "ok": True,
+        "keyword": keyword,
+        "categories": categories or "all",
+        "total_results": resp.total_results,
+        "has_more": resp.has_more,
+        "page": from_offset // count if count else 0,
+        "count": len(results),
+        "researchers": researcher_dicts,
+        "visualisations": resp.visualisations if from_offset == 0 else None,
+        "source": "live",
+        "cache_hint": "Fresh from SciLeads — cached locally for 24h",
+    }
+
+
+@app.get("/api/scilead/kols")
+async def scilead_kols(
+    disease: str = "",
+    min_h_index: float = 20.0,
+    min_publications: int = 20,
+    count: int = 30,
+    user=Depends(get_current_user),
+):
+    """Find Key Opinion Leaders (KOLs) in a disease area.
+
+    Filters for academics with strong publication records and high H-index.
+    """
+    if not disease:
+        raise HTTPException(status_code=400, detail="disease parameter required (e.g., ?disease=oncology)")
+
+    client = await _get_scilead_client(user)
+    kols = await client.search_kols(
+        disease_area=disease,
+        min_h_index=min_h_index,
+        min_publications=min_publications,
+        count=200,
+    )
+
+    return {
+        "ok": True,
+        "disease": disease,
+        "criteria": {"min_h_index": min_h_index, "min_publications": min_publications},
+        "count": len(kols[:count]),
+        "total_found": len(kols),
+        "kols": [
+            {
+                "id": r.researcher_id,
+                "name": f"{r.researcher_first_name} {r.researcher_last_name}",
+                "email": r.researcher_email,
+                "email_quality": r.email_status_category,
+                "title": r.job_title,
+                "institution": r.organisation_name,
+                "country": r.organisation_country,
+                "h_index_3yr": round(r.three_year_h_index_average, 1),
+                "h_index_alltime": round(r.all_time_h_index_average, 1),
+                "sjr_3yr": round(r.three_year_sjr_average, 2),
+                "total_publications": r.researchers_total_publications,
+                "first_author": r.total_first_named_author_count,
+                "last_author": r.total_last_named_author_count,
+                "total_clinical_trials": r.researchers_total_clinical_trials,
+                "top_mesh": (r.top_mesh_topics or [])[:5],
+                "most_recent_pub": r.most_recent_date,
+            }
+            for r in kols[:count]
+        ],
+    }
+
+
+@app.get("/api/scilead/industry-contacts")
+async def scilead_industry_contacts(
+    company: str = "",
+    title_filter: str = "",
+    min_relevance: float = 0.0,
+    count: int = 30,
+    user=Depends(get_current_user),
+):
+    """Find industry decision-makers at a target company.
+
+    Args:
+        company:       Company name to search for (e.g., "Pfizer", "Roche")
+        title_filter:  Comma-separated job title keywords (VP, Director, etc.)
+        min_relevance: Minimum relevance score
+    """
+    if not company:
+        raise HTTPException(status_code=400, detail="company parameter required")
+
+    client = await _get_scilead_client(user)
+
+    title_keywords = None
+    if title_filter:
+        title_keywords = [t.strip() for t in title_filter.split(",") if t.strip()]
+
+    contacts = await client.search_industry_contacts(
+        org_name=company,
+        min_relevance=min_relevance,
+        decision_maker_titles=title_keywords,
+        count=200,
+    )
+
+    return {
+        "ok": True,
+        "company": company,
+        "count": len(contacts[:count]),
+        "total_found": len(contacts),
+        "contacts": [
+            {
+                "id": r.researcher_id,
+                "name": f"{r.researcher_first_name} {r.researcher_last_name}",
+                "email": r.researcher_email,
+                "email_quality": r.email_status_category,
+                "phone": r.researcher_phone,
+                "linkedin": r.researcher_linkedin,
+                "title": r.job_title,
+                "company": r.organisation_name,
+                "city": r.organisation_city,
+                "state": r.organisation_state,
+                "country": r.organisation_country,
+                "relevance": round(r.relevance_score, 4),
+                "publications": r.researchers_total_publications,
+                "trials": r.researchers_total_clinical_trials,
+                "h_index_3yr": round(r.three_year_h_index_average, 1),
+                "top_mesh": (r.top_mesh_topics or [])[:5],
+                "most_recent": r.most_recent_date,
+            }
+            for r in contacts[:count]
+        ],
+    }
+
+
+@app.get("/api/scilead/clinical-pis")
+async def scilead_clinical_pis(
+    keyword: str = "",
+    phase: str = "",
+    status: str = "Recruiting",
+    count: int = 30,
+    user=Depends(get_current_user),
+):
+    """Find PIs running clinical trials for a drug/disease/company.
+
+    Args:
+        keyword: Drug name, disease, or company
+        phase:   Trial phase filter (Phase 1, Phase 2, Phase 3)
+        status:  Trial status (Recruiting, Active, not recruiting, Completed)
+    """
+    if not keyword:
+        raise HTTPException(status_code=400, detail="keyword parameter required")
+
+    client = await _get_scilead_client(user)
+
+    pis = await client.search_clinical_trial_pis(
+        keyword=keyword,
+        phase=phase or None,
+        status=status or None,
+        count=200,
+    )
+
+    return {
+        "ok": True,
+        "keyword": keyword,
+        "phase": phase or "all",
+        "status": status or "all",
+        "count": len(pis[:count]),
+        "total_found": len(pis),
+        "pis": [
+            {
+                "id": r.researcher_id,
+                "name": f"{r.researcher_first_name} {r.researcher_last_name}",
+                "email": r.researcher_email,
+                "email_quality": r.email_status_category,
+                "title": r.job_title,
+                "institution": r.organisation_name,
+                "country": r.organisation_country,
+                "total_trials": r.researchers_total_clinical_trials,
+                "trial_count_this_query": len(r.clinical_trials),
+                "h_index_3yr": round(r.three_year_h_index_average, 1),
+                "recent_trials": [
+                    {
+                        "nct_id": t.nct_id,
+                        "title": t.title,
+                        "phase": t.phase,
+                        "status": t.overall_status,
+                        "sponsor": t.lead_sponsor,
+                        "date": t.date,
+                    }
+                    for t in (r.clinical_trials or [])[:5]
+                ],
+            }
+            for r in pis[:count]
+        ],
+    }
+
+
+@app.post("/api/scilead/bd-leads")
+async def scilead_bd_leads(
+    services: str = "",
+    min_email_quality: str = "SafeToSend",
+    user=Depends(get_current_user),
+):
+    """Generate BD leads from SciLeads — industry decision-makers with active programs.
+
+    Args:
+        services:          Comma-separated CRO services to search for
+        min_email_quality: Minimum email status (SafeToSend, Uncertain)
+    """
+    client = await _get_scilead_client(user)
+
+    service_list = None
+    if services:
+        service_list = [s.strip() for s in services.split(",") if s.strip()]
+
+    leads = await client.generate_bd_leads(
+        services=service_list,
+        min_email_quality=min_email_quality,
+    )
+
+    # Tally by email quality
+    quality_tally = {}
+    for l in leads:
+        q = l.get("email_quality", "Unknown")
+        quality_tally[q] = quality_tally.get(q, 0) + 1
+
+    return {
+        "ok": True,
+        "services_searched": service_list or ["DMPK", "Bioanalysis", "Toxicology", "CMC"],
+        "total": len(leads),
+        "email_quality_breakdown": quality_tally,
+        "leads": leads[:50],
+    }
+
+
+@app.get("/api/scilead/cache-stats")
+async def scilead_cache_stats(user=Depends(get_current_user)):
+    """SciLeads cache statistics — how many results are cached locally."""
+    from services.scileads_cache import get_cache_stats
+    return {"ok": True, **get_cache_stats()}
+
+
+@app.post("/api/scilead/clear-cache")
+async def scilead_clear_cache(user=Depends(get_current_user)):
+    """Clear all cached SciLeads data."""
+    from services.scileads_cache import _get_conn
+    conn = _get_conn()
+    conn.execute("DELETE FROM scileads_cache")
+    conn.commit()
+    conn.close()
+    return {"ok": True, "message": "SciLeads cache cleared"}
+
+
 @app.get("/api/crunchbase/search")
 async def search_crunchbase(
     keyword: str = "",
@@ -355,21 +854,59 @@ async def search_crunchbase(
     limit: int = 20,
     user=Depends(get_current_user),
 ):
-    """Search Crunchbase for biotech companies."""
+    """Search for biotech companies — tries SciLead first, then Crunchbase."""
     conn = get_db()
-    row = conn.execute("SELECT crunchbase_key FROM settings WHERE user_id = ?", (user["id"],)).fetchone()
+    settings = conn.execute("SELECT crunchbase_key, scilead_token FROM settings WHERE user_id = ?", (user["id"],)).fetchone()
     conn.close()
-    if not row or not row["crunchbase_key"]:
-        raise HTTPException(status_code=400, detail="Crunchbase API key not configured. Add it in Settings.")
+
+    # ── Try SciLead first if token configured ──────────────────────────────
+    if settings and settings["scilead_token"]:
+        try:
+            from services.scilead_client import SciLeadClient
+            client = SciLeadClient(token=settings["scilead_token"])
+            resp = await client.search_researchers(keyword=keyword, count=limit)
+            if resp.grouped_results:
+                return {
+                    "ok": True,
+                    "source": "SciLead",
+                    "count": len(resp.grouped_results),
+                    "total_available": resp.total_results,
+                    "researchers": [
+                        {
+                            "name": f"{r.researcher_first_name} {r.researcher_last_name}",
+                            "id": r.researcher_id,
+                            "email": r.researcher_email,
+                            "email_quality": r.email_status_category,
+                            "title": r.job_title,
+                            "company": r.organisation_name,
+                            "country": r.organisation_country,
+                            "state": r.organisation_state,
+                            "company_type": ", ".join(r.organisation_category_group or []),
+                            "relevance": round(r.relevance_score, 3),
+                            "publications": r.researchers_total_publications,
+                            "clinical_trials": r.researchers_total_clinical_trials,
+                            "h_index_3yr": round(r.three_year_h_index_average, 1),
+                            "top_mesh": (r.top_mesh_topics or [])[:5],
+                            "most_recent": r.most_recent_date,
+                        } for r in resp.grouped_results
+                    ]
+                }
+        except Exception as e:
+            print(f"[Search] SciLead failed: {e}")
+
+    # ── Fallback to Crunchbase ───────────────────────────────────────
+    if not settings or not settings["crunchbase_key"]:
+        raise HTTPException(status_code=400, detail="No SciLead or Crunchbase credentials configured.")
+    
     try:
         from services.crunchbase_client import CrunchbaseClient
-        client = CrunchbaseClient(api_key=row["crunchbase_key"])
+        client = CrunchbaseClient(api_key=settings["crunchbase_key"])
         locations = None
         if state:
             state_map = {"MA":"Massachusetts","CA":"California","NJ":"New Jersey","NC":"North Carolina","TX":"Texas","PA":"Pennsylvania","NY":"New York","MD":"Maryland","IL":"Illinois","WA":"Washington","CO":"Colorado","FL":"Florida","GA":"Georgia","VA":"Virginia","MN":"Minnesota"}
             locations = [state_map.get(state, state)]
         companies = client.search_companies(keyword=keyword, locations=locations, funding_stage=funding_stage, limit=limit)
-        return {"ok":True,"count":len(companies),"companies":[{"name":c.name,"permalink":c.permalink,"description":c.description[:150] if c.description else "","state":c.state,"city":c.city,"funding_stage":c.funding_stage,"total_funding":c.total_funding_usd,"total_funding_display":_fmt_usd2(c.total_funding_usd),"website":c.website,"founded":c.founded_on} for c in companies]}
+        return {"ok":True,"source": "Crunchbase", "count":len(companies),"companies":[{"name":c.name,"permalink":c.permalink,"description":c.description[:150] if c.description else "","state":c.state,"city":c.city,"funding_stage":c.funding_stage,"total_funding":c.total_funding_usd,"total_funding_display":_fmt_usd2(c.total_funding_usd),"website":c.website,"founded":c.founded_on} for c in companies]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -398,15 +935,28 @@ async def get_crunchbase_company(permalink: str, user=Depends(get_current_user))
 
 @app.get("/api/crunchbase/recently-funded")
 async def get_recently_funded(days: int = 90, state: str = "", limit: int = 20, user=Depends(get_current_user)):
-    """Get recently funded biotech companies."""
+    """Get recently funded biotech companies — tries SciLead first, then Crunchbase."""
     conn = get_db()
-    row = conn.execute("SELECT crunchbase_key FROM settings WHERE user_id = ?", (user["id"],)).fetchone()
+    settings = conn.execute("SELECT crunchbase_key, scilead_token FROM settings WHERE user_id = ?", (user["id"],)).fetchone()
     conn.close()
-    if not row or not row["crunchbase_key"]:
-        raise HTTPException(status_code=400, detail="Crunchbase API key not configured.")
+
+    # ── Try SciLead ──────────────────────────────────────────────────
+    if settings and settings["scilead_token"]:
+        try:
+            from services.scilead_client import SciLeadClient
+            client = SciLeadClient(token=settings["scilead_token"])
+            leads = await client.generate_bd_leads()
+            if leads:
+                return {"ok": True, "count": len(leads), "leads": leads, "source": "scilead"}
+        except Exception as e:
+            print(f"[Recently Funded] SciLead failed: {e}")
+
+    # ── Fallback to Crunchbase ───────────────────────────────────────
+    if not settings or not settings["crunchbase_key"]:
+        raise HTTPException(status_code=400, detail="No SciLead or Crunchbase credentials configured.")
     try:
         from services.crunchbase_client import CrunchbaseClient
-        client = CrunchbaseClient(api_key=row["crunchbase_key"])
+        client = CrunchbaseClient(api_key=settings["crunchbase_key"])
         leads = client.discover_recently_funded(days_back=days, states=[state] if state else None, limit=limit)
         return {"ok": True, "count": len(leads), "leads": leads, "source": "crunchbase"}
     except Exception as e:
@@ -420,16 +970,45 @@ async def get_funding_companies(days: int = 120, state: str = "", limit: int = 3
     import sqlite3 as _sql
     conn = _sql.connect(str(DB_PATH))
     conn.row_factory = _sql.Row
-    # Try to find any user's crunchbase key (first configured one)
-    row = conn.execute("SELECT crunchbase_key FROM settings WHERE crunchbase_key IS NOT NULL AND crunchbase_key != '' LIMIT 1").fetchone()
+    # Try to find any user's credentials
+    row = conn.execute("SELECT crunchbase_key, scilead_token FROM settings WHERE (crunchbase_key IS NOT NULL AND crunchbase_key != '') OR (scilead_token IS NOT NULL AND scilead_token != '') LIMIT 1").fetchone()
     conn.close()
 
     crunchbase_key = row["crunchbase_key"] if row else None
+    scilead_token = row["scilead_token"] if row else None
     source = "sec_edgar"
     leads = []
 
-    if crunchbase_key:
-        # ── CRUNCHBASE MODE: rich, accurate data ──────────────────────────
+    if scilead_token:
+        # ── SCILEAD MODE: prioritised if configured ────────────────────
+        try:
+            from services.scilead_client import SciLeadClient
+            client = SciLeadClient(token=scilead_token)
+            sl_leads = await client.generate_bd_leads()
+            # Map to the unified funding format
+            for l in sl_leads:
+                leads.append({
+                    "name": l.get("company", l.get("name", "")),
+                    "state": l.get("state", ""),
+                    "stage": "Active Program",
+                    "focus": f"{l.get('title','')} | {'; '.join(l.get('signals',[]))}"[:120],
+                    "total_funding_display": "",
+                    "total_funding_usd": 0,
+                    "last_round_date": l.get("most_recent_date", ""),
+                    "investors": "",
+                    "url": l.get("linkedin", ""),
+                    "needs": _infer_services(l.get("top_mesh", [])),
+                    "source": "SciLeads",
+                    "source_quality": "high",
+                    "contact": l.get("email", ""),
+                    "contact_title": l.get("title", ""),
+                })
+            source = "scilead"
+        except Exception as e:
+            print(f"[Funding] SciLead failed: {e}")
+
+    if not leads and crunchbase_key:
+        # ── CRUNCHBASE MODE ──────────────────────────────────────────
         try:
             from services.crunchbase_client import CrunchbaseClient
             client = CrunchbaseClient(api_key=crunchbase_key)
@@ -1106,16 +1685,18 @@ if FRONTEND_DIR.exists():
 
 
 # ── Startup ───────────────────────────────────────────────────────────────────
-@app.on_event("startup")
-def startup():
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan — replaces deprecated @app.on_event."""
     init_db()
     print(f"[OK] Medicilon CRO Intelligence Platform v0.3.0")
     print(f"[OK] Database: {DB_PATH}")
     print(f"[OK] Frontend: {FRONTEND_DIR}")
     print(f"[OK] Ready — open http://localhost:8000")
 
-    # Sync existing aggregated_intelligence.json into DB immediately (fast — no network)
-    # This ensures the dashboard LinkedIn section has data right away, even after a DB reset.
+    # Sync existing aggregated_intelligence.json into DB immediately
     try:
         agg_path = BASE_DIR / "frontend" / "data" / "aggregated_intelligence.json"
         if agg_path.exists():
@@ -1130,10 +1711,23 @@ def startup():
     except Exception as e:
         print(f"[Aggregator] Cache sync skipped: {e}")
 
-    # Background: refresh BD intelligence from live sources (non-blocking)
+    # Background: refresh BD intelligence from live sources (skip if recent)
     import threading
     def _initial_aggregation():
         try:
+            # Skip if aggregated data is less than 4 hours old
+            agg_path = BASE_DIR / "frontend" / "data" / "aggregated_intelligence.json"
+            if agg_path.exists():
+                import json as _json
+                with open(agg_path, "r") as f:
+                    cached = _json.load(f)
+                gen = cached.get("metadata", {}).get("generated", "")
+                if gen:
+                    from datetime import datetime, timedelta
+                    gen_dt = datetime.fromisoformat(gen)
+                    if datetime.now() - gen_dt < timedelta(hours=4):
+                        print(f"[Aggregator] Data is fresh ({gen_dt.strftime('%H:%M')}) — skipping background refresh")
+                        return
             from services.linkedin_aggregator import aggregate_all, save_to_db, save_to_json
             print("[Aggregator] Running background BD intelligence refresh...")
             leads = aggregate_all(max_total=40)
@@ -1141,8 +1735,14 @@ def startup():
             save_to_json(leads)
             print(f"[Aggregator] Refresh complete: {len(leads)} signals, {inserted} new posts")
         except Exception as e:
-            print(f"[Aggregator] Background refresh skipped (network offline or deps missing): {e}")
+            print(f"[Aggregator] Background refresh skipped: {e}")
     threading.Thread(target=_initial_aggregation, daemon=True).start()
+
+    yield  # Server runs here
+    print("[OK] Server shutting down")
+
+
+app.router.lifespan_context = lifespan
 
 
 if __name__ == "__main__":

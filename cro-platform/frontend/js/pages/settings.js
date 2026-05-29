@@ -26,9 +26,32 @@ const PageSettings = {
             <div class="card-title">🔌 API Connections</div>
           </div>
 
+          <!-- SciLead Token (Bearer JWT) -->
+          <div class="form-group">
+            <label class="form-label">🔬 SciLeads Token (Primary Research Source)</label>
+            <div class="flex-center gap-8 mb-8">
+              <input type="password" class="form-input" placeholder="Paste Bearer token from DevTools" id="scilead-token" style="flex:1;font-family:monospace;font-size:11px" value="${this.settings.scilead_token || ''}">
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-sm" id="scilead-test-btn">🔍 Test Token</button>
+              <span id="scilead-status" style="font-size:11px;display:flex;align-items:center"></span>
+            </div>
+            <div class="form-hint" style="margin-top:8px;font-size:10px;line-height:1.6">
+              <strong>How to get your token:</strong><br>
+              1. Log into <a href="https://portal.scileads.com" target="_blank">portal.scileads.com</a><br>
+              2. Open DevTools (F12) → <strong>Network</strong> tab<br>
+              3. Perform any search → find the <code>researcher</code> request<br>
+              4. Click it → <strong>Headers</strong> → scroll to <strong>Request Headers</strong><br>
+              5. Copy the <code>Authorization: Bearer eyJh...</code> value (just the JWT, not "Bearer ")<br>
+              6. Paste here and save<br>
+              <br>
+              <em style="color:var(--text-dim)">Token lasts ~24h. Refresh this page to get a new one when it expires.</em>
+            </div>
+          </div>
+
           <!-- Crunchbase -->
           <div class="form-group">
-            <label class="form-label">Crunchbase API Key</label>
+            <label class="form-label">Crunchbase API Key (Funding Intel)</label>
             <div class="flex-center gap-8">
               <input type="password" class="form-input" placeholder="Enter your Crunchbase API key" id="crunchbase-key" style="flex:1" value="${this.settings.crunchbase_key || ''}">
               <button class="btn btn-sm" id="crunchbase-test-btn">Test</button>
@@ -122,6 +145,7 @@ const PageSettings = {
             ✅ FierceBiotech / Endpoints / BioPharma Dive (RSS)<br>
             ✅ Google News (biotech keyword monitoring)<br>
             ✅ PR Newswire (press releases)<br>
+            ${this.settings.scilead_token ? '✅ <strong>SciLeads</strong> (live researcher + publication data)' : '⬜ SciLeads (token needed)'}<br>
             ${this.settings.crunchbase_key ? '✅ Crunchbase (API connected)' : '⬜ Crunchbase (API key needed)'}
           </div>
         </div>
@@ -171,11 +195,13 @@ const PageSettings = {
       });
     }
 
-    // ── Save API Keys (Crunchbase + NewsAPI) ───────────────────────
+    // ── Save API Keys (SciLead Token + Crunchbase + NewsAPI) ────────
     const saveApiBtn = document.getElementById('save-api-keys-btn');
     if (saveApiBtn) {
       saveApiBtn.addEventListener('click', async () => {
         const body = {};
+        const slToken = document.getElementById('scilead-token');
+        if (slToken && slToken.value !== (this.settings.scilead_token || '')) body.scilead_token = slToken.value;
         const cbKey = document.getElementById('crunchbase-key');
         if (cbKey && cbKey.value !== (this.settings.crunchbase_key || '')) body.crunchbase_key = cbKey.value;
         const newsKey = document.getElementById('newsapi-key');
@@ -190,13 +216,60 @@ const PageSettings = {
           if (r.ok) {
             App.showToast('API keys saved', 'success');
             this.settings = { ...this.settings, ...body };
+            App.settings = { ...(App.settings || {}), ...body };
+            // Reload to update data source indicators
+            this.render(document.getElementById('main-content'));
           } else {
-            App.showToast('Save failed — login required', 'error');
+            const err = await r.text();
+            App.showToast('Save failed: ' + (err || 'login required'), 'error');
           }
         } catch (e) {
-          App.showToast('API keys saved locally', 'success');
-          this.settings = { ...this.settings, ...body };
+          App.showToast('Server unreachable', 'error');
         }
+      });
+    }
+
+    // ── SciLead Test (Bearer Token) ─────────────────────────────────
+    const scileadBtn = document.getElementById('scilead-test-btn');
+    if (scileadBtn) {
+      scileadBtn.addEventListener('click', async () => {
+        const tokenInput = document.getElementById('scilead-token');
+        const token = tokenInput?.value?.trim() || '';
+        if (!token) { App.showToast('Paste a Bearer token from DevTools first', 'error'); return; }
+        const status = document.getElementById('scilead-status');
+        if (status) status.innerHTML = '<span style="color:var(--gold)">🔍 Testing...</span>';
+        scileadBtn.disabled = true;
+        try {
+          const r = await App.apiFetch(`${App.apiBase}/scilead/test?token=${encodeURIComponent(token)}`);
+          const data = await r.json();
+          if (data.ok) {
+            if (status) status.innerHTML = `<span style="color:var(--leaf)">✅ ${data.message}</span>`;
+            // Auto-save token: try backend + always store in localStorage as fallback
+            localStorage.setItem('scilead_token', token);
+            if (status) status.innerHTML += '<br><span style="font-size:10px;color:var(--leaf)">Token saved — visit Dashboard</span>';
+            let savedBackend = false;
+            try {
+              const saveR = await App.apiFetch(`${App.apiBase}/settings`, {
+                method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ scilead_token: token }),
+              });
+              if (saveR.ok) {
+                this.settings = { ...this.settings, scilead_token: token };
+                App.settings = { ...(App.settings || {}), scilead_token: token };
+                savedBackend = true;
+              }
+            } catch (e2) { /* save best effort */ }
+            if (!savedBackend && !App.user) {
+              App.showToast('Login first to persist token → Dashboard still has access', 'info');
+            }
+            setTimeout(() => this.render(document.getElementById('main-content')), 300);
+          } else {
+            if (status) status.innerHTML = `<span style="color:var(--red)">❌ ${data.error || data.detail || 'Token rejected'}</span>`;
+          }
+        } catch (e) {
+          if (status) status.innerHTML = '<span style="color:var(--red)">❌ Backend not available</span>';
+        }
+        scileadBtn.disabled = false;
       });
     }
 
