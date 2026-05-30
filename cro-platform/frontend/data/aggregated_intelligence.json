@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-05-29T15:08:20.304216",
+    "generated": "2026-05-30T11:19:59.755179",
     "total": 40,
     "source": "multi-source_aggregation",
     "note": "No LinkedIn account required — public data aggregation"
@@ -329,20 +329,6 @@
       "author_company": ""
     },
     {
-      "source": "Yahoo Finance",
-      "title": "Preclinical CRO Market Size to Reach USD 11.54 Billion by 2033, Driven by Rising Outsourcing and Growth in Advanced Preclinical Models – SNS Insider",
-      "content": "Preclinical CRO Market Size to Reach USD 11.54 Billion by 2033, Driven by Rising Outsourcing and Growth in Advanced Preclinical Models – SNS InsiderYahoo Finance",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNcUlLZC1BRjJDeEtqWUpxX3FkX3oyRXdwRTNyaGMtQjFhT1hVZkdnb2JGSllCTTRMNXlrY3I4LW04X3FncmNGbC1GM1dHWWZocnFoeTdxMWJnRjBiZlNhWkNsaXo0VGhpZHJscXY2SG1iTlZZZzFtSkFZWVFuZEtzWU81NnE5QQ?oc=5",
-      "date": "2025-12-04T08:00:00",
-      "relevance_score": 36.0,
-      "matched_keywords": "outsourcing, preclinical",
-      "tier": "B",
-      "category": "cro_outsourcing",
-      "is_decision_maker": false,
-      "author_title": "",
-      "author_company": ""
-    },
-    {
       "source": "Fierce Biotech",
       "title": "Forging the Future: Why Strategic Outsourcing in Biologics is No Longer Optional, It's Essential for Success",
       "content": "Forging the Future: Why Strategic Outsourcing in Biologics is No Longer Optional, It's Essential for SuccessFierce Biotech",
@@ -380,6 +366,20 @@
       "matched_keywords": "antibody, partnership",
       "tier": "C",
       "category": "industry_feed",
+      "is_decision_maker": false,
+      "author_title": "",
+      "author_company": ""
+    },
+    {
+      "source": "PR Newswire",
+      "title": "Fontana Candle Co. Announces Major U.S. Manufacturing Expansion Scheduled for This Fall",
+      "content": "The company is expected to scale production to 24,000 candles per day, positioning itself as the largest 100% natural candle manufacturer in the nation. LANCASTER, Pa., May 30, 2026 /PRNewswire/ -- Fontana Candle Co., a family-owned natural candle brand, today announced a significant...",
+      "url": "https://www.prnewswire.com/news-releases/fontana-candle-co-announces-major-us-manufacturing-expansion-scheduled-for-this-fall-302786073.html",
+      "date": "2026-05-30T12:03:00",
+      "relevance_score": 28.0,
+      "matched_keywords": "manufacturing, announces",
+      "tier": "C",
+      "category": "press_release",
       "is_decision_maker": false,
       "author_title": "",
       "author_company": ""
@@ -455,20 +455,6 @@
       "author_company": ""
     },
     {
-      "source": "Straits Research",
-      "title": "Oncology Based Preclinical CRO Market Size, Share & Growth Report by 2034",
-      "content": "Oncology Based Preclinical CRO Market Size, Share & Growth Report by 2034Straits Research",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9vMGJlalo4NDJRbFpXaTlrdDRVallDTzZCY3FKSU94RHdJSHBSY001WjY4SzRZYjFvYlBYb015M2xkU3FvMjJvRFc2MFFVMG91eTIwZzNfc285SzhWZm9mVkFQZXRqbTladElXTThwMlFoSklXU1dFVG5ob2E?oc=5",
-      "date": "2025-12-02T08:00:00",
-      "relevance_score": 24.0,
-      "matched_keywords": "preclinical, oncology",
-      "tier": "C",
-      "category": "drug_development",
-      "is_decision_maker": false,
-      "author_title": "",
-      "author_company": ""
-    },
-    {
       "source": "Fierce Biotech",
       "title": "Immunology CRO RoukenBio pens pact with AVS Bio for more predictable antibody development",
       "content": "Immunology CRO RoukenBio pens pact with AVS Bio for more predictable antibody developmentFierce Biotech",
@@ -515,7 +501,7 @@
       "title": "Fierce Biotech Fundraising Tracker '26: Accro accrues $50M series C; Create corrals $122M",
       "content": "Fierce Biotech Fundraising Tracker '26: Accro accrues $50M series C; Create corrals $122MFierce Biotech",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPWnNIYUVmZkJnUzFkM3dqNFpZaFZRRUdTUWNxb2lMeDY4NklMMGJobEM0NDU3LUQ2ZmRhYjNNaTlRM3N4MzZHOExoV3BGQXk1a1dKNDFHaHlrT0RZX3pYd0g0OVhlNnZobEtEdzBtLTh3ZnRsSWFpbGNjRVVpU1VIMA?oc=5",
-      "date": "2026-05-19T07:00:00",
+      "date": "2026-01-07T15:54:03",
       "relevance_score": 20.0,
       "matched_keywords": "series c",
       "tier": "C",
@@ -562,6 +548,20 @@
       "matched_keywords": "partnership",
       "tier": "C",
       "category": "cro_outsourcing",
+      "is_decision_maker": false,
+      "author_title": "",
+      "author_company": ""
+    },
+    {
+      "source": "Endpoints News",
+      "title": "AI biotech Earendil announces huge $787M raise, is reportedly considering Hong Kong IPO",
+      "content": "AI biotech Earendil announces huge $787M raise, is reportedly considering Hong Kong IPOEndpoints News",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQX3YzWFYxM1RtSDZrRUxielBHazJhWV9CZEV5c285b2VhOGF5aVV4VVItNDhoVDRndnpMdE9jZFBJUEpoM0k2cWVzVV8zbzJzTUQ4bUluZmY3U25oUGdDYzdHRXZ3bTNaV29WN0p1VWZIem4xSVdFZFRMc3JTcHk5SGJxZG5FNWxSVldnZklRQ2dndnJjY1VxYzRySQ?oc=5",
+      "date": "2026-03-20T07:00:00",
+      "relevance_score": 16.0,
+      "matched_keywords": "announces",
+      "tier": "C",
+      "category": "funding_milestone",
       "is_decision_maker": false,
       "author_title": "",
       "author_company": ""

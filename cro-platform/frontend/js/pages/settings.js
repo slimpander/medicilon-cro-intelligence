@@ -26,8 +26,8 @@ const PageSettings = {
             <div class="card-title">🔌 API Connections</div>
           </div>
 
-          <!-- SciLead Token (Bearer JWT) -->
-          <div class="form-group">
+          <!-- SciLead Token (Bearer JWT) — Admin Only -->
+          <div class="form-group admin-only" style="display:none">
             <label class="form-label">🔬 SciLeads Token (Primary Research Source)</label>
             <div class="flex-center gap-8 mb-8">
               <input type="password" class="form-input" placeholder="Paste Bearer token from DevTools" id="scilead-token" style="flex:1;font-family:monospace;font-size:11px" value="${this.settings.scilead_token || ''}">
@@ -145,7 +145,7 @@ const PageSettings = {
             ✅ FierceBiotech / Endpoints / BioPharma Dive (RSS)<br>
             ✅ Google News (biotech keyword monitoring)<br>
             ✅ PR Newswire (press releases)<br>
-            ${this.settings.scilead_token ? '✅ <strong>SciLeads</strong> (live researcher + publication data)' : '⬜ SciLeads (token needed)'}<br>
+            ${App.isAdmin ? (this.settings.scilead_token ? '✅ <strong>SciLeads</strong> (live researcher + publication data)' : '⬜ SciLeads (token needed)') : ''}${App.isAdmin ? '<br>' : ''}
             ${this.settings.crunchbase_key ? '✅ Crunchbase (API connected)' : '⬜ Crunchbase (API key needed)'}
           </div>
         </div>

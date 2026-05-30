@@ -211,6 +211,13 @@ def get_current_user(request: Request) -> dict:
     return session["user"]
 
 
+def require_admin(user: dict) -> dict:
+    """Raise 403 if the user is not an admin. Returns user on success."""
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return user
+
+
 # ── Auth Routes ───────────────────────────────────────────────────────────────
 @app.post("/api/auth/login")
 def login(body: LoginRequest):
@@ -285,6 +292,7 @@ def get_settings(user=Depends(get_current_user)):
     if not row:
         # Return defaults
         return {
+            "user_role": user.get("role", "bd"),
             "crunchbase_key": None,
             "scilead_token": None,
             "newsapi_key": None,
@@ -298,7 +306,9 @@ def get_settings(user=Depends(get_current_user)):
             "refresh_interval": 43200,
         }
 
-    return dict(row)
+    result = dict(row)
+    result["user_role"] = user.get("role", "bd")
+    return result
 
 
 @app.put("/api/settings")
@@ -384,12 +394,13 @@ async def test_crunchbase(key: str, user=Depends(get_current_user)):
 
 
 @app.get("/api/scilead/test")
-async def test_scilead(token: str = ""):
-    """Test a SciLeads Bearer token.
+async def test_scilead(token: str = "", user=Depends(get_current_user)):
+    """Test a SciLeads Bearer token. Admin only.
     Token is obtained from browser DevTools:
       Application → Local Storage → portal.scileads.com
     or: Network tab → any request → Request Headers → Authorization: Bearer <token>
     """
+    require_admin(user)
     if not token:
         return {"ok": False, "error": "No token provided. Get it from DevTools → Network → any request → Authorization header."}
     try:
@@ -451,7 +462,8 @@ async def scilead_search(
     refresh: bool = False,
     user=Depends(get_current_user),
 ):
-    """Search SciLeads for researchers — cache-first for safety.
+    require_admin(user)
+    """Search SciLeads for researchers — cache-first for safety. Admin only.
 
     Uses local SQLite cache to avoid repeated SciLeads API calls.
     Cache TTL: 24h. Use ?refresh=true to force a fresh fetch.
@@ -621,7 +633,8 @@ async def scilead_kols(
     count: int = 30,
     user=Depends(get_current_user),
 ):
-    """Find Key Opinion Leaders (KOLs) in a disease area.
+    require_admin(user)
+    """Find Key Opinion Leaders (KOLs) in a disease area. Admin only.
 
     Filters for academics with strong publication records and high H-index.
     """
@@ -674,7 +687,8 @@ async def scilead_industry_contacts(
     count: int = 30,
     user=Depends(get_current_user),
 ):
-    """Find industry decision-makers at a target company.
+    require_admin(user)
+    """Find industry decision-makers at a target company. Admin only.
 
     Args:
         company:       Company name to search for (e.g., "Pfizer", "Roche")
@@ -735,7 +749,8 @@ async def scilead_clinical_pis(
     count: int = 30,
     user=Depends(get_current_user),
 ):
-    """Find PIs running clinical trials for a drug/disease/company.
+    require_admin(user)
+    """Find PIs running clinical trials for a drug/disease/company. Admin only.
 
     Args:
         keyword: Drug name, disease, or company
@@ -796,7 +811,8 @@ async def scilead_bd_leads(
     min_email_quality: str = "SafeToSend",
     user=Depends(get_current_user),
 ):
-    """Generate BD leads from SciLeads — industry decision-makers with active programs.
+    require_admin(user)
+    """Generate BD leads from SciLeads — industry decision-makers with active programs. Admin only.
 
     Args:
         services:          Comma-separated CRO services to search for
@@ -830,14 +846,16 @@ async def scilead_bd_leads(
 
 @app.get("/api/scilead/cache-stats")
 async def scilead_cache_stats(user=Depends(get_current_user)):
-    """SciLeads cache statistics — how many results are cached locally."""
+    require_admin(user)
+    """SciLeads cache statistics — how many results are cached locally. Admin only."""
     from services.scileads_cache import get_cache_stats
     return {"ok": True, **get_cache_stats()}
 
 
 @app.post("/api/scilead/clear-cache")
 async def scilead_clear_cache(user=Depends(get_current_user)):
-    """Clear all cached SciLeads data."""
+    require_admin(user)
+    """Clear all cached SciLeads data. Admin only."""
     from services.scileads_cache import _get_conn
     conn = _get_conn()
     conn.execute("DELETE FROM scileads_cache")
@@ -1677,6 +1695,178 @@ async def search_patents_api(q: str = "", source: str = "google", limit: int = 8
     result["expanded_query"] = search_q if search_q != q else None
     result["abbreviations_expanded"] = [a["meaning"] for a in abbreviations]
     return result
+
+
+# ── Analytics / Visualization Routes ──────────────────────────────────────────
+
+@app.get("/api/analytics/overview")
+async def analytics_overview():
+    """Aggregate analytics from all data sources for visualization dashboards.
+    Public endpoint — no authentication required.
+    Returns pre-computed distributions suitable for Chart.js rendering."""
+    import json as _json
+    from datetime import datetime, timedelta
+
+    data_dir = BASE_DIR / "frontend" / "data"
+
+    # ── 1. Intelligence Leads ────────────────────────────────────────────────
+    leads = []
+    intel_path = data_dir / "intelligence.json"
+    if intel_path.exists():
+        with open(intel_path, "r", encoding="utf-8") as f:
+            intel_data = _json.load(f)
+        leads = intel_data.get("leads", [])
+
+    leads_by_source = {}
+    leads_by_stage = {}
+    leads_by_state = {}
+    top_focus_areas = {}
+    for l in leads:
+        src = l.get("source", "Unknown")
+        leads_by_source[src] = leads_by_source.get(src, 0) + 1
+        stage = l.get("stage", "Unknown")
+        leads_by_stage[stage] = leads_by_stage.get(stage, 0) + 1
+        state = l.get("state", "")
+        if state:
+            leads_by_state[state] = leads_by_state.get(state, 0) + 1
+        focus = l.get("focus", "")
+        if focus:
+            # Extract first meaningful phrase
+            focus_short = focus.split("-")[0].split("(")[0].strip()[:60]
+            if focus_short:
+                top_focus_areas[focus_short] = top_focus_areas.get(focus_short, 0) + 1
+
+    # ── 2. Deals ─────────────────────────────────────────────────────────────
+    deals = []
+    deals_path = data_dir / "deals.json"
+    if deals_path.exists():
+        with open(deals_path, "r", encoding="utf-8") as f:
+            deals_data = _json.load(f)
+        deals = deals_data.get("deals", [])
+
+    deals_by_type = {}
+    deals_timeline = {}
+    for d in deals:
+        dtype = d.get("deal_type", "Other")
+        deals_by_type[dtype] = deals_by_type.get(dtype, 0) + 1
+        date_str = d.get("date", "")
+        if date_str:
+            month = date_str[:7]  # YYYY-MM
+            deals_timeline[month] = deals_timeline.get(month, 0) + 1
+
+    # ── 3. News ──────────────────────────────────────────────────────────────
+    news = []
+    news_path = data_dir / "news_data.json"
+    if news_path.exists():
+        with open(news_path, "r", encoding="utf-8") as f:
+            news_data = _json.load(f)
+        news = news_data.get("articles", [])
+
+    news_by_source = {}
+    for a in news:
+        src = a.get("source", "Unknown")
+        news_by_source[src] = news_by_source.get(src, 0) + 1
+
+    # ── 4. LinkedIn Posts (from DB) ──────────────────────────────────────────
+    conn = get_db()
+    linkedin_keywords = {}
+    linkedin_companies = {}
+    linkedin_timeline = {}
+    linkedin_total = 0
+    try:
+        rows = conn.execute(
+            "SELECT matched_keywords, author_company, post_date FROM linkedin_posts"
+        ).fetchall()
+        linkedin_total = len(rows)
+        for row in rows:
+            kws = row["matched_keywords"] or ""
+            for kw in kws.split(","):
+                kw = kw.strip()
+                if kw:
+                    linkedin_keywords[kw] = linkedin_keywords.get(kw, 0) + 1
+            comp = row["author_company"]
+            if comp:
+                linkedin_companies[comp] = linkedin_companies.get(comp, 0) + 1
+            date_str = row["post_date"] or ""
+            if date_str:
+                day = date_str[:10]
+                linkedin_timeline[day] = linkedin_timeline.get(day, 0) + 1
+    except Exception:
+        pass
+
+    # LinkedIn Contacts
+    linkedin_contact_titles = {}
+    linkedin_contact_companies = {}
+    try:
+        crows = conn.execute(
+            "SELECT title, company FROM linkedin_contacts"
+        ).fetchall()
+        for row in crows:
+            title = row["title"] or "Unknown"
+            # Categorize titles
+            cat = "Other"
+            t = title.lower()
+            if any(k in t for k in ["vp", "svp", "evp", "chief", "president", "head"]):
+                cat = "VP / C-Suite"
+            elif any(k in t for k in ["director", "sr director", "senior director"]):
+                cat = "Director"
+            elif any(k in t for k in ["manager", "lead", "supervisor"]):
+                cat = "Manager"
+            elif any(k in t for k in ["scientist", "researcher", "investigator", "fellow"]):
+                cat = "Scientist / R&D"
+            elif any(k in t for k in ["bd", "business development", "alliance", "partnering"]):
+                cat = "BD / Alliance"
+            linkedin_contact_titles[cat] = linkedin_contact_titles.get(cat, 0) + 1
+            comp = row["company"]
+            if comp:
+                linkedin_contact_companies[comp] = linkedin_contact_companies.get(comp, 0) + 1
+    except Exception:
+        pass
+
+    # ── 5. CRO Service Categories ────────────────────────────────────────────
+    service_demand = {}
+    for l in leads:
+        needs = l.get("needs", [])
+        for n in needs:
+            service_demand[n] = service_demand.get(n, 0) + 1
+
+    # SciLeads stats (admin-only — not included in public endpoint)
+    scileads_stats = None
+
+    conn.close()
+
+    # ── Assemble Response ────────────────────────────────────────────────────
+    return {
+        "ok": True,
+        "generated": datetime.now().isoformat(),
+        "totals": {
+            "leads": len(leads),
+            "deals": len(deals),
+            "news_articles": len(news),
+            "linkedin_posts": linkedin_total,
+        },
+        "leads": {
+            "by_source": dict(sorted(leads_by_source.items(), key=lambda x: -x[1])),
+            "by_stage": dict(sorted(leads_by_stage.items(), key=lambda x: -x[1])),
+            "by_state": dict(sorted(leads_by_state.items(), key=lambda x: -x[1])[:15]),
+            "top_focus_areas": dict(sorted(top_focus_areas.items(), key=lambda x: -x[1])[:12]),
+        },
+        "deals": {
+            "by_type": deals_by_type,
+            "timeline": dict(sorted(deals_timeline.items())),
+        },
+        "news": {
+            "by_source": dict(sorted(news_by_source.items(), key=lambda x: -x[1])),
+        },
+        "linkedin": {
+            "top_keywords": dict(sorted(linkedin_keywords.items(), key=lambda x: -x[1])[:15]),
+            "top_companies": dict(sorted(linkedin_companies.items(), key=lambda x: -x[1])[:10]),
+            "timeline": dict(sorted(linkedin_timeline.items())[-30:]),
+            "contact_titles": linkedin_contact_titles,
+        },
+        "service_demand": dict(sorted(service_demand.items(), key=lambda x: -x[1])[:10]),
+        "scileads": scileads_stats,
+    }
 
 
 # ── Static Files (Frontend) ───────────────────────────────────────────────────

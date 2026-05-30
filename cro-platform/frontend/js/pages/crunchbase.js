@@ -11,6 +11,11 @@ const PageCrunchbase = {
   scileadsTotal: 0,
 
   async render(container) {
+    // Admin-only: redirect if not admin
+    if (!App.isAdmin) {
+      container.innerHTML = '<div class="empty-state" style="padding:60px"><div class="empty-state-icon">🔒</div><div class="empty-state-title">Admin Access Required</div><div class="empty-state-desc">SciLeads research tools are restricted to admin users.</div></div>';
+      return;
+    }
     // Check SciLeads token status
     this._checkToken();
 
@@ -225,17 +230,6 @@ const PageCrunchbase = {
     this.setupListeners();
     this._updateStatusBadge();
     this._updateBanner();
-
-    // If SciLeads is connected and leaderboard is empty, auto-populate
-    if (this._hasToken()) {
-      setTimeout(() => {
-        const lbResults = document.getElementById('cb-lb-results');
-        if (lbResults && lbResults.querySelector('.empty-state') && !lbResults.querySelector('.kpi-card')) {
-          document.getElementById('cb-lb-search').value = 'biotech funding CRO';
-          this._doLeaderboard();
-        }
-      }, 800);
-    }
 
     // Enter key for search
     document.getElementById('cb-sl-search')?.addEventListener('keydown', e => {

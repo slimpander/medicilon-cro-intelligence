@@ -12,6 +12,7 @@ const PageDashboard = {
           <div class="page-title">BD Command Center</div>
           <div class="page-subtitle">News · Patents · LinkedIn · Company Updates</div>
         </div>
+        <button class="btn btn-primary" id="dash-report-btn" title="Generate daily intelligence report">📋 Daily Report</button>
       </div>
 
       <!-- ═══ SECTION 1: NEWS FEED ═══ -->
@@ -84,7 +85,7 @@ const PageDashboard = {
       </div>
 
       <!-- ═══ SECTION 4a: SCILEADS RESEARCH ═══ -->
-      <div class="card mb-16">
+      <div class="card mb-16 admin-only" style="display:none">
         <div class="card-header">
           <div class="card-title">🔬 SciLeads — Top Researchers</div>
           <span style="font-size:10px;color:var(--text-dim)" id="dash-scileads-badge"></span>
@@ -122,10 +123,13 @@ const PageDashboard = {
     await this.renderNews();
     await this.renderLinkedIn();
     await this.renderRecommendations();
-    await this.renderSciLeads();
+    if (App.isAdmin) await this.renderSciLeads();
     await this.renderCrunchbase();
     await this.renderPitchBook();
     this.setupPatentSearch();
+
+    // Wire Daily Report button
+    document.getElementById('dash-report-btn')?.addEventListener('click', () => this.generateDailyReport());
   },
 
   // ═══ NEWS ════════════════════════════════════════════════════════
@@ -434,16 +438,32 @@ const PageDashboard = {
   },
 
   // ═══ MEDICILON MOVEMENTS ═════════════════════════════════════════
-  // ═══ SCILEADS RESEARCH ════════════════════════════════════════
+  // SciLeads research — admin-only, OFF by default (explicit connect required)
   async renderSciLeads() {
     const el = document.getElementById('dash-scileads-list');
     const badge = document.getElementById('dash-scileads-badge');
     if (!el) return;
 
-    // Check if token is configured (App.settings, localStorage, or fresh fetch)
+    el.innerHTML = `<div class="empty-state" style="padding:20px">
+      <div class="empty-state-icon">🔬</div>
+      <div class="empty-state-title">SciLeads — Offline</div>
+      <div class="empty-state-desc">Connection is off by default. Click below to fetch researcher data.</div>
+      <button class="btn btn-sm btn-primary mt-8" id="dash-scileads-connect-btn">🔌 Connect SciLeads</button>
+    </div>`;
+    if (badge) badge.innerHTML = '<span style="color:var(--text-dim)">⬤ Offline</span>';
+
+    // Wire connect button
+    document.getElementById('dash-scileads-connect-btn')?.addEventListener('click', () => this._doSciLeadsFetch());
+  },
+
+  async _doSciLeadsFetch() {
+    const el = document.getElementById('dash-scileads-list');
+    const badge = document.getElementById('dash-scileads-badge');
+    if (!el) return;
+
+    // Check if token is configured
     let hasToken = App.settings?.scilead_token || localStorage.getItem('scilead_token');
-    
-    // If no token yet, try refreshing from backend (user may have just saved it)
+
     if (!hasToken && App.user) {
       try {
         const sr = await App.apiFetch(`${App.apiBase}/settings`);
@@ -457,18 +477,19 @@ const PageDashboard = {
     if (!hasToken) {
       el.innerHTML = `<div class="empty-state" style="padding:20px">
         <div class="empty-state-icon">🔬</div>
-        <div class="empty-state-title">SciLeads Not Connected</div>
-        <div class="empty-state-desc">Paste your Bearer token in Settings to see live researcher data</div>
+        <div class="empty-state-title">SciLeads Not Configured</div>
+        <div class="empty-state-desc">Paste your Bearer token in Settings to enable researcher data</div>
         <button class="btn btn-sm btn-primary mt-8" onclick="App.navigate('settings')">⚙️ Configure SciLeads →</button>
+        <button class="btn btn-sm mt-4" onclick="PageDashboard._backToOffline()">← Back to offline</button>
       </div>`;
+      if (badge) badge.innerHTML = '<span style="color:var(--text-dim)">⬤ Not configured</span>';
       return;
     }
 
-    if (badge) badge.innerHTML = '<span style="color:var(--leaf)">● Connected</span>';
+    el.innerHTML = '<div class="empty-state" style="padding:20px"><div class="loader-spinner"></div><div class="empty-state-desc">Connecting to SciLeads...</div></div>';
+    if (badge) badge.innerHTML = '<span style="color:var(--gold)">● Connecting...</span>';
 
     try {
-      // Search for industry contacts + KOLs with a meaningful keyword
-      // Use a broad term that returns representative results across categories
       const searchTerms = ['biotech', 'oncology', 'clinical trial', 'drug development', 'CRO'];
       const kw = searchTerms[Math.floor(Math.random() * searchTerms.length)];
       const r = await App.apiFetch(`${App.apiBase}/scilead/search?keyword=${encodeURIComponent(kw)}&count=20&categories=Publications,ClinicalTrials,Funding,Tradeshows`);
@@ -479,8 +500,9 @@ const PageDashboard = {
             <div class="empty-state-title">Token Expired</div>
             <div class="empty-state-desc">Your SciLeads token has expired. Get a new one from DevTools → Network.</div>
             <button class="btn btn-sm btn-primary mt-8" onclick="App.navigate('settings')">⚙️ Update Token →</button>
+            <button class="btn btn-sm mt-4" onclick="PageDashboard._backToOffline()">← Back to offline</button>
           </div>`;
-          if (badge) badge.innerHTML = '<span style="color:var(--red)">● Expired</span>';
+          if (badge) badge.innerHTML = '<span style="color:var(--red)">⬤ Expired</span>';
         }
         throw new Error('API error');
       }
@@ -490,7 +512,6 @@ const PageDashboard = {
 
       if (!researchers.length) throw new Error('No data');
 
-      // Find the most interesting ones: industry contacts + high h-index academics
       const industry = researchers.filter(r =>
         r.company_type?.includes('Industry') || r.company?.match(/bms|pfizer|novartis|roche|merck|astrazeneca|gsk|sanofi|jnj|abbvie|gilead|amgen|regeneron|lilly/i)
       ).slice(0, 3);
@@ -573,12 +594,27 @@ const PageDashboard = {
       console.log('[Dashboard] SciLeads:', e.message);
       el.innerHTML = `<div class="empty-state" style="padding:20px">
         <div class="empty-state-icon">📡</div>
-        <div class="empty-state-title">SciLeads Offline</div>
-        <div class="empty-state-desc">Backend server may be offline or token may need refreshing</div>
-        ${hasToken ? `<span style="font-size:10px;color:var(--text-dim)">${e.message}</span>` : ''}
+        <div class="empty-state-title">Connection Failed</div>
+        <div class="empty-state-desc">Backend may be offline or token may need refreshing.</div>
+        <span style="font-size:10px;color:var(--text-dim)">${e.message}</span>
+        <button class="btn btn-sm mt-8" onclick="PageDashboard._backToOffline()">← Back to offline</button>
       </div>`;
-      if (badge) badge.innerHTML = '<span style="color:var(--red)">● Offline</span>';
+      if (badge) badge.innerHTML = '<span style="color:var(--red)">⬤ Error</span>';
     }
+  },
+
+  _backToOffline() {
+    const el = document.getElementById('dash-scileads-list');
+    const badge = document.getElementById('dash-scileads-badge');
+    if (!el) return;
+    el.innerHTML = `<div class="empty-state" style="padding:20px">
+      <div class="empty-state-icon">🔬</div>
+      <div class="empty-state-title">SciLeads — Offline</div>
+      <div class="empty-state-desc">Connection is off by default. Click below to fetch researcher data.</div>
+      <button class="btn btn-sm btn-primary mt-8" id="dash-scileads-connect-btn">🔌 Connect SciLeads</button>
+    </div>`;
+    if (badge) badge.innerHTML = '<span style="color:var(--text-dim)">⬤ Offline</span>';
+    document.getElementById('dash-scileads-connect-btn')?.addEventListener('click', () => this._doSciLeadsFetch());
   },
 
   // ═══ CRUNCHBASE HEADLINES ═══════════════════════════════════════════
@@ -715,5 +751,304 @@ const PageDashboard = {
         </div>
       `;
     }
+  },
+
+  // ═══ DAILY REPORT ═══════════════════════════════════════════════
+  async generateDailyReport() {
+    const overlay = document.createElement('div');
+    overlay.className = 'report-overlay';
+    overlay.id = 'report-overlay';
+    overlay.innerHTML = `<div class="report-modal"><div class="report-header" style="text-align:center;padding:40px 28px 24px">
+      <div class="loader-spinner" style="margin:0 auto"></div>
+      <div style="margin-top:16px;font-size:13px;color:var(--text-dim)">Generating intelligence report...</div>
+    </div></div>`;
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+    document.body.appendChild(overlay);
+
+    // Fetch all data sources in parallel
+    const [analytics, newsData, dealsData, croData, intelData] = await Promise.allSettled([
+      App.apiFetch(`${App.apiBase}/analytics/overview`).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('data/news_data.json').then(r => r.json()).catch(() => null),
+      fetch('data/deals.json').then(r => r.json()).catch(() => null),
+      fetch('data/cro_data.json').then(r => r.json()).catch(() => null),
+      fetch('data/intelligence.json').then(r => r.json()).catch(() => null),
+    ]);
+
+    const a = analytics.status === 'fulfilled' ? analytics.value : null;
+    const news = newsData.status === 'fulfilled' ? newsData.value : null;
+    const deals = dealsData.status === 'fulfilled' ? dealsData.value : null;
+    const cros = croData.status === 'fulfilled' ? croData.value : null;
+    const intel = intelData.status === 'fulfilled' ? intelData.value : null;
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+    // ── Helper: format tags ──────────────────────────────────────────
+    const tags = (entries, cls = '') => entries.map(([k, v]) =>
+      `<span class="rpt-tag ${cls}"><b>${k}</b>: ${v}</span>`).join('');
+    const hl = (icon, text, sub = '') =>
+      `<div class="report-highlight">${icon} <b>${text}</b>${sub ? `<br><span class="rpt-sub">${sub}</span>` : ''}</div>`;
+    const pct = (v, t) => t > 0 ? ((v / t) * 100).toFixed(1) + '%' : '0%';
+
+    // ── 1. EXECUTIVE SUMMARY ─────────────────────────────────────────
+    let summaryHTML = '';
+    if (a) {
+      const topSrc = Object.entries(a.leads?.by_source || {}).sort((a,b) => b[1]-a[1])[0];
+      const topStage = Object.entries(a.leads?.by_stage || {}).sort((a,b) => b[1]-a[1])[0];
+      const topSvc = Object.entries(a.service_demand || {}).sort((a,b) => b[1]-a[1])[0];
+      const topFocus = Object.entries(a.leads?.top_focus_areas || {}).sort((a,b) => b[1]-a[1])[0];
+      summaryHTML = `
+        <div class="report-stat-row">
+          <div class="report-stat"><div class="stat-value">${a.totals.leads}</div><div class="stat-label">Active Leads</div></div>
+          <div class="report-stat"><div class="stat-value">${a.totals.deals}</div><div class="stat-label">Tracked Deals</div></div>
+          <div class="report-stat"><div class="stat-value">${a.totals.news_articles}</div><div class="stat-label">News Articles</div></div>
+          <div class="report-stat"><div class="stat-value">${a.totals.linkedin_posts}</div><div class="stat-label">LinkedIn Signals</div></div>
+        </div>
+        <div class="report-analysis">
+          <p>Today's intelligence covers <b>${a.totals.leads} active leads</b> across ${Object.keys(a.leads?.by_source || {}).length} sources.
+          The primary lead source is <b>${topSrc ? topSrc[0] : 'N/A'}</b> (${topSrc ? topSrc[1] : 0} leads),
+          with <b>${topStage ? topStage[0] : 'N/A'}</b> being the most common stage.
+          Top CRO service demand is <b>${topSvc ? topSvc[0] : 'N/A'}</b> (${topSvc ? topSvc[1] : 0} requests).
+          ${topFocus ? `The leading therapeutic focus area is <b>${topFocus[0]}</b>.` : ''}</p>
+        </div>`;
+    }
+
+    // ── 2. LEAD INTELLIGENCE ─────────────────────────────────────────
+    let leadsHTML = '';
+    if (a) {
+      const bySrc = Object.entries(a.leads?.by_source || {});
+      const byStage = Object.entries(a.leads?.by_stage || {});
+      const byState = Object.entries(a.leads?.by_state || {});
+      const byFocus = Object.entries(a.leads?.top_focus_areas || {});
+
+      // Top leads from intel data
+      let topLeadsList = '';
+      if (intel?.leads) {
+        topLeadsList = intel.leads.slice(0, 6).map(l =>
+          hl('🎯', `${l.name || l.title || 'Lead'}`, `${l.source} · ${l.stage || 'N/A'} · ${l.focus || ''}${l.state ? ' · ' + l.state : ''}`)
+        ).join('');
+      }
+
+      // State distribution analysis
+      const topState = byState[0];
+      const hubStates = ['CA', 'MA', 'NJ', 'MD', 'NC', 'PA', 'NY', 'TX'];
+      const hubCount = byState.filter(([s]) => hubStates.includes(s)).reduce((sum, [,c]) => sum + c, 0);
+
+      leadsHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <div class="rpt-subtitle">Lead Sources</div>
+            ${bySrc.map(([k, v]) => `<div class="rpt-bar-row"><span class="rpt-bar-label">${k}</span><span class="rpt-bar-track"><span class="rpt-bar-fill" style="width:${(v/Math.max(...bySrc.map(x=>x[1])))*100}%;background:var(--primary)"></span></span><span class="rpt-bar-val">${v}</span></div>`).join('')}
+          </div>
+          <div>
+            <div class="rpt-subtitle">Lead Stages</div>
+            ${byStage.map(([k, v]) => `<div class="rpt-bar-row"><span class="rpt-bar-label">${k}</span><span class="rpt-bar-track"><span class="rpt-bar-fill" style="width:${(v/Math.max(...byStage.map(x=>x[1])))*100}%;background:var(--accent)"></span></span><span class="rpt-bar-val">${v}</span></div>`).join('')}
+          </div>
+        </div>
+        <div class="report-analysis">
+          <p>Geographic concentration: <b>${hubCount} leads (${pct(hubCount, a.totals.leads)})</b> are in major biotech hubs${topState ? `, led by <b>${topState[0]} (${topState[1]})</b>` : ''}.
+          ${byStage.find(([k]) => k.includes('Phase 1')) ? `Early-stage (Phase 1) trials represent a key opportunity for preclinical CRO services.` : ''}
+          ${byStage.find(([k]) => k.includes('Phase 2')) ? ` Phase 2 programs indicate active clinical development pipelines requiring bioanalytical and DMPK support.` : ''}</p>
+        </div>
+        ${topLeadsList ? `<div class="rpt-subtitle" style="margin-top:12px">Top Leads</div>${topLeadsList}` : ''}
+        ${byFocus.length ? `<div class="rpt-subtitle" style="margin-top:12px">Therapeutic Focus Areas</div>${byFocus.slice(0, 8).map(([k, v]) => hl('🔬', `${k}`, `${v} leads`)).join('')}` : ''}`;
+    }
+
+    // ── 3. SERVICE DEMAND ────────────────────────────────────────────
+    let svcHTML = '';
+    if (a?.service_demand) {
+      const svc = Object.entries(a.service_demand);
+      const maxSvc = Math.max(...svc.map(x => x[1]));
+      const top3 = svc.slice(0, 3).map(x => x[0]).join(', ');
+      svcHTML = `
+        ${svc.map(([k, v]) => `<div class="rpt-bar-row"><span class="rpt-bar-label">${k}</span><span class="rpt-bar-track"><span class="rpt-bar-fill" style="width:${(v/maxSvc)*100}%;background:var(--green)"></span></span><span class="rpt-bar-val">${v}</span></div>`).join('')}
+        <div class="report-analysis">
+          <p>The top 3 services in demand are <b>${top3}</b>. These align with Medicilon's core capabilities.
+          ${svc.find(([k]) => k.includes('DMPK')) ? `DMPK leads with ${svc.find(([k]) => k.includes('DMPK'))[1]} requests — this is the primary outsourcing driver across all therapeutic areas.` : ''}
+          ${svc.find(([k]) => k.includes('Bioanalysis')) ? ` Bioanalysis is the second-highest demand category, indicating strong need for LC-MS/MS and immunochemistry support.` : ''}
+          ${svc.find(([k]) => k.includes('Toxicology')) ? ` Toxicology demand suggests clients are advancing into IND-enabling studies.` : ''}</p>
+        </div>`;
+    }
+
+    // ── 4. DEALS & M&A ──────────────────────────────────────────────
+    let dealsHTML = '';
+    if (deals?.deals) {
+      const dl = deals.deals;
+      const byType = {};
+      dl.forEach(d => { const t = d.deal_type || 'Other'; byType[t] = (byType[t] || 0) + 1; });
+      const typeSummary = Object.entries(byType).map(([k, v]) => `${k} (${v})`).join(' · ');
+      dealsHTML = `
+        <div class="rpt-subtitle">Deal Breakdown: ${typeSummary}</div>
+        ${dl.map(d => {
+          const amt = d.amount ? ` · <b style="color:var(--accent)">${d.amount}</b>` : '';
+          return hl('💼', `${d.target}${amt}`, `${d.deal_type} · ${d.date} · ${(d.description || '').substring(0, 150)}`);
+        }).join('')}
+        <div class="report-analysis">
+          <p>${dl.length} deals tracked. ${dl.filter(d => d.deal_type === 'Funding').length} funding rounds indicate active capital flow in the biotech sector.
+          ${dl.find(d => d.deal_type === 'M&A') ? 'M&A activity signals consolidation — potential for new CRO partnerships as merged entities rationalize vendor lists.' : ''}
+          ${dl.find(d => d.deal_type === 'IPO') ? 'IPO activity suggests mature biotechs entering public markets, which typically accelerates outsourcing.' : ''}</p>
+        </div>`;
+    }
+
+    // ── 5. NEWS INTELLIGENCE ─────────────────────────────────────────
+    let newsHTML = '';
+    if (news?.articles) {
+      const articles = news.articles;
+      const bySource = {};
+      articles.forEach(a => { const s = a.source || 'Other'; bySource[s] = (bySource[s] || 0) + 1; });
+
+      // Group by source for analysis
+      const endpointsArticles = articles.filter(a => a.source === 'Endpoints News');
+      const fierceArticles = articles.filter(a => a.source?.includes('Fierce'));
+      const googleArticles = articles.filter(a => a.source?.includes('Google'));
+
+      newsHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          ${Object.entries(bySource).slice(0, 6).map(([k, v]) => `<div class="report-stat" style="padding:10px"><div class="stat-value" style="font-size:18px">${v}</div><div class="stat-label" style="font-size:9px">${k.replace('Google News - ', '')}</div></div>`).join('')}
+        </div>
+        ${articles.slice(0, 8).map(a => hl('📰', a.title, `${a.source} · ${a.date} · ${(a.summary || '').substring(0, 130)}`)).join('')}
+        <div class="report-analysis">
+          <p>${articles.length} articles from ${Object.keys(bySource).length} sources.
+          ${endpointsArticles.length ? `<b>Endpoints News</b> contributed ${endpointsArticles.length} articles — key industry publication for competitive intelligence.` : ''}
+          ${googleArticles.length ? ` ${googleArticles.length} articles from Google News monitoring cover competitor mentions and market movements.` : ''}
+          Key themes: CRO manufacturing partnerships, clinical trial milestones, and regulatory developments.</p>
+        </div>`;
+    }
+
+    // ── 6. LINKEDIN SIGNALS ──────────────────────────────────────────
+    let linkedinHTML = '';
+    if (a?.linkedin) {
+      const kw = Object.entries(a.linkedin.top_keywords || {});
+      const comp = Object.entries(a.linkedin.top_companies || {});
+      const titles = Object.entries(a.linkedin.contact_titles || {});
+      linkedinHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <div class="rpt-subtitle">Trending Keywords</div>
+            ${kw.length ? kw.map(([k, v]) => `<div class="rpt-bar-row"><span class="rpt-bar-label">${k}</span><span class="rpt-bar-track"><span class="rpt-bar-fill" style="width:${(v/Math.max(...kw.map(x=>x[1])))*100}%;background:var(--gold)"></span></span><span class="rpt-bar-val">${v}</span></div>`).join('') : '<div style="color:var(--text-dim);font-size:12px">No keyword data yet</div>'}
+          </div>
+          <div>
+            <div class="rpt-subtitle">Decision-Maker Titles</div>
+            ${titles.length ? titles.map(([k, v]) => `<div class="rpt-bar-row"><span class="rpt-bar-label">${k}</span><span class="rpt-bar-track"><span class="rpt-bar-fill" style="width:${(v/Math.max(...titles.map(x=>x[1])))*100}%;background:var(--purple)"></span></span><span class="rpt-bar-val">${v}</span></div>`).join('') : '<div style="color:var(--text-dim);font-size:12px">No contact data yet</div>'}
+          </div>
+        </div>
+        ${comp.length ? `<div class="rpt-subtitle" style="margin-top:12px">Top Companies Mentioned</div><div>${tags(comp.slice(0, 8), 'rpt-tag-amber')}</div>` : ''}
+        <div class="report-analysis">
+          <p>${a.totals.linkedin_posts} LinkedIn signals analyzed.
+          ${kw.length ? `Top keywords <b>${kw.slice(0,3).map(x=>x[0]).join(', ')}</b> indicate active BD conversations in the biotech ecosystem.` : ''}
+          ${titles.find(([k]) => k.includes('VP')) ? ` VP/C-suite presence suggests senior decision-makers are active on the platform.` : ''}</p>
+        </div>`;
+    }
+
+    // ── 7. COMPETITIVE LANDSCAPE ─────────────────────────────────────
+    let compHTML = '';
+    if (cros?.cros) {
+      const topCros = cros.cros.slice(0, 5);
+      const svcCats = cros.service_categories || [];
+      compHTML = `
+        <div class="rpt-subtitle">Key Competitors (Top 5)</div>
+        ${topCros.map(c => hl('🏢', c.name || c.organization, `${c.location || ''} · ${(c.services || []).slice(0, 3).join(', ')}${c.headcount ? ' · ~' + c.headcount + ' employees' : ''}`)).join('')}
+        ${svcCats.length ? `<div class="rpt-subtitle" style="margin-top:12px">Service Categories Tracked</div><div>${svcCats.slice(0, 10).map(s => `<span class="rpt-tag">${s}</span>`).join('')}</div>` : ''}
+        <div class="report-analysis">
+          <p>The CRO competitive landscape includes ${cros.cros?.length || 'multiple'} tracked organizations.
+          Key differentiators for Medicilon: integrated DMPK + bioanalysis + toxicology under one roof, competitive China-based pricing, and rapid turnaround for IND-enabling packages.</p>
+        </div>`;
+    }
+
+    // ── 8. RECOMMENDATIONS ───────────────────────────────────────────
+    const recs = [];
+    if (a) {
+      recs.push({ priority: 'high', text: `Review ${a.totals.leads} active intelligence leads — prioritize Phase 1 and Phase 2 trials in top biotech hubs (CA, MA)` });
+      if (a.totals.deals > 0) recs.push({ priority: 'high', text: `Monitor ${a.totals.deals} active deals for newly funded companies seeking CRO partners after capital raises` });
+      if (a.totals.linkedin_posts > 0) recs.push({ priority: 'medium', text: `Engage with ${a.totals.linkedin_posts} LinkedIn signals — follow companies and decision-makers showing active BD intent` });
+      recs.push({ priority: 'medium', text: 'DMPK and Bioanalysis are the top service demands — prepare capability decks and case studies for these areas' });
+      recs.push({ priority: 'medium', text: 'Track toxicology demand trends — high toxicology requests indicate clients are entering IND-enabling phases' });
+      recs.push({ priority: 'low', text: 'Set up Google News alerts for top competitors to stay ahead of partnership announcements' });
+      recs.push({ priority: 'low', text: 'Schedule weekly review of clinical trial registrations for new Phase 1 starts in oncology and immunology' });
+    }
+
+    // ── ASSEMBLE REPORT ──────────────────────────────────────────────
+    const modal = overlay.querySelector('.report-modal');
+    modal.innerHTML = `
+      <div class="report-header">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <h2 style="margin:0;font-size:22px;font-weight:700;letter-spacing:-0.02em">📋 Daily Intelligence Report</h2>
+            <div style="font-size:12px;color:var(--text-dim);margin-top:4px">${dateStr} · Generated at ${timeStr} · CONFIDENTIAL</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-sm btn-primary" onclick="window.print()">🖨️ Print</button>
+            <button class="btn btn-sm" onclick="document.getElementById('report-overlay').remove()">✕ Close</button>
+          </div>
+        </div>
+        <div style="height:1px;background:var(--border-soft);margin-top:20px"></div>
+      </div>
+      <div class="report-body">
+
+        <!-- 1. EXECUTIVE SUMMARY -->
+        <div class="report-section">
+          <div class="rpt-section-num">01</div>
+          <h3>📊 Executive Summary</h3>
+          ${summaryHTML || '<div class="report-analysis"><p>Analytics data unavailable. Ensure the backend is running at http://localhost:8000.</p></div>'}
+        </div>
+
+        <!-- 2. LEAD INTELLIGENCE -->
+        <div class="report-section">
+          <div class="rpt-section-num">02</div>
+          <h3>🎯 Lead Intelligence</h3>
+          ${leadsHTML || '<div class="report-analysis"><p>No lead data available.</p></div>'}
+        </div>
+
+        <!-- 3. SERVICE DEMAND -->
+        <div class="report-section">
+          <div class="rpt-section-num">03</div>
+          <h3>💊 CRO Service Demand Analysis</h3>
+          ${svcHTML || '<div class="report-analysis"><p>No service demand data available.</p></div>'}
+        </div>
+
+        <!-- 4. DEALS & M&A -->
+        <div class="report-section">
+          <div class="rpt-section-num">04</div>
+          <h3>💼 Deals & M&A Activity</h3>
+          ${dealsHTML || '<div class="report-analysis"><p>No deal data available.</p></div>'}
+        </div>
+
+        <!-- 5. NEWS INTELLIGENCE -->
+        <div class="report-section">
+          <div class="rpt-section-num">05</div>
+          <h3>📰 News Intelligence</h3>
+          ${newsHTML || '<div class="report-analysis"><p>No news data available.</p></div>'}
+        </div>
+
+        <!-- 6. LINKEDIN SIGNALS -->
+        <div class="report-section">
+          <div class="rpt-section-num">06</div>
+          <h3>🔗 LinkedIn Signal Intelligence</h3>
+          ${linkedinHTML || '<div class="report-analysis"><p>No LinkedIn data available. Run the aggregator to populate signals.</p></div>'}
+        </div>
+
+        <!-- 7. COMPETITIVE LANDSCAPE -->
+        <div class="report-section">
+          <div class="rpt-section-num">07</div>
+          <h3>🏢 Competitive Landscape</h3>
+          ${compHTML || '<div class="report-analysis"><p>CRO competitive data unavailable.</p></div>'}
+        </div>
+
+        <!-- 8. RECOMMENDATIONS -->
+        <div class="report-section" style="border-left:3px solid var(--primary);background:rgba(99,102,241,0.03)">
+          <div class="rpt-section-num" style="background:var(--primary);color:white">08</div>
+          <h3>💡 Recommended Actions</h3>
+          ${recs.map((r, i) => `<div class="report-highlight" style="border-left-color:${r.priority === 'high' ? 'var(--red)' : r.priority === 'medium' ? 'var(--gold)' : 'var(--text-dim)'}">
+            <span style="display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:${r.priority === 'high' ? 'rgba(239,68,68,0.15)' : r.priority === 'medium' ? 'rgba(251,191,36,0.15)' : 'rgba(113,113,122,0.15)'};border-radius:50%;font-size:10px;font-weight:700;margin-right:6px;color:${r.priority === 'high' ? 'var(--red)' : r.priority === 'medium' ? 'var(--gold)' : 'var(--text-dim)'}">${i + 1}</span>
+            ${r.text}
+          </div>`).join('')}
+        </div>
+
+        <div style="text-align:center;padding:16px;font-size:10px;color:var(--text-dim);border-top:1px solid var(--border-dim);margin-top:12px">
+          Generated by Medicilon CRO Intelligence Platform v0.3.0 · For internal use only · ${dateStr}
+        </div>
+      </div>
+    `;
   },
 };

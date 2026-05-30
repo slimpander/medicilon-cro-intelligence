@@ -14,6 +14,10 @@ const App = {
   notifications: [],
   apiBase: '/api',
 
+  get isAdmin() {
+    return this.user?.user?.role === 'admin' || this.settings?.user_role === 'admin';
+  },
+
   async init() {
     try {
       await this.loadData();
@@ -33,6 +37,7 @@ const App = {
           }
         } catch(e) { localStorage.removeItem('auth_token'); }
       }
+      this.updateAdminUI();
       this.setupNavigation();
       this.setupTopbar();
       this.navigate('dashboard');
@@ -99,6 +104,11 @@ const App = {
   },
 
   navigate(page, pushState = true) {
+    // Block non-admin access to SciLeads pages
+    if (page === 'crunchbase' && !this.isAdmin) {
+      this.showToast('SciLeads tools require admin access', 'error');
+      return;
+    }
     console.log('[Nav] navigate to:', page, 'current:', this.currentPage);
     if (this.currentPage === page && !pushState) return;
 
@@ -131,6 +141,7 @@ const App = {
       crunchbase: () => PageCrunchbase?.render(main),
       news:       () => PageNews?.render(main),
       settings:   () => PageSettings?.render(main),
+      analytics:  () => PageAnalytics?.render(main),
     };
 
     const fn = renderMap[page];
@@ -233,7 +244,8 @@ const App = {
       if (this.user.token) localStorage.setItem('auth_token', this.user.token);
       document.getElementById('user-name').textContent = this.user.username;
       this.showToast('Logged in', 'success');
-      this.loadSettings();
+      await this.loadSettings();
+      this.updateAdminUI();
       return true;
     } catch (e) {
       this.showToast('Login failed: ' + e.message, 'error');
@@ -257,7 +269,27 @@ const App = {
     document.getElementById('user-name').textContent = 'Not logged in';
     document.getElementById('user-dropdown').classList.add('hidden');
     this.showToast('Logged out', 'info');
+    this.updateAdminUI();
     this.navigate('dashboard');
+  },
+
+  updateAdminUI() {
+    const isAdmin = this.isAdmin;
+    document.querySelectorAll('.admin-only').forEach(el => {
+      el.style.display = isAdmin ? '' : 'none';
+    });
+    // Re-run current page's render to update any inline admin-gated content
+    if (this.currentPage === 'dashboard' && window.PageDashboard) {
+      window.PageDashboard.render();
+    }
+    if (this.currentPage === 'crunchbase') {
+      // If non-admin somehow on crunchbase page, redirect
+      if (!isAdmin) {
+        this.navigate('dashboard');
+      } else {
+        window.PageCrunchbase?.render();
+      }
+    }
   },
 
   async loadSettings() {

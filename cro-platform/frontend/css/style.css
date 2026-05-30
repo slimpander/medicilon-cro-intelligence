@@ -735,3 +735,271 @@ select { cursor: pointer; }
   font-weight: 600;
   border-bottom-color: var(--moss);
 }
+
+/* ── Analytics Page — Premium KPI Cards ──────────────────────────────────── */
+.kpi-card-premium {
+  position: relative;
+  text-align: center;
+  padding: 24px 16px 20px;
+  background: var(--surface1);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.kpi-card-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--kpi-glow, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+.kpi-card-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px var(--kpi-color, var(--border-soft));
+}
+.kpi-card-premium .kpi-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 2px 4px var(--kpi-glow, transparent));
+}
+.kpi-card-premium .kpi-value {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--kpi-color, var(--text));
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.kpi-card-premium .kpi-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Chart Card Accents ────────────────────────────────────────────────────── */
+.chart-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.chart-card:hover {
+  border-color: var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.chart-badge {
+  font-size: 10px;
+  color: var(--text-dim);
+  background: var(--surface2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Keyframe Animations ───────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ── Report Modal ─────────────────────────────────────────────────────────── */
+.report-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+}
+.report-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 820px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  animation: fadeInUp 0.3s ease;
+}
+.report-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, var(--surface) 60%, transparent);
+  padding: 24px 28px 0;
+}
+.report-body {
+  padding: 8px 28px 28px;
+}
+.report-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--surface1);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+}
+.report-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.report-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.report-stat {
+  text-align: center;
+  padding: 12px 8px;
+  background: var(--surface2);
+  border-radius: 10px;
+  border: 1px solid var(--border-dim);
+}
+.report-stat .stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--primary);
+}
+.report-stat .stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.report-highlight {
+  font-size: 12px;
+  color: var(--text-soft);
+  padding: 8px 12px;
+  background: rgba(99,102,241,0.08);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 8px;
+}
+.rpt-tag {
+  display: inline-block;
+  margin: 2px 4px;
+  padding: 2px 8px;
+  background: var(--surface2);
+  border-radius: 6px;
+  font-size: 11px;
+}
+.rpt-tag-cyan {
+  background: rgba(34,211,238,0.08);
+}
+.rpt-tag-amber {
+  background: rgba(251,191,36,0.08);
+}
+.rpt-sub {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+.rpt-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.rpt-section-num {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  background: var(--surface2);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.rpt-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.rpt-bar-label {
+  width: 120px;
+  font-size: 11px;
+  color: var(--text-soft);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+.rpt-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--surface2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.rpt-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+.rpt-bar-val {
+  width: 36px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: right;
+  flex-shrink: 0;
+}
+.report-analysis {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--surface2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.report-analysis p {
+  margin: 0;
+}
+.report-analysis b {
+  color: var(--text-soft);
+}
+.report-section {
+  position: relative;
+}
+@media print {
+  body * { visibility: hidden; }
+  .report-overlay, .report-overlay * { visibility: visible; }
+  .report-overlay { position: absolute; inset: 0; background: white; backdrop-filter: none; }
+  .report-modal { box-shadow: none; border: none; max-width: 100%; max-height: none; }
+}

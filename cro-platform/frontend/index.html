@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=12">
+<script src="js/vendor/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -60,6 +61,10 @@
           <span class="nav-icon">📊</span>
           <span class="nav-label">Dashboard</span>
         </a>
+        <a href="#" class="nav-item" data-nav="analytics">
+          <span class="nav-icon">📈</span>
+          <span class="nav-label">Analytics</span>
+        </a>
         <a href="#" class="nav-item" data-nav="linkedin">
           <span class="nav-icon">🔗</span>
           <span class="nav-label">BD Intel Feed</span>
@@ -68,7 +73,7 @@
           <span class="nav-icon">📊</span>
           <span class="nav-label">Deals & M&A</span>
         </a>
-        <a href="#" class="nav-item" data-nav="crunchbase">
+        <a href="#" class="nav-item admin-only" data-nav="crunchbase" style="display:none">
           <span class="nav-icon">💰</span>
           <span class="nav-label">Funding Intel</span>
         </a>
@@ -121,16 +126,17 @@
 
 <script src="js/vendor/d3.min.js"></script>
 <script src="js/vendor/topojson-client.min.js"></script>
-<script src="js/app.js?v=7"></script>
-<script src="js/pages/dashboard.js?v=7"></script>
+<script src="js/app.js?v=9"></script>
+<script src="js/pages/dashboard.js?v=11"></script>
 <script src="js/pages/map.js?v=3"></script>
 <script src="js/pages/leads.js?v=3"></script>
 <script src="js/pages/linkedin.js?v=4"></script>
 <script src="js/pages/cros.js?v=4"></script>
 <script src="js/pages/pitchbook.js?v=1"></script>
-<script src="js/pages/crunchbase.js?v=10"></script>
+<script src="js/pages/crunchbase.js?v=12"></script>
 <script src="js/pages/news.js?v=3"></script>
-<script src="js/pages/settings.js?v=7"></script>
+<script src="js/pages/settings.js?v=8"></script>
+<script src="js/pages/visualizations.js?v=2"></script>
 
 <!-- Login Modal -->
 <div id="login-modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
@@ -152,7 +158,7 @@
     </div>
     <div id="login-error" style="font-size:12px;color:var(--red);margin-bottom:12px;display:none"></div>
     <button id="login-submit-btn" class="btn btn-primary" style="width:100%;padding:11px;font-size:14px">Sign In</button>
-    <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-dim)">Default: admin / admin123</div>
+    <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-dim)">Default credentials are documented in the platform README</div>
   </div>
 </div>
 </body>
